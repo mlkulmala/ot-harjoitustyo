@@ -1,0 +1,123 @@
+$ git log --stat|cat
+commit ff268e6b5566acf853dc6116114ed744d097579f
+Author: Mona Kulmala <mlkulmala@hotmail.com>
+Date:   Fri Mar 13 10:59:31 2020 +0200
+
+    poistettu file1, uudelleen nimetty file2
+
+ tiedostoja/file1.txt                 | 1 -
+ tiedostoja/{file2.txt => file22.txt} | 0
+ 2 files changed, 1 deletion(-)
+
+commit 4ea07df085d180032e03b9d58f39a09c45f86d0e
+Author: Mona Kulmala <mlkulmala@hotmail.com>
+Date:   Fri Mar 13 10:53:22 2020 +0200
+
+    luotu file1, file2, file3
+
+ tiedostoja/file1.txt | 1 +
+ tiedostoja/file2.txt | 1 +
+ tiedostoja/file3.txt | 1 +
+ 3 files changed, 3 insertions(+)
+
+commit fd8d315a46230e91f292ca92a2ef5aabd87ca1d8
+Author: Mona Kulmala <mlkulmala@hotmail.com>
+Date:   Fri Mar 13 10:43:16 2020 +0200
+
+    muutoksia ekaan ja kolmanteen
+
+ eka.txt    | 2 ++
+ kolmas.txt | 4 ++++
+ 2 files changed, 6 insertions(+)
+
+commit c6d76b80da12c27330e3df9dbf7ad18f8b67e3d8
+Author: Mona Kulmala <mlkulmala@hotmail.com>
+Date:   Thu Mar 12 19:21:06 2020 +0200
+
+    tiedoston uusi nimi on eka
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit eab90b1a224711c017433af50963e37491764da0
+Author: Mona Kulmala <mlkulmala@hotmail.com>
+Date:   Thu Mar 12 19:20:04 2020 +0200
+
+    toinen.txt poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 11c3bf6edbf17fcb41b6865588c2d2c41151ec81
+Author: Mona Kulmala <mlkulmala@hotmail.com>
+Date:   Thu Mar 12 19:12:27 2020 +0200
+
+    tiedosto.txt muutettu
+
+ tiedosto.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 4f2f09b0fa8197f3d3e2aac3559a027346a3bbfc
+Author: Mona Kulmala <mlkulmala@hotmail.com>
+Date:   Thu Mar 12 16:03:07 2020 +0200
+
+    tiedosto.txt muokattu
+
+ stuff/tiedosto.txt | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+commit 2201a1e0f6910fb1bc21957d613cf948e6e493dc
+Author: Mona Kulmala <mlkulmala@hotmail.com>
+Date:   Thu Mar 12 16:00:47 2020 +0200
+
+    tiedosto.txt tekstin lisäys
+
+ stuff/tiedosto.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit d8c333684a417093536273c536f545604f33db3e
+Author: Mona Kulmala <mlkulmala@hotmail.com>
+Date:   Thu Mar 12 14:46:23 2020 +0200
+
+    somestuff lisätty
+
+ stuff/somestuff.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 36183ada0688885b4300ac54a3f73be29148b552
+Author: Mona Kulmala <mlkulmala@hotmail.com>
+Date:   Thu Mar 12 14:34:56 2020 +0200
+
+    muutokset toiseen ja kolmanteen
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 88220b13cde569389f7e710c1400084d44f7e7b4
+Author: Mona Kulmala <mlkulmala@hotmail.com>
+Date:   Thu Mar 12 14:27:21 2020 +0200
+
+    kolmas.txt luotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 9dabc711fa69f39708d20206cce5561d62ecc9ba
+Author: Mona Kulmala <mlkulmala@hotmail.com>
+Date:   Thu Mar 12 14:03:32 2020 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit a310b466df3910cd8f84307029ad1cd0610ee632
+Author: Mona Kulmala <mlkulmala@hotmail.com>
+Date:   Thu Mar 12 12:05:05 2020 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
