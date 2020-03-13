@@ -1,4 +1,4 @@
 ### Otsikko
 
-Tekstiin voi tehdä korostuksia esim. **lihavoimalla.** 
+Tekstiin voi tehdä korostuksia esimerkiksi **lihavoimalla.** 
 Toinen kätevä tapa on *kursivointi.*
