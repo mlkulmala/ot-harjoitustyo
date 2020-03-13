@@ -1,5 +1,5 @@
 $ git log --stat|cat
-commit ff268e6b5566acf853dc6116114ed744d097579f
+commit ff268e6b5566acf853dc6116114ed744d097579f xxx
 Author: Mona Kulmala <mlkulmala@hotmail.com>
 Date:   Fri Mar 13 10:59:31 2020 +0200
 
