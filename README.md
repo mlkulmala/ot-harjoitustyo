@@ -1,4 +1,4 @@
-# Otsikko
+# Viikko 1
 
 Tekstiin voi tehdä korostuksia esimerkiksi **lihavoimalla.** 
 Toinen kätevä tapa on *kursivointi.*
