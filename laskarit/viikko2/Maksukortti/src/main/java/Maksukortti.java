@@ -44,4 +44,6 @@ public class Maksukortti {
     public String toString() {
         return "Kortilla on rahaa " + this.arvo + " euroa";
     }
+    
+    
 }
