@@ -7,7 +7,7 @@ Toinen kätevä tapa on *kursivointi.*
 
 Linkki Monan työaikakirjanpitoon:
 
-[tyoaikakirjanpito.md](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/laskarit/viikko2/tyoaikakirjanpito.md
+[tyoaikakirjanpito.md](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/laskarit/viikko2/tyoaikakirjanpito.md)
 
 
 ## Viikon 1 laskarien linkit
