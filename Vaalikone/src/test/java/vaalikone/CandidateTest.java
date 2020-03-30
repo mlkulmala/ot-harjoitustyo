@@ -18,28 +18,15 @@ import static org.junit.Assert.*;
  */
 public class CandidateTest {
     
-    public CandidateTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+    Candidate candidate;
     
     @Before
     public void setUp() {
+        candidate = new Candidate(123, "Uusimaa", "Maija", 30, "VIHR");
     }
     
-    @After
-    public void tearDown() {
-    }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
+    
 }
+    
+   
