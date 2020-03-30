@@ -8,4 +8,6 @@
 | 23.3. | 2    | sovelluslogiikan hahmottelua, koodausta |
 | 25.3. | 1    | sovelluslogiikan hahmottelua, koodausta |
 | 26.3. | 4    | koodausta |
-| 27.3. | x    | koodausta, testien kirjoittamista |
+| 27.3. | 3    | koodausta, testien kirjoittamista |
+| 30.3. | x    |       |
+| yht   | 17   |       |
