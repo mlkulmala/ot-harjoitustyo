@@ -30,10 +30,10 @@ valita, aloittaako hän vaalikoneen käytön eli vertailun omien ja ehdokkaiden
 vastausten välillä vai selaako hän vain ehdokkaita.
 
 Väitteet tulevat näkyviin yksi kerrallaan, omina näkyminään. Väitteiden 
-välillä voi navigoida painikkeilla *edellinen* ja *seuraava*. Vastaus-
-vaihtoehtoja on viisi, kukin omana painikkeenaan. Väitteeseen voi myös jättää
-vastaamatta, jolloin se jätetään vertailussa huomioimatta, tai siihen voi 
-palata myöhemmin ennen tulosten yhteenvetoa.
+välillä voi navigoida painikkeilla *edellinen* ja *seuraava*. 
+Vastausvaihtoehtoja on viisi, kukin omana painikkeenaan. Väitteeseen voi 
+myös jättää vastaamatta, jolloin se jätetään vertailussa huomioimatta, tai 
+siihen voi palata myöhemmin ennen tulosten yhteenvetoa.
 
 Viimeiden väitteen näkymässä on painike *siirry tuloksiin*, jolloin 
 siirrytään yhteenvetonäkymään. Ehdokkaat on järjestetty prosenttien mukaan
@@ -55,7 +55,7 @@ on mahdollista laajentaa niin, että alussa valitaan vaalipiiri, jolloin
 ehdokaslistaa rajataan vaalipiirin perusteella.
 
 - Vaalikoneesta on mahdollista tehdä myös painotettu siten, että käyttäjän
-tärkeäksi kokeamia aihealueita painotetaan vertailussa muita enemmän.
+tärkeäksi kokemia aihealueita painotetaan vertailussa muita enemmän.
 
 
  
