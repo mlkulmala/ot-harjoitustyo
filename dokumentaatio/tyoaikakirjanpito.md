@@ -9,5 +9,6 @@
 | 25.3. | 1    | sovelluslogiikan hahmottelua, koodausta |
 | 26.3. | 4    | koodausta |
 | 27.3. | 3    | koodausta, testien kirjoittamista |
-| 30.3. | x    |       |
-| yht   | 17   |       |
+| 30.3. | 3    | Dao-rajapintaan tutustumista      |
+| 31.3. | 4    | Daon luominen, sovelluslogiikan korjausta  |
+| yht   | 24   |       |

@@ -1,7 +1,9 @@
 # VotingAidApp
 
-Tekstiin voi tehdä korostuksia esimerkiksi **lihavoimalla.** 
-Toinen kätevä tapa on *kursivointi.*
+Sovelluksen avulla käyttäjä voi verrata omia mielipiteitään vaaliehdokkaiden
+mielipiteisiin ja saada selville, keiden kanssa näkemykset kohtaavat parhaiten.
+Ehdokkaita ja heidän mielipiteitään on mahdollista myös selata vastaamatta 
+itse väitteisiin.
 
 ## Dokumentaatio
 
