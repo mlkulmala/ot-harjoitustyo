@@ -15,8 +15,9 @@ public class VotingAidApplication {
     
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        CandidateLogic candidatelogic = new CandidateLogic();
 
-        UI ui = new UI(scanner);
+        UI ui = new UI(scanner, candidatelogic);
         ui.start();
     }
     

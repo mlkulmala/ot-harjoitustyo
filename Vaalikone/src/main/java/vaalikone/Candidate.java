@@ -81,6 +81,10 @@ public class Candidate implements Comparable<Candidate> {
     public void setMatchPercentage(int percent) {
         this.matchPercentage = percent;
     }
+    
+    public int getMatchPercentage() {
+        return this.matchPercentage;
+    }
 	
    
     @Override

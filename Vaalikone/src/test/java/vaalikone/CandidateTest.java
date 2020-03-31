@@ -5,6 +5,7 @@
  */
 package vaalikone;
 
+import java.util.Collections;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -25,8 +26,60 @@ public class CandidateTest {
         candidate = new Candidate(123, "Uusimaa", "Maija", 30, "VIHR");
     }
     
+    @Test
+    public void nameSettingIsCorrect() {
+        assertEquals("Maija", candidate.getName());
+    }
     
+    @Test
+    public void ageSettingIsCorrect() {
+        assertEquals(30, candidate.getAge());
+    }
     
+    @Test
+    public void areaSettingIsCorrect() {
+        assertEquals("Uusimaa", candidate.getArea());
+    }
+    
+    @Test
+    public void partySettingIsCorrect() {
+        assertEquals("VIHR", candidate.getParty());
+    }
+    
+    @Test
+    public void answerSettingIsCorrect() {
+        assertEquals(Collections.emptyList(), candidate.getAnswers());
+    }
+    
+    @Test
+    public void zeroSumAtBeginning() {
+        assertEquals(0, candidate.getSum());
+    }
+    
+    @Test
+    public void zeroMatchAtBeginning() {
+        assertEquals(0, candidate.getMatchPercentage());
+    }
+    
+    @Test
+    public void addSumGivesRightSum() {
+        candidate.addToSum(100);
+        candidate.addToSum(75);
+        assertEquals(175, candidate.getSum());
+    }
+    
+    @Test
+    public void setMatchGivesRightPercentage() {
+        candidate.setMatchPercentage(50);
+        candidate.setMatchPercentage(62);
+        assertEquals(62, candidate.getMatchPercentage());
+    }
+    
+    @Test
+    public void toStringIsCorrect() {
+        candidate.setMatchPercentage(88);
+        assertEquals("88% Maija, VIHR", candidate.toString());
+    }
 }
     
    
