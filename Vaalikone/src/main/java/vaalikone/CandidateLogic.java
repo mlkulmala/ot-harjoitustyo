@@ -14,15 +14,14 @@ import java.util.*;
 public class CandidateLogic {
     
     List<Candidate> candidates;
-    CandidateMemoryDao candMemoryDao;
+    CandidateDao candidateDao;
     
-    public CandidateLogic() {
-        //this.candidates = new ArrayList<>();
-        this.candMemoryDao = new CandidateMemoryDao();
+    public CandidateLogic(CandidateDao candidatedao) {
+        this.candidateDao = candidatedao;
     }
     
     public void createCandidateList() {
-        this.candidates = candMemoryDao.getCandidates();
+        this.candidates = candidateDao.getCandidates();
     }
     
     public void compareToCandidates(int c, int qNumber, int userAnswer) {

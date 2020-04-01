@@ -18,6 +18,7 @@ public class CandidateMemoryDao implements CandidateDao {
         ArrayList<Candidate> candidates = new ArrayList<>();
         
         //tähän voi toteuttaa tietokannasta haun
+        //lisätään malliehdokkaat nyt tässä:
         
         Candidate aku = new Candidate(331, "Uusimaa", "Aku", 34, "KOK");
         Candidate lasse = new Candidate(124, "Uusimaa", "Lasse", 49, "VAS");

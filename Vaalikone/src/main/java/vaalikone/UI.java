@@ -18,8 +18,9 @@ public class UI {
     private String[] claims;
     private int c;
 
-    public UI(Scanner scanner, CandidateLogic candidatelogic) {
-        this.candidatelogic = candidatelogic;
+    public UI(Scanner scanner) {
+        CandidateMemoryDao candMemoryDao = new CandidateMemoryDao();
+        this.candidatelogic = new CandidateLogic(candMemoryDao);
         this.scanner = scanner;
 	this.claims = new String[6];
         this.c = 1;
@@ -61,23 +62,6 @@ public class UI {
 	}
     }
 	
-//    public void compareToCandidates(int qNumber, int userAnswer) {
-//	// for(int i=1; i<=3; i++) {
-//	for(Candidate x : this.candidates) {
-//            int candAnswer = x.getAnswers().get(qNumber);
-//            int diff = Math.abs(userAnswer - candAnswer);
-//            int sum = x.getSum();  //aluksi 0
-//            sum += 100 - diff*25;
-//            sum = sum/c;
-//            x.setMatchPercentage(sum);
-//            x.addToSum(sum); 
-//	} 
-//	Collections.sort(this.candidates);
-//        System.out.println("\n* * * * * * * * * *");
-//        for(Candidate x: this.candidates) {
-//            System.out.println(x.toString());
-//        }
-//    }
 
         
     
