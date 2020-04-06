@@ -26,9 +26,9 @@ public class CandidateLogic {
         this.candidates = candidateDao.getCandidates();
     }
     
-    public List<Candidate> compareToCandidates(int c, int qNumber, int userAnswer) {
+    public List<Candidate> compareToCandidates(int c, int userAnswer) {
         for (Candidate x : this.candidates) {
-            int candAnswer = x.getAnswers().get(qNumber);
+            int candAnswer = x.getAnswers().get(c - 1);
             int diff = Math.abs(userAnswer - candAnswer);
             int newPercentage = 100 - diff * 25;
             x.addToSum(newPercentage);
