@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vaalikone;
+package votindAid.dao;
 
+import votindAid.dao.CandidateDao;
 import java.util.*;
+import votindAid.domain.Candidate;
 
 /**
  *

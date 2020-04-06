@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vaalikone;
+package votindAid.domain;
 
+import votindAid.domain.Candidate;
+import votindAid.dao.CandidateDao;
 import java.util.*;
 
 /**
@@ -24,22 +26,19 @@ public class CandidateLogic {
         this.candidates = candidateDao.getCandidates();
     }
     
-    public void compareToCandidates(int c, int qNumber, int userAnswer) {
-	// for(int i=1; i<=3; i++) {
+    public List<Candidate> compareToCandidates(int c, int qNumber, int userAnswer) {
 	for(Candidate x : this.candidates) {
             int candAnswer = x.getAnswers().get(qNumber);
             int diff = Math.abs(userAnswer - candAnswer);
-            int sum = x.getSum();  //aluksi 0
-            sum += 100 - diff*25;
-            sum = sum/c;
-            x.setMatchPercentage(sum);
-            x.addToSum(sum); 
+            int newPercentage = 100 - diff*25;
+            x.addToSum(newPercentage);
+            int total = x.getSum()/c;
+            x.setMatchPercentage(total);
+             
 	} 
 	Collections.sort(this.candidates);
-        System.out.println("\n* * * * * * * * * *");
-        for(Candidate x: this.candidates) {
-            System.out.println(x.toString());
-        }
+        return this.candidates;
+       
     }
     
 }

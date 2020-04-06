@@ -11,4 +11,6 @@
 | 27.3. | 3    | koodausta, testien kirjoittamista |
 | 30.3. | 3    | Dao-rajapintaan tutustumista      |
 | 31.3. | 4    | Daon luominen, sovelluslogiikan korjausta  |
-| yht   | 24   |       |
+|  1.4. | 4    | sovelluslogiikan korjausta, testien kirjoittamista |
+|  2.4. |      | testien kirjoittamista  |
+| yht   | 28   |       |

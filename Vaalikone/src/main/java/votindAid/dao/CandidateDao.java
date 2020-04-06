@@ -3,21 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vaalikone;
+package votindAid.dao;
 
 import java.util.*;
+import votindAid.domain.Candidate;
 
 /**
  *
  * @author mlkul
  */
-public class VotingAidApplication {
+public interface CandidateDao {
     
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        UI ui = new UI(scanner);
-        ui.start();
-    }
+    public List<Candidate> getCandidates();
     
 }

@@ -3,16 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vaalikone;
+package votindAid;
 
+import votindAid.ui.UI;
 import java.util.*;
 
 /**
  *
  * @author mlkul
  */
-interface CandidateDao {
+public class VotingAidApplication {
     
-    public List<Candidate> getCandidates();
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        UI ui = new UI(scanner);
+        ui.start();
+    }
     
 }

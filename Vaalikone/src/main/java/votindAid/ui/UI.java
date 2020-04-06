@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vaalikone;
+package votindAid.ui;
 
+import votindAid.domain.CandidateLogic;
+import votindAid.domain.Candidate;
+import votindAid.dao.CandidateMemoryDao;
 import java.util.*;
 import java.lang.*;
 
@@ -14,6 +17,7 @@ import java.lang.*;
  */
 public class UI {
     private CandidateLogic candidatelogic;
+    private List<Candidate> candidates;
     private Scanner scanner;
     private String[] claims;
     private int c;
@@ -21,6 +25,7 @@ public class UI {
     public UI(Scanner scanner) {
         CandidateMemoryDao candMemoryDao = new CandidateMemoryDao();
         this.candidatelogic = new CandidateLogic(candMemoryDao);
+        this.candidates = new ArrayList<>();
         this.scanner = scanner;
 	this.claims = new String[6];
         this.c = 1;
@@ -57,7 +62,11 @@ public class UI {
             } else {
                 number = Integer.valueOf(answer);
             }
-            candidatelogic.compareToCandidates(c, i, number);
+            this.candidates = candidatelogic.compareToCandidates(c, i, number);
+            System.out.println("\n* * * * * * * * * *");
+            for(Candidate x: this.candidates) {
+                System.out.println(x.toString());
+            }
             c++;
 	}
     }
