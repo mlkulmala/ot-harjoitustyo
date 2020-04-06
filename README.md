@@ -11,3 +11,5 @@ itse väitteisiin.
 
 [Vaatimusmaarittely](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
+[Arkkitehtuurikuvaus](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/Vaalikone/dokumentaatio/arkkitehtuuri.md)
+
