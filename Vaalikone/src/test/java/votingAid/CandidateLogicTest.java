@@ -7,9 +7,9 @@ package votingAid;
 
 
 
-import votindAid.domain.CandidateLogic;
-import votindAid.domain.Candidate;
-import votindAid.dao.CandidateMemoryDao;
+import votingaid.domain.CandidateLogic;
+import votingaid.domain.Candidate;
+import votingaid.dao.CandidateMemoryDao;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;

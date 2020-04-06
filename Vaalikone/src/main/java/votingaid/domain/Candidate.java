@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package votindAid.domain;
+package votingaid.domain;
 
 import java.util.*;
 
@@ -24,18 +24,18 @@ public class Candidate implements Comparable<Candidate> {
 	
 	
     public Candidate(int number, String area, String name, int age, String party) {
-	this.number = number;
-	this.area = area;
-	this.name = name;
-	this.age = age;
-	this.party = party;
-	this.answers = new ArrayList<>();
-	this.sum = 0;
+        this.number = number;
+        this.area = area;
+        this.name = name;
+        this.age = age;
+        this.party = party;
+        this.answers = new ArrayList<>();
+        this.sum = 0;
         this.matchPercentage = 0;
     }
 	
     public int getNumber() {
-	return this.number;
+        return this.number;
     }		
 	
     public String getArea() {
@@ -55,7 +55,7 @@ public class Candidate implements Comparable<Candidate> {
     }
 	
     public ArrayList<Integer> getAnswers() {
-	return this.answers;
+        return this.answers;
     }
     
     public void setAnswers(ArrayList<Integer> answers) {
@@ -75,7 +75,7 @@ public class Candidate implements Comparable<Candidate> {
     }
 	
     public int getSum() {
-	return this.sum;
+        return this.sum;
     }
     
     public void setMatchPercentage(int percent) {

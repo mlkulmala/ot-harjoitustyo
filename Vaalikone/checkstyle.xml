@@ -1,15 +1,7 @@
-
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.3//EN" "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
 <module name='Checker'>
 
-    <!-- asetetaan kieliasetukset englanniksi. -->
     <property name="localeCountry" value="EN"/>
     <property name="localeLanguage" value="en"/>
 
@@ -17,7 +9,6 @@ and open the template in the editor.
 
         <property name='tabWidth' value='4' />
 
-        <!-- Block Checks -->
 
         <module name='EmptyBlock' />
         <module name='LeftCurly' />
@@ -32,7 +23,6 @@ and open the template in the editor.
         </module>
         <module name="NestedTryDepth"/>
 
-        <!-- Miscellaneous -->
 
         <module name='Indentation' />
         <module name="OneStatementPerLine"/>
@@ -42,7 +32,6 @@ and open the template in the editor.
             <property name="countEmpty" value="false"/>
         </module>
 
-        <!--- Naming Conventions -->
 
         <module name='ClassTypeParameterName' />
         <module name='ConstantName' />
@@ -60,7 +49,6 @@ and open the template in the editor.
         <module name='StaticVariableName' />
         <module name='TypeName' />
 
-        <!-- Whitespace -->
 
         <module name='GenericWhitespace' />
         <module name='EmptyForInitializerPad' />
@@ -90,7 +78,6 @@ and open the template in the editor.
         <property name="file" value="skipped_files.xml" />
     </module>
 
-    <!-- File Length -->
 
     <module name='FileLength'>
         <property name='max' value='500' />

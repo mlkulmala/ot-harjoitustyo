@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package votindAid;
+package votingaid.main;
 
-import votindAid.ui.UI;
+import votingaid.ui.UI;
 import java.util.*;
 
 /**

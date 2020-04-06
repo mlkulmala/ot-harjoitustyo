@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package votindAid.dao;
+package votingaid.dao;
 
 import java.util.*;
-import votindAid.domain.Candidate;
+import votingaid.domain.Candidate;
 
 /**
  *

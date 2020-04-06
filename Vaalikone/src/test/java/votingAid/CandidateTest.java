@@ -5,7 +5,7 @@
  */
 package votingAid;
 
-import votindAid.domain.Candidate;
+import votingaid.domain.Candidate;
 import java.util.Collections;
 import org.junit.After;
 import org.junit.AfterClass;

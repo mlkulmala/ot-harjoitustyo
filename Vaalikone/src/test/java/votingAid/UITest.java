@@ -5,7 +5,7 @@
  */
 package votingAid;
 
-import votindAid.ui.UI;
+import votingaid.ui.UI;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

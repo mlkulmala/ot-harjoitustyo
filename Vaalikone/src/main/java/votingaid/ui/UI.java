@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package votindAid.ui;
+package votingaid.ui;
 
-import votindAid.domain.CandidateLogic;
-import votindAid.domain.Candidate;
-import votindAid.dao.CandidateMemoryDao;
+import votingaid.domain.CandidateLogic;
+import votingaid.domain.Candidate;
+import votingaid.dao.CandidateMemoryDao;
 import java.util.*;
 import java.lang.*;
 
@@ -27,17 +27,17 @@ public class UI {
         this.candidatelogic = new CandidateLogic(candMemoryDao);
         this.candidates = new ArrayList<>();
         this.scanner = scanner;
-	this.claims = new String[6];
+        this.claims = new String[6];
         this.c = 1;
     }
 
     public void start() {
 	//luetaan myöhemmin tiedostosta/tietokannasta:
-	claims[0] = "Väite 1: Rajat auki!\n";
-	claims[1] = "Väite 2: Perustulo kaikille\n";
-	claims[2] = "Väite 3: Viinaa vain Virosta\n";
-	claims[3] = "Väite 4: Suomi karanteeniin\n";
-	claims[4] = "Väite 5: Opiskelijoille lisää rahaa\n";
+        claims[0] = "Väite 1: Rajat auki!\n";
+        claims[1] = "Väite 2: Perustulo kaikille\n";
+        claims[2] = "Väite 3: Viinaa vain Virosta\n";
+        claims[3] = "Väite 4: Suomi karanteeniin\n";
+        claims[4] = "Väite 5: Opiskelijoille lisää rahaa\n";
         
         
         this.candidatelogic.createCandidateList();
@@ -49,26 +49,25 @@ public class UI {
     }
 
     public void readAndCompare() {     
-	for(int i=0; i<=4; i++) {
-            System.out.println();
-            System.out.println(claims[i]);  
+        for (int i = 0; i <= 4; i++) {
+            System.out.println("\n" + claims[i]);  
             System.out.println("(1=täysin eri mieltä, 2=osittain eri mieltä");
             System.out.println("3=en osaa sanoa, 4=osittain samaa mieltä");
             System.out.println("5=täysin samaa mieltä, x=lopeta)");
             String answer = scanner.nextLine();
             int number = 0;
-            if(answer.equals("x")) {
+            if (answer.equals("x")) {
                 break;
             } else {
                 number = Integer.valueOf(answer);
             }
             this.candidates = candidatelogic.compareToCandidates(c, i, number);
             System.out.println("\n* * * * * * * * * *");
-            for(Candidate x: this.candidates) {
+            for (Candidate x: this.candidates) {
                 System.out.println(x.toString());
             }
             c++;
-	}
+        }
     }
 	
 
