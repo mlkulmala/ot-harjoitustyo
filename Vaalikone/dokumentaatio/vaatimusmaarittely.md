@@ -25,10 +25,11 @@ sovellus siirtyy suoraan ehdokaslistaan.
 
 ## Toiminnallisuus (perusversio)
 
-Sovelluksen käyttö ei edellytä kirjautumista. Käyttäjä voi aloitunäkymässä 
+Sovelluksen käyttö ei edellytä kirjautumista. Käyttäjä voi aloitusnäkymässä 
 valita, aloittaako hän vaalikoneen käytön eli vertailun omien ja ehdokkaiden
 vastausten välillä vai selaako hän vain ehdokkaita. (7.4. Graafinen käyttö-
-liittymä ei ole vielä toiminnassa)
+liittymä ei ole vielä toiminnassa, toiminnot toteutettu tekstikäyttöliitty-
+mässä)
 
 Väitteet tulevat näkyviin yksi kerrallaan, omina näkyminään. Väitteiden 
 välillä voi navigoida painikkeilla *edellinen* ja *seuraava*. 
@@ -37,10 +38,13 @@ myös jättää vastaamatta, jolloin se jätetään vertailussa huomioimatta, ta
 siihen voi palata myöhemmin ennen tulosten yhteenvetoa. (7.4. Toteutettu 
 toistaiseksi vasta tekstikäyttöliittymänä)
 
+Jokaisen vastauksen jälkeen sovellus listaa kolme ehdokasta, joiden kanssa
+mielipiteet käyvät parhaiten yksiin. (7.4. Tämä toteutettu)
+
 Viimeiden väitteen näkymässä on painike *siirry tuloksiin*, jolloin 
 siirrytään yhteenvetonäkymään. Ehdokkaat on järjestetty prosenttien mukaan
 siten, että ylimpänä ovat ne ehdokkaat, joiden kanssa mielipiteet käyvät 
-parhaiten yksiin. (7.4. Tulokset näkyvät joka vastauksen jälkeen)
+parhaiten yksiin. 
 
 Ehdokaslistaa selatessa kunkin ehdokkaan kohdalla on linkki, josta pääsee 
 tutustumaan kyseiseen ehdokkaaseen tarkemmin.

@@ -12,5 +12,7 @@
 | 30.3. | 3    | Dao-rajapintaan tutustumista      |
 | 31.3. | 4    | Daon luominen, sovelluslogiikan korjausta  |
 |  1.4. | 4    | sovelluslogiikan korjausta, testien kirjoittamista |
-|  2.4. |      | testien kirjoittamista  |
-| yht   | 28   |       |
+|  2.4. | 3    | testien kirjoittamista  |
+|  6.4. | 3    | tiedostosta lukeminen  |
+|  7.4. | 4    | uuden Dao-rajapinnan luonti, graafinen käyttöliittymä |
+| yht   | 38   |       |
