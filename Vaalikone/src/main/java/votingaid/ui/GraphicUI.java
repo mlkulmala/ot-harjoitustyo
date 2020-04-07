@@ -53,7 +53,8 @@ public class GraphicUI extends Application {
     public void start(Stage stage) throws Exception {
         
         Label questionLabel = new Label(this.questions.get(0));  //luetaan kysymys listasta
-        
+        //TextFlow! 
+        //textflow.setMaxWidth(500);
         HBox cbLabels = new HBox();
         cbLabels.setSpacing(50);
         cbLabels.getChildren().add(new Label("Täysin\neri mieltä"));

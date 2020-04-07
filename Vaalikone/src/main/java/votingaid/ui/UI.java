@@ -37,19 +37,19 @@ public class UI {
         
         this.candidatelogic.createCandidateList();
 
-        System.out.println("\nTERVETULOA VAALIKONEESEEN!\n");
-        System.out.println("Vastaa seuraaviin väitteisiin\n");
+        System.out.println("\nWelcome to Voting Aid Application!\n");
+        System.out.println("Respond to the statements\n");
         readAnswers();
-        System.out.println("\nSiirrytään tuloksiin...");
+        System.out.println("\nSee results...");
     }
 
     public void readAnswers() {
         try ( Scanner reader = new Scanner(new File("votingaidquestions.txt"))) {
             while (reader.hasNextLine()) {
                 System.out.println(reader.nextLine());
-                System.out.println("\n(1=täysin eri mieltä, 2=osittain eri mieltä");
-                System.out.println("3=en osaa sanoa, 4=osittain samaa mieltä");
-                System.out.println("5=täysin samaa mieltä, x=lopeta)");
+                System.out.println("\n(1=Completely disagree, 2=Partly disagree");
+                System.out.println("3=I don't know, 4=Partly agree");
+                System.out.println("5=Completely agree, x=Stop)");
                 String answer = scanner.nextLine();
                 int number = 0;
                 if (answer.equals("x")) {
