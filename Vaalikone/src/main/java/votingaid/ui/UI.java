@@ -34,25 +34,19 @@ public class UI {
     }
 
     public void start() {
-        //luetaan myöhemmin tiedostosta/tietokannasta:
-        claims[0] = "Väite 1: Rajat auki!\n";
-        claims[1] = "Väite 2: Perustulo kaikille\n";
-        claims[2] = "Väite 3: Viinaa vain Virosta\n";
-        claims[3] = "Väite 4: Suomi karanteeniin\n";
-        claims[4] = "Väite 5: Opiskelijoille lisää rahaa\n";
-
+        
         this.candidatelogic.createCandidateList();
 
         System.out.println("\nTERVETULOA VAALIKONEESEEN!\n");
         System.out.println("Vastaa seuraaviin väitteisiin\n");
         readAnswers();
-        System.out.println("\nSiirrytään tuloksiin");
+        System.out.println("\nSiirrytään tuloksiin...");
     }
 
     public void readAnswers() {
-        try ( Scanner lukija = new Scanner(new File("votingaidquestions.txt"))) {
-            while (lukija.hasNextLine()) {
-                System.out.println(lukija.nextLine());
+        try ( Scanner reader = new Scanner(new File("votingaidquestions.txt"))) {
+            while (reader.hasNextLine()) {
+                System.out.println(reader.nextLine());
                 System.out.println("\n(1=täysin eri mieltä, 2=osittain eri mieltä");
                 System.out.println("3=en osaa sanoa, 4=osittain samaa mieltä");
                 System.out.println("5=täysin samaa mieltä, x=lopeta)");
@@ -60,7 +54,7 @@ public class UI {
                 int number = 0;
                 if (answer.equals("x")) {
                     break;
-                } else {
+                } else { 
                     number = Integer.valueOf(answer);
                 }
                 compareAndListAnswers(number);
@@ -76,6 +70,7 @@ public class UI {
         for (Candidate x : this.candidates) {
             System.out.println(x.toString());
         }
+        System.out.println();
         c++;
     }
 

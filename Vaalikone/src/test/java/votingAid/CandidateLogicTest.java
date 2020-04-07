@@ -36,32 +36,32 @@ public class CandidateLogicTest {
     @Test
     public void firstOneOnFirstQuestionIsCorrect() {
         candidateLogic.createCandidateList();
-        List<Candidate> candidates = candidateLogic.compareToCandidates(1, 0, 3);
+        List<Candidate> candidates = candidateLogic.compareToCandidates(1, 3);
         assertEquals("100% Lasse, VAS", candidates.get(0).toString());
     }
     
     @Test
     public void secondOneOnFirstQuestionIsCorrect() {
         candidateLogic.createCandidateList();
-        List<Candidate> candidates = candidateLogic.compareToCandidates(1, 0, 3);
+        List<Candidate> candidates = candidateLogic.compareToCandidates(1, 3);
         assertEquals("75% Aku, KOK", candidates.get(1).toString());
     }
     
     @Test
     public void thirdOneOnFirstQuestionIsCorrect() {
         candidateLogic.createCandidateList();
-        List<Candidate> candidates = candidateLogic.compareToCandidates(1, 0, 3);
+        List<Candidate> candidates = candidateLogic.compareToCandidates(1, 3);
         assertEquals("50% Heli, VIHR", candidates.get(2).toString());
     }
     
     @Test
     public void firstOneOnFifthQuestionIsCorrect() {
         candidateLogic.createCandidateList();
-        candidateLogic.compareToCandidates(1, 0, 3);
-        candidateLogic.compareToCandidates(2, 1, 2);
-        candidateLogic.compareToCandidates(3, 2, 4);
-        candidateLogic.compareToCandidates(4, 3, 4);
-        List<Candidate> candidates = candidateLogic.compareToCandidates(5, 4, 5);
+        candidateLogic.compareToCandidates(1, 3);
+        candidateLogic.compareToCandidates(2, 2);
+        candidateLogic.compareToCandidates(3, 4);
+        candidateLogic.compareToCandidates(4, 4);
+        List<Candidate> candidates = candidateLogic.compareToCandidates(5, 5);
         assertEquals("80% Lasse, VAS", candidates.get(0).toString());
     }
    
