@@ -14,6 +14,6 @@ import votingaid.domain.Candidate;
  */
 public interface CandidateDao {
     
-    public List<Candidate> getCandidates();
+    public List<Candidate> getCandidatesByArea();
     
 }

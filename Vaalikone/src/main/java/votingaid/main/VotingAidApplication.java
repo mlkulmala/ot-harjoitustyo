@@ -19,10 +19,10 @@ public class VotingAidApplication {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-//        GraphicUI gui = new GraphicUI();
-//        launch(GraphicUI.class);
-        UI ui = new UI(scanner);
-        ui.start();
+        GraphicUI gui = new GraphicUI();
+        launch(GraphicUI.class);
+//        UI ui = new UI(scanner);
+//        ui.start();
     }
     
 }

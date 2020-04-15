@@ -6,11 +6,14 @@
 package votingaid.ui;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import votingaid.domain.CandidateLogic;
 import votingaid.domain.Candidate;
 import votingaid.dao.CandidateMemoryDao;
 import java.util.*;
 import java.lang.*;
+import java.nio.charset.Charset;
 
 /**
  *
