@@ -25,6 +25,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -37,6 +38,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javax.swing.ButtonGroup;
+import javax.swing.JRadioButton;
 import votingaid.dao.CandidateMemoryDao;
 import votingaid.dao.QuestionMemoryDao;
 import votingaid.domain.Candidate;
@@ -151,12 +154,18 @@ public class GraphicUI extends Application {
         RadioButton rb3 = new RadioButton();
         RadioButton rb4 = new RadioButton();
         RadioButton rb5 = new RadioButton();
+        ToggleGroup rButtons = new ToggleGroup();
+        rb1.setToggleGroup(rButtons);
+        rb2.setToggleGroup(rButtons);
+        rb3.setToggleGroup(rButtons);
+        rb4.setToggleGroup(rButtons);
+        rb5.setToggleGroup(rButtons);
         
         //tulokset 
         Label lbResults = new Label();
         lbResults.setWrapText(true);
-        
-        //valintapainikkeiden toiminnot
+
+        //valintanappien toiminnot
         rb1.setOnAction((event) -> {
             compareAndListAnswers(1, lbResults);
         });
@@ -175,10 +184,10 @@ public class GraphicUI extends Application {
         
         
         //edellinen/seuraava -napit
-//        Button previous = new Button("< Edellinen");
-//        Button next = new Button("seuraava >");
-//        previous.setPrefWidth(80);
-//        next.setPrefWidth(80);
+        Button previous = new Button("< Edellinen");
+        Button next = new Button("Seuraava >");
+        previous.setPrefWidth(80);
+        next.setPrefWidth(80);
 //        HBox buttons = new HBox();
 //        buttons.getChildren().addAll(previous, next);
 //        buttons.setSpacing(10);
@@ -209,7 +218,8 @@ public class GraphicUI extends Application {
         questionView.add(rb4, 3, 3);
         questionView.add(rb5, 4, 3);
         questionView.add(lbResults, 1, 4);
-        //questionView.add(buttons, 0, 4);
+        questionView.add(previous, 0, 4);
+        questionView.add(next, 4, 4);
         
         GridPane.setHalignment(qNumber, HPos.CENTER);
         GridPane.setHalignment(lb1, HPos.CENTER);

@@ -28,18 +28,6 @@ public class QuestionMemoryDao implements QuestionDao {
     public List<String> getQuestions() {
         ArrayList<String> questions = new ArrayList<>();
         
-        
-        
-//        try ( Scanner reader = new Scanner(new File("questions_new.txt"))) {
-//            while (reader.hasNextLine()) {
-//                String line = reader.nextLine();
-//                Charset.forName("UTF-8").encode(line);
-//                questions.add(line);
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Virhe: " + e.getMessage());
-//        }
-        
         try {
             File fileDir = new File("questions_new.txt");
    

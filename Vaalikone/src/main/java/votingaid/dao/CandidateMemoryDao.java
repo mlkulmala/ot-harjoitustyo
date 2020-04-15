@@ -27,29 +27,7 @@ public class CandidateMemoryDao implements CandidateDao {
         
         //tähän voi toteuttaa tietokannasta haun
         //lisätään malliehdokkaat nyt tässä:
-//        try {
-//            File fileDir = new File("questions_new.txt");
-//   
-//            BufferedReader in = new BufferedReader(
-//                new InputStreamReader(
-//                    new FileInputStream(fileDir), "UTF8"));
-//            String line;
-//            while ((line = in.readLine()) != null) {  //tähän se mitä tehdään riveille
-//                String[] s = line.split(",");
-//                if(s[1].equals(area)) {
-//                    candidates.add(new Candidate(s[0], s[1], s[2], s[3], s[4], s[5], s[6], ...));
-//                }
-//            }
-//            in.close();
-//            
-//        } catch (UnsupportedEncodingException e) {
-//            System.out.println(e.getMessage());
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//        }
-        
+ 
         
         Candidate aku = new Candidate(331, "Uusimaa", "Aku", 34, "KOK");
         Candidate lasse = new Candidate(124, "Uusimaa", "Lasse", 49, "VAS");

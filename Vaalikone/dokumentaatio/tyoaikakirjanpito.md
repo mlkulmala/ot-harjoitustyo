@@ -15,4 +15,9 @@
 |  2.4. | 3    | testien kirjoittamista  |
 |  6.4. | 3    | tiedostosta lukeminen  |
 |  7.4. | 4    | uuden Dao-rajapinnan luonti, graafinen käyttöliittymä |
-| yht   | 38   |       |
+|  8.4. | 4    | graafinen käyttöliittymä  |
+|  9.4. | 4    | graafinen käyttöliittymä  |
+| 10.4. | 2    | graafinen käyttöliittymä  |
+| 14.4. | 3    | graafinen käyttöliittymä  |
+| 15.4. | 5    | graafinen käyttöliittymä  |
+| yht   | 56   |       |
