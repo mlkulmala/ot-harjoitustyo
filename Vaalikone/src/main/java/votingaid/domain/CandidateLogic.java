@@ -17,14 +17,17 @@ public class CandidateLogic {
     
     List<Candidate> candidates;
     CandidateDao candidateDao;
-    //private int c = 1;
     
     public CandidateLogic(CandidateDao candidatedao) {
         this.candidateDao = candidatedao;
     }
     
-    public void createCandidateList() {
-        this.candidates = candidateDao.getCandidatesByArea();
+//    public void createCandidateList() {
+//        this.candidates = candidateDao.getCandidatesByArea();
+//    }
+    
+    public List<Candidate> createCandidateList() {
+        return candidateDao.getCandidatesByArea();
     }
     
 //    public void compareAndListAnswers(int number) {
@@ -37,13 +40,13 @@ public class CandidateLogic {
 //        c++;
 //    }
     
-    public List<Candidate> compareToCandidates(int c, int userAnswer) {
+    public List<Candidate> compareToCandidates(int qNumber, int userAnswer) {
         for (Candidate x : this.candidates) {
-            int candAnswer = x.getAnswers().get(c - 1);
+            int candAnswer = x.getAnswers().get(qNumber - 1);
             int diff = Math.abs(userAnswer - candAnswer);
             int newPercentage = 100 - diff * 25;
             x.addToSum(newPercentage);
-            int total = x.getSum() / c;
+            int total = x.getSum() / qNumber;
             x.setMatchPercentage(total);
         } 
         Collections.sort(this.candidates);

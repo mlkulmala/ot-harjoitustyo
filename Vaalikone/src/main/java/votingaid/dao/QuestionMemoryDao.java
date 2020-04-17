@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 import votingaid.dao.QuestionDao;
+import votingaid.domain.Question;
 
 /**
  *
@@ -25,8 +26,9 @@ import votingaid.dao.QuestionDao;
 public class QuestionMemoryDao implements QuestionDao {
 
     @Override
-    public List<String> getQuestions() {
-        ArrayList<String> questions = new ArrayList<>();
+    public List<Question> getQuestions() {
+        ArrayList<Question> questions = new ArrayList<>();
+        //ArrayList<String> questions = new ArrayList<>();
         
         try {
             File fileDir = new File("questions_new.txt");
@@ -35,8 +37,11 @@ public class QuestionMemoryDao implements QuestionDao {
                 new InputStreamReader(
                     new FileInputStream(fileDir), "UTF8"));
             String str;
+            int i = 1;
             while ((str = in.readLine()) != null) {
-                questions.add(str);
+                //questions.add(str);
+                questions.add(new Question(i, str));
+                i++;
             }
             in.close();
             

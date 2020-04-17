@@ -3,17 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package votingaid.dao;
-
-import java.util.List;
-import votingaid.domain.Question;
+package votingaid.domain;
 
 /**
  *
  * @author mlkul
  */
-public interface QuestionDao {
+public class Answer {
     
-    public List<Question> getQuestions();
+    private Question question;
+    private Candidate candidate;
+    private int answer;
+    
+    public Answer() {
+        
+    }
     
 }
