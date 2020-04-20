@@ -48,18 +48,6 @@ public class QuestionList {
         return null;
     }
     
-//    public void addAnsweredQuestion() {
-//        this.answeredQuestions++;
-//    }
-    
-    // ???
-//    public int getAnsweredQuestions() {
-//        for(Question question : this.questions) {
-//            if(question.isAnswered()) {
-//                this.answeredQuestions++;
-//            }
-//        }
-//        return this.answeredQuestions;
-//    }
+
     
 }
