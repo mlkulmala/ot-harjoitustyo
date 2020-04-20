@@ -65,24 +65,35 @@ public class Candidate implements Comparable<Candidate> {
     
     public void setSingleMatch(int question, int percentage) {
         this.singleMatches.put(question, percentage);
+        updateMatchPercentage();
     }
     
     public int getSingleMatch(int question) {
         return this.singleMatches.get(question);
     }
     
+    public void updateMatchPercentage() {
+        int sum = 0;
+        if(!this.singleMatches.values().isEmpty()) {
+            for(int percentage : this.singleMatches.values()) {
+                sum += percentage;
+            }
+            sum = sum / this.singleMatches.size();
+        }
+        this.matchPercentage = sum;
+    }
+    
     public int getMatchPercentage() {
         int sum = 0;
-        for(int percentage : this.singleMatches.values()) {
-            sum += percentage;
+        if(!this.singleMatches.values().isEmpty()) {
+            for(int percentage : this.singleMatches.values()) {
+                sum += percentage;
+            }
+            sum = sum / this.singleMatches.size();
         }
-        sum = sum / this.singleMatches.size();
         return sum;
     }
     
-    public void setMatchPercentage(int percentage) {
-        this.matchPercentage = percentage;
-    }
       
     @Override
     public int compareTo(Candidate candidate) {

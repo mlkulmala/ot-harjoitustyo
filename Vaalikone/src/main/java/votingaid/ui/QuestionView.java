@@ -124,6 +124,15 @@ public class QuestionView {
         Button next = new Button("Seuraava >");
         previous.setPrefWidth(80);
         next.setPrefWidth(80);
+        
+        previous.setOnAction((event) -> {
+            //
+        });
+        
+        next.setOnAction((event) -> {
+            //
+        });
+
 
         //asettelu
         GridPane questionView = new GridPane();

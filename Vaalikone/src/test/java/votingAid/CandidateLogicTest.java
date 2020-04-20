@@ -30,36 +30,46 @@ public class CandidateLogicTest {
     @Before
     public void setUp() {
         CandidateMemoryDao candMemoryDao = new CandidateMemoryDao();
-        candidateLogic = new CandidateLogic(candMemoryDao);
+        candidateLogic = new CandidateLogic(candMemoryDao, "Uusimaa");
     }
+    
+    
     
     @Test
     public void firstOneOnFirstQuestionIsCorrect() {
         candidateLogic.createCandidateList();
-        List<Candidate> candidates = candidateLogic.compareToCandidates(1, 3);
+        List<Candidate> candidates = candidateLogic.compareToCandidates(3, 1);
         assertEquals("100% Lasse, VAS", candidates.get(0).toString());
     }
     
     @Test
     public void secondOneOnFirstQuestionIsCorrect() {
         candidateLogic.createCandidateList();
-        List<Candidate> candidates = candidateLogic.compareToCandidates(1, 3);
+        List<Candidate> candidates = candidateLogic.compareToCandidates(3, 1);
         assertEquals("75% Aku, KOK", candidates.get(1).toString());
     }
     
     @Test
     public void thirdOneOnFirstQuestionIsCorrect() {
         candidateLogic.createCandidateList();
-        List<Candidate> candidates = candidateLogic.compareToCandidates(1, 3);
+        List<Candidate> candidates = candidateLogic.compareToCandidates(3, 1);
         assertEquals("50% Heli, VIHR", candidates.get(2).toString());
+    }
+    
+    @Test
+    public void firstOneOnSecondQuestionIsCorrect() {
+        candidateLogic.createCandidateList();
+        candidateLogic.compareToCandidates(3, 1);
+        List<Candidate> candidates = candidateLogic.compareToCandidates(2, 2);
+        assertEquals("75% Aku, KOK", candidates.get(0).toString());
     }
     
     @Test
     public void firstOneOnFifthQuestionIsCorrect() {
         candidateLogic.createCandidateList();
-        candidateLogic.compareToCandidates(1, 3);
+        candidateLogic.compareToCandidates(3, 1);
         candidateLogic.compareToCandidates(2, 2);
-        candidateLogic.compareToCandidates(3, 4);
+        candidateLogic.compareToCandidates(4, 3);
         candidateLogic.compareToCandidates(4, 4);
         List<Candidate> candidates = candidateLogic.compareToCandidates(5, 5);
         assertEquals("80% Lasse, VAS", candidates.get(0).toString());

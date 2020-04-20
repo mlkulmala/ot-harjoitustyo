@@ -29,18 +29,6 @@ public class CandidateLogic {
     public void createCandidateList() {
         this.candidates = candidateDao.getCandidatesByArea();
     }
-    
-//    public List<Candidate> createCandidateList() {
-//        return candidateDao.getCandidatesByArea();
-//    }
-    
-//    public void compareAndListAnswers(int answer, int questionNumber) {
-//        this.candidates = compareToCandidates(answer, questionNumber);
-//        for (Candidate x : this.candidates) {
-//            System.out.println(x.toString());
-//        }
-//        System.out.println();
-//    }
                                                                 
     public List<Candidate> compareToCandidates(int userAnswer, int questionNumber) {
         for (Candidate candidate : this.candidates) {
@@ -48,8 +36,8 @@ public class CandidateLogic {
             int diff = Math.abs(userAnswer - candAnswer);
             int percentage = 100 - diff * 25;
             candidate.setSingleMatch(questionNumber, percentage);
-            int total = candidate.getMatchPercentage()/ questionNumber;
-            candidate.setMatchPercentage(total);
+//            int total = candidate.getMatchPercentage();
+//            candidate.setMatchPercentage(total);
         } 
         Collections.sort(this.candidates);
         return this.candidates;
