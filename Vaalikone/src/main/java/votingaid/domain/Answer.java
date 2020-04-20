@@ -15,8 +15,14 @@ public class Answer {
     private Candidate candidate;
     private int answer;
     
-    public Answer() {
-        
+    public Answer(Question question, Candidate candidate, int answer) {
+        this.question = question;
+        this.candidate = candidate;
+        this.answer = answer;
+    }
+    
+    public int getAnswer() {
+        return this.answer;
     }
     
 }

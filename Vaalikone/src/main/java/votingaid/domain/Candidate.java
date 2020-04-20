@@ -18,8 +18,8 @@ public class Candidate implements Comparable<Candidate> {
     private int age;
     private String party;
 	
-    private ArrayList<Integer> answers;
-    private int sum;
+    private HashMap<Integer, Integer> answers;
+    private HashMap<Integer, Integer> singleMatches;
     private int matchPercentage;
 	
 	
@@ -29,8 +29,9 @@ public class Candidate implements Comparable<Candidate> {
         this.name = name;
         this.age = age;
         this.party = party;
-        this.answers = new ArrayList<>();
-        this.sum = 0;
+        this.answers = new HashMap<>();
+        this.singleMatches = new HashMap<>();
+        
         this.matchPercentage = 0;
     }
 	
@@ -53,43 +54,39 @@ public class Candidate implements Comparable<Candidate> {
     public String getParty() {
         return this.party;
     }
-	
-    public ArrayList<Integer> getAnswers() {
-        return this.answers;
+
+    public void setAnswer(int question, int answer) {
+        this.answers.put(question, answer);
     }
     
-    public void setAnswers(ArrayList<Integer> answers) {
-        this.answers = answers;
+    public int getAnswer(int question) {
+        return this.answers.get(question);
     }
     
-    public void addAllAnswers(int a, int b, int c, int d, int e) {
-        this.answers.add(a);
-        this.answers.add(b);
-        this.answers.add(c);
-        this.answers.add(d);
-        this.answers.add(e);
-    }
-	
-    public void addToSum(int c) {
-        this.sum += c;
-    }
-	
-    public int getSum() {
-        return this.sum;
+    public void setSingleMatch(int question, int percentage) {
+        this.singleMatches.put(question, percentage);
     }
     
-    public void setMatchPercentage(int percent) {
-        this.matchPercentage = percent;
+    public int getSingleMatch(int question) {
+        return this.singleMatches.get(question);
     }
     
     public int getMatchPercentage() {
-        return this.matchPercentage;
+        int sum = 0;
+        for(int percentage : this.singleMatches.values()) {
+            sum += percentage;
+        }
+        sum = sum / this.singleMatches.size();
+        return sum;
     }
-	
-   
+    
+    public void setMatchPercentage(int percentage) {
+        this.matchPercentage = percentage;
+    }
+      
     @Override
-    public int compareTo(Candidate a) {
-        return a.sum - this.sum;
+    public int compareTo(Candidate candidate) {
+        return candidate.matchPercentage - this.matchPercentage;
     }
 	
     @Override

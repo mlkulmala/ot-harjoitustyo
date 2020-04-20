@@ -24,7 +24,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import votingaid.domain.Candidate;
+import votingaid.domain.CandidateLogic;
 import votingaid.domain.Question;
+import votingaid.domain.QuestionList;
 
 /**
  *
@@ -32,18 +34,19 @@ import votingaid.domain.Question;
  */
 public class QuestionView {
     GraphicUI gui;
-    //List<Candidate> candidates;
-    List<Question> questions;
+    Question question;
+    CandidateLogic candidateLogic;
+    List<Candidate> results;
     
     
-    public QuestionView(GraphicUI gui) {
+    public QuestionView(GraphicUI gui, Question question, CandidateLogic candidateLogic) {
         this.gui = gui;
-        this.questions = new ArrayList<>();
+        this.question = question;
+        this.candidateLogic = candidateLogic;
     }
     
     public Scene getScene() {
-        
-        Label qNumber = new Label(this.questions.get(0).getId() + "/25"); //luetaan  numero questions-lisasta
+        Label qNumber = new Label(this.question.getId() + "/25"); //luetaan  numero question-listasta
         qNumber.setTextAlignment(TextAlignment.CENTER);
         qNumber.setPrefHeight(15);
         qNumber.setMaxHeight(15);
@@ -54,7 +57,7 @@ public class QuestionView {
         qNumber.setPadding(new Insets(10, 10, 10, 10));
         
         //kysymyksen asettelu
-        Label lbQuestion = new Label(this.questions.get(0).getQuestionText());  //luetaan kysymys questions-listasta
+        Label lbQuestion = new Label(this.question.getQuestionText());  //luetaan kysymys questions-listasta
         lbQuestion.setTextAlignment(TextAlignment.CENTER);
         lbQuestion.setWrapText(true);
         lbQuestion.setMaxWidth(500);
@@ -92,23 +95,28 @@ public class QuestionView {
         lbResults.setWrapText(true);
 
         //valintanappien toiminnot
-//        rb1.setOnAction((event) -> {
-//            //if (!question1.isAnswered) {
-//            compareAndListAnswers(1, lbResults);
-//            //Question1.isAnswered = true;
-//        });
-//        rb2.setOnAction((event) -> {
-//            compareAndListAnswers(2, lbResults);
-//        });
-//        rb3.setOnAction((event) -> {
-//            compareAndListAnswers(3, lbResults);
-//        });
-//        rb4.setOnAction((event) -> {
-//            compareAndListAnswers(4, lbResults);
-//        });
-//        rb5.setOnAction((event) -> {
-//            compareAndListAnswers(5, lbResults);
-//        });
+        rb1.setOnAction((event) -> {
+            listAnswers(1, lbResults);
+//            if (!this.question.isAnswered()) {
+//                this.question.setUserAnswer(1);
+//                this.questionList.addAnsweredQuestion();
+//                        
+//                candidateLogic.compareAndListAnswers(1, this.question.getId());
+//            }
+//            question.setAnswered();
+        });
+        rb2.setOnAction((event) -> {
+            listAnswers(2, lbResults);
+        });
+        rb3.setOnAction((event) -> {
+            listAnswers(3, lbResults);
+        });
+        rb4.setOnAction((event) -> {
+            listAnswers(4, lbResults);
+        });
+        rb5.setOnAction((event) -> {
+            listAnswers(5, lbResults);
+        });
         
         
         //edellinen/seuraava -napit
@@ -167,14 +175,12 @@ public class QuestionView {
         return new Scene(questionView);
     }
     
-//    public void compareAndListAnswers(int questionNumber, Label label) {
-//        this.candidates = this.candidatelogic.compareToCandidates(c, questionNumber);
-//        String candList = "";
-//        for (Candidate x : this.candidates) {
-//            candList = candList + x.toString() + "\n";
-//            //System.out.println(x.toString());
-//        }
-//        label.setText(candList);
-//        c++;
-//    }
+    public void listAnswers(int answer, Label label) {
+        this.results = this.candidateLogic.compareToCandidates(answer, this.question.getId());
+        String candList = "";
+        for (Candidate x : this.results) {
+            candList = candList + x.toString() + "\n";
+        }
+        label.setText(candList);
+    }
 }

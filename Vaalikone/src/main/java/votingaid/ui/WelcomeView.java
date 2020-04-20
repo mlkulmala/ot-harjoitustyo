@@ -5,6 +5,7 @@
  */
 package votingaid.ui;
 
+import java.util.ArrayList;
 import java.util.List;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -21,6 +22,7 @@ import votingaid.dao.QuestionMemoryDao;
 import votingaid.domain.Candidate;
 import votingaid.domain.CandidateLogic;
 import votingaid.domain.Question;
+import votingaid.domain.QuestionList;
 
 /**
  *
@@ -29,8 +31,6 @@ import votingaid.domain.Question;
 public class WelcomeView {
     
     GraphicUI gui;
-    CandidateLogic candidatelogic;
-    List<Candidate> candidates;
     
     public WelcomeView(GraphicUI gui) {
         this.gui = gui;
@@ -75,10 +75,14 @@ public class WelcomeView {
         
         startButton.setOnAction(action -> {
             CandidateMemoryDao candMemoryDao = new CandidateMemoryDao();
-            CandidateLogic candidatelogic = new CandidateLogic(candMemoryDao);
-            this.candidates = this.candidatelogic.createCandidateList(); //tähän tulisi tfArea.getText() parametriksi?
+            CandidateLogic candidateLogic = new CandidateLogic(candMemoryDao, "Uusimaa");
+            candidateLogic.createCandidateList(); //tähän tulisi tfArea.getText() parametriksi?
             
-            gui.showQuestion();
+            QuestionMemoryDao questionMemoryDao = new QuestionMemoryDao(); 
+            QuestionList questionList = new QuestionList(questionMemoryDao);  
+            Question question = questionList.getCurrent();
+                  
+            gui.showQuestion(question, candidateLogic);  
         });
         
         return new Scene(welcomeView);

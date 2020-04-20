@@ -17,37 +17,39 @@ public class CandidateLogic {
     
     List<Candidate> candidates;
     CandidateDao candidateDao;
+    String area; //tämä ei ehkä tule käyttöön
     
-    public CandidateLogic(CandidateDao candidatedao) {
+    
+    public CandidateLogic(CandidateDao candidatedao, String area) {
+        this.candidates = new ArrayList<>();
         this.candidateDao = candidatedao;
+        this.area = area;
     }
     
-//    public void createCandidateList() {
-//        this.candidates = candidateDao.getCandidatesByArea();
+    public void createCandidateList() {
+        this.candidates = candidateDao.getCandidatesByArea();
+    }
+    
+//    public List<Candidate> createCandidateList() {
+//        return candidateDao.getCandidatesByArea();
 //    }
     
-    public List<Candidate> createCandidateList() {
-        return candidateDao.getCandidatesByArea();
-    }
-    
-//    public void compareAndListAnswers(int number) {
-//        this.candidates = compareToCandidates(c, number);
-//        System.out.println("\n* * * * * * * * * *");
+//    public void compareAndListAnswers(int answer, int questionNumber) {
+//        this.candidates = compareToCandidates(answer, questionNumber);
 //        for (Candidate x : this.candidates) {
 //            System.out.println(x.toString());
 //        }
 //        System.out.println();
-//        c++;
 //    }
-    
-    public List<Candidate> compareToCandidates(int qNumber, int userAnswer) {
-        for (Candidate x : this.candidates) {
-            int candAnswer = x.getAnswers().get(qNumber - 1);
+                                                                
+    public List<Candidate> compareToCandidates(int userAnswer, int questionNumber) {
+        for (Candidate candidate : this.candidates) {
+            int candAnswer = candidate.getAnswer(questionNumber);
             int diff = Math.abs(userAnswer - candAnswer);
-            int newPercentage = 100 - diff * 25;
-            x.addToSum(newPercentage);
-            int total = x.getSum() / qNumber;
-            x.setMatchPercentage(total);
+            int percentage = 100 - diff * 25;
+            candidate.setSingleMatch(questionNumber, percentage);
+            int total = candidate.getMatchPercentage()/ questionNumber;
+            candidate.setMatchPercentage(total);
         } 
         Collections.sort(this.candidates);
         return this.candidates;

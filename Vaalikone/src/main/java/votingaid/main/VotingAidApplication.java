@@ -5,7 +5,7 @@
  */
 package votingaid.main;
 
-import votingaid.ui.UI;
+//import votingaid.ui.UI;
 import java.util.*;
 import static javafx.application.Application.launch;
 import votingaid.ui.GraphicUI;
