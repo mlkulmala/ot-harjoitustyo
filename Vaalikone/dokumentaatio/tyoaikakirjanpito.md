@@ -19,5 +19,9 @@
 |  9.4. | 4    | graafinen käyttöliittymä  |
 | 10.4. | 2    | graafinen käyttöliittymä  |
 | 14.4. | 3    | graafinen käyttöliittymä  |
-| 15.4. | 5    | graafinen käyttöliittymä  |
-| yht   | 56   |       |
+| 15.4. | 6    | graafinen käyttöliittymä  |
+| 16.4. | 6    | graafinen käyttöliittymä  |
+| 17.4. | 6    | graaf. käyttöliittymä, sovelluslogiikan korjausta |
+| 20.4. | 6    | graaf. käyttöliittymä, sovelluslogiikan korjausta |
+| 21.4. | 5    | graaf. käyttöliittymä, testien kirjoittamista  |
+| yht   | 80   |       |
