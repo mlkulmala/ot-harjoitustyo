@@ -20,6 +20,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
@@ -46,23 +47,22 @@ public class QuestionView {
     }
     
     public Scene getScene() {
-        Label qNumber = new Label(this.question.getId() + "/25"); //luetaan  numero question-listasta
+        Label qNumber = new Label(this.question.getId() + "/25"); 
         qNumber.setTextAlignment(TextAlignment.CENTER);
         qNumber.setPrefHeight(15);
         qNumber.setMaxHeight(15);
         qNumber.setTextFill(Color.WHITE);
-        Color cYellow = Color.rgb(200,80,10);
+        Color colorA = Color.rgb(200, 80, 5);
         CornerRadii corner10 = new CornerRadii(10);
-        qNumber.setBackground(new Background(new BackgroundFill(cYellow, corner10, Insets.EMPTY)));
+        qNumber.setBackground(new Background(new BackgroundFill(colorA, corner10, Insets.EMPTY)));
         qNumber.setPadding(new Insets(10, 10, 10, 10));
         
         //kysymyksen asettelu
-        Label lbQuestion = new Label(this.question.getQuestionText());  //luetaan kysymys questions-listasta
+        Label lbQuestion = new Label(this.question.getQuestionText()); 
         lbQuestion.setTextAlignment(TextAlignment.CENTER);
         lbQuestion.setWrapText(true);
         lbQuestion.setMaxWidth(500);
         lbQuestion.setPadding(new Insets(10, 10, 10, 10));
-        //lbQuestion.setAlignment(Pos.CENTER);
         lbQuestion.setFont(new Font("Arial", 20));
         
         //valintojen selitykset
@@ -97,13 +97,6 @@ public class QuestionView {
         //valintanappien toiminnot
         rb1.setOnAction((event) -> {
             listAnswers(1, lbResults);
-//            if (!this.question.isAnswered()) {
-//                this.question.setUserAnswer(1);
-//                this.questionList.addAnsweredQuestion();
-//                        
-//                candidateLogic.compareAndListAnswers(1, this.question.getId());
-//            }
-//            question.setAnswered();
         });
         rb2.setOnAction((event) -> {
             listAnswers(2, lbResults);
@@ -120,27 +113,33 @@ public class QuestionView {
         
         
         //edellinen/seuraava -napit
-        Button previous = new Button("< Edellinen");
-        Button next = new Button("Seuraava >");
-        previous.setPrefWidth(80);
-        next.setPrefWidth(80);
+        Button prevButton = new Button("< Edellinen");
+        Button nextButton = new Button("Seuraava >");
+        prevButton.setPrefWidth(80);
+        nextButton.setPrefWidth(80);
         
-        previous.setOnAction((event) -> {
-            //
+        prevButton.setOnAction((event) -> {
+            gui.showPreviousQuestion();
         });
         
-        next.setOnAction((event) -> {
-            //
+        nextButton.setOnAction((event) -> {
+            gui.showNextQuestion();
         });
 
 
         //asettelu
         GridPane questionView = new GridPane();
-        for (int i=1; i <= 5; i++) {
+        for (int i = 1; i <= 5; i++) {
             questionView.getColumnConstraints().add(new ColumnConstraints(80));
         } 
         
-        
+        /*
+        GridPane gridpane = new GridPane();
+        ColumnConstraints column1 = new ColumnConstraints(100,100,Double.MAX_VALUE);
+        column1.setHgrow(Priority.ALWAYS);
+        ColumnConstraints column2 = new ColumnConstraints(100);
+        gridpane.getColumnConstraints().addAll(column1, column2); // first column gets any extra width
+        */
         questionView.add(qNumber, 0, 0);
         questionView.add(lbQuestion, 0, 1);
 
@@ -156,8 +155,8 @@ public class QuestionView {
         questionView.add(rb4, 3, 3);
         questionView.add(rb5, 4, 3);
         questionView.add(lbResults, 1, 4);
-        questionView.add(previous, 0, 4);
-        questionView.add(next, 4, 4);
+        questionView.add(prevButton, 0, 4);
+        questionView.add(nextButton, 4, 4);
         
         GridPane.setHalignment(qNumber, HPos.CENTER);
         GridPane.setHalignment(lb1, HPos.CENTER);
@@ -175,11 +174,11 @@ public class QuestionView {
         GridPane.setColumnSpan(lbQuestion, 5);
         GridPane.setColumnSpan(lbResults, 3);
         
-        questionView.setPrefSize(700, 400);
+        questionView.setPrefSize(700, 500);
         questionView.setAlignment(Pos.CENTER);
         questionView.setVgap(10);
         questionView.setHgap(10);
-        questionView.setPadding(new Insets(50, 20, 20, 20));
+        questionView.setPadding(new Insets(30, 20, 20, 20));
         
         return new Scene(questionView);
     }

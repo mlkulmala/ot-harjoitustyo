@@ -28,23 +28,16 @@ public class QuestionMemoryDao implements QuestionDao {
     @Override
     public List<Question> getQuestions() {
         ArrayList<Question> questions = new ArrayList<>();
-        //ArrayList<String> questions = new ArrayList<>();
-        
         try {
             File fileDir = new File("questions_new.txt");
-   
-            BufferedReader in = new BufferedReader(
-                new InputStreamReader(
-                    new FileInputStream(fileDir), "UTF8"));
+            BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileDir), "UTF8"));
             String str;
             int i = 1;
             while ((str = in.readLine()) != null) {
-                //questions.add(str);
                 questions.add(new Question(i, str));
                 i++;
             }
             in.close();
-            
         } catch (UnsupportedEncodingException e) {
             System.out.println(e.getMessage());
         } catch (IOException e) {
@@ -52,7 +45,6 @@ public class QuestionMemoryDao implements QuestionDao {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
         return questions;
     }
     

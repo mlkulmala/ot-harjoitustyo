@@ -36,8 +36,6 @@ public class CandidateLogic {
             int diff = Math.abs(userAnswer - candAnswer);
             int percentage = 100 - diff * 25;
             candidate.setSingleMatch(questionNumber, percentage);
-//            int total = candidate.getMatchPercentage();
-//            candidate.setMatchPercentage(total);
         } 
         Collections.sort(this.candidates);
         return this.candidates;

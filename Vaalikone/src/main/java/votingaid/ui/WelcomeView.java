@@ -74,15 +74,9 @@ public class WelcomeView {
         welcomeView.setPadding(new Insets(30, 20, 20, 20));
         
         startButton.setOnAction(action -> {
-            CandidateMemoryDao candMemoryDao = new CandidateMemoryDao();
-            CandidateLogic candidateLogic = new CandidateLogic(candMemoryDao, "Uusimaa");
-            candidateLogic.createCandidateList(); //tähän tulisi tfArea.getText() parametriksi?
-            
-            QuestionMemoryDao questionMemoryDao = new QuestionMemoryDao(); 
-            QuestionList questionList = new QuestionList(questionMemoryDao);  
-            Question question = questionList.getCurrent();
-                  
-            gui.showQuestion(question, candidateLogic);  
+            gui.initializeLists("Uusimaa");
+            gui.showFirstQuestion();
+            //gui.showQuestion(question, candidateLogic);  
         });
         
         return new Scene(welcomeView);

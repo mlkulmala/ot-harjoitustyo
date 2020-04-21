@@ -74,8 +74,8 @@ public class Candidate implements Comparable<Candidate> {
     
     public void updateMatchPercentage() {
         int sum = 0;
-        if(!this.singleMatches.values().isEmpty()) {
-            for(int percentage : this.singleMatches.values()) {
+        if (!this.singleMatches.values().isEmpty()) {
+            for (int percentage : this.singleMatches.values()) {
                 sum += percentage;
             }
             sum = sum / this.singleMatches.size();
@@ -85,8 +85,8 @@ public class Candidate implements Comparable<Candidate> {
     
     public int getMatchPercentage() {
         int sum = 0;
-        if(!this.singleMatches.values().isEmpty()) {
-            for(int percentage : this.singleMatches.values()) {
+        if (!this.singleMatches.values().isEmpty()) {
+            for (int percentage : this.singleMatches.values()) {
                 sum += percentage;
             }
             sum = sum / this.singleMatches.size();

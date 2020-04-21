@@ -17,15 +17,12 @@ public class QuestionList {
     List<Question> questions;
     QuestionDao questionDao;
     int index;
-    //int answeredQuestions; //??
     
     
     public QuestionList(QuestionDao questionDao) {
         this.questions = questionDao.getQuestions(); //hakee kysymykset tiedostosta
         this.questionDao = questionDao;
         this.index = 0;
-        //this.answeredQuestions = 0; //??
-        
     }
     
     public Question getCurrent() {
@@ -33,15 +30,15 @@ public class QuestionList {
     }
     
     public Question getPrevious() {
-        if(this.index > 0) {
+        if (this.index > 0) {
             this.index--;
-        return this.questions.get(index);
+            return this.questions.get(index);
         }
         return null;
     }
     
     public Question getNext() {
-        if(this.index < 24) {
+        if (this.index < 19) {
             this.index++;
             return this.questions.get(index);
         }
