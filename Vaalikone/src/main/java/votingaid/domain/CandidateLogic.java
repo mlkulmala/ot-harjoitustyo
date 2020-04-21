@@ -17,7 +17,7 @@ public class CandidateLogic {
     
     List<Candidate> candidates;
     CandidateDao candidateDao;
-    String area; //tämä ei ehkä tule käyttöön
+    String area; //tämä ei vielä käytössä
     
     
     public CandidateLogic(CandidateDao candidatedao, String area) {
@@ -30,7 +30,7 @@ public class CandidateLogic {
         this.candidates = candidateDao.getCandidatesByArea();
     }
                                                                 
-    public List<Candidate> compareToCandidates(int userAnswer, int questionNumber) {
+    public List<Candidate> compareToCandidates(int questionNumber, int  userAnswer) {
         for (Candidate candidate : this.candidates) {
             int candAnswer = candidate.getAnswer(questionNumber);
             int diff = Math.abs(userAnswer - candAnswer);

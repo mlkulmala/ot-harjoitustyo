@@ -26,6 +26,7 @@ import static org.junit.Assert.*;
 public class CandidateLogicTest {
     
     CandidateLogic candidateLogic;
+    List<Candidate> candidates;
     
     @Before
     public void setUp() {
@@ -38,41 +39,41 @@ public class CandidateLogicTest {
     @Test
     public void firstOneOnFirstQuestionIsCorrect() {
         candidateLogic.createCandidateList();
-        List<Candidate> candidates = candidateLogic.compareToCandidates(3, 1);
-        assertEquals("100% Lasse, VAS", candidates.get(0).toString());
+        candidates = candidateLogic.compareToCandidates(1, 3);
+        assertEquals("100% Heli, VIHR", candidates.get(0).toString());
     }
     
     @Test
     public void secondOneOnFirstQuestionIsCorrect() {
         candidateLogic.createCandidateList();
-        List<Candidate> candidates = candidateLogic.compareToCandidates(3, 1);
+        candidates = candidateLogic.compareToCandidates(1, 3);
         assertEquals("75% Aku, KOK", candidates.get(1).toString());
     }
     
     @Test
     public void thirdOneOnFirstQuestionIsCorrect() {
         candidateLogic.createCandidateList();
-        List<Candidate> candidates = candidateLogic.compareToCandidates(3, 1);
-        assertEquals("50% Heli, VIHR", candidates.get(2).toString());
+        candidates = candidateLogic.compareToCandidates(1, 3);
+        assertEquals("50% Lasse, VAS", candidates.get(2).toString());
     }
     
     @Test
-    public void firstOneOnSecondQuestionIsCorrect() {
+    public void thirdOneOnSecondQuestionIsCorrect() {
         candidateLogic.createCandidateList();
-        candidateLogic.compareToCandidates(3, 1);
-        List<Candidate> candidates = candidateLogic.compareToCandidates(2, 2);
-        assertEquals("75% Aku, KOK", candidates.get(0).toString());
+        candidateLogic.compareToCandidates(1, 3);
+        candidates = candidateLogic.compareToCandidates(2, 1);
+        assertEquals("25% Lasse, VAS", candidates.get(2).toString());
     }
     
     @Test
     public void firstOneOnFifthQuestionIsCorrect() {
         candidateLogic.createCandidateList();
-        candidateLogic.compareToCandidates(3, 1);
+        candidateLogic.compareToCandidates(1, 3);
         candidateLogic.compareToCandidates(2, 2);
-        candidateLogic.compareToCandidates(4, 3);
+        candidateLogic.compareToCandidates(3, 2);
         candidateLogic.compareToCandidates(4, 4);
-        List<Candidate> candidates = candidateLogic.compareToCandidates(5, 5);
-        assertEquals("80% Lasse, VAS", candidates.get(0).toString());
+        candidates = candidateLogic.compareToCandidates(5, 5);
+        assertEquals("75% Heli, VIHR", candidates.get(0).toString());
     }
    
 }

@@ -6,14 +6,11 @@
 package votingaid.ui;
 
 
-import java.util.ArrayList;
-import java.util.List;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import votingaid.dao.CandidateMemoryDao;
 import votingaid.dao.QuestionMemoryDao;
-import votingaid.domain.Candidate;
 import votingaid.domain.CandidateLogic;
 import votingaid.domain.Question;
 import votingaid.domain.QuestionList;
@@ -28,14 +25,6 @@ public class VotingAidUi extends Application {
     private CandidateLogic candidateLogic;
     private QuestionList questionList;
     
-//    @Override
-//    public void init() throws Exception {
-//        QuestionMemoryDao questionDao = new QuestionMemoryDao();
-//        this.questionList = new QuestionList(questionDao);
-//        CandidateMemoryDao candMemoryDao = new CandidateMemoryDao();
-//        this.candidatelogic = new CandidateLogic(candMemoryDao);
-//        
-//    } 
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -85,8 +74,4 @@ public class VotingAidUi extends Application {
         setScene(welcomeView.getScene());
     }
     
-    
-    
-    
-   
 }

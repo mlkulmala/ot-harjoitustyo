@@ -25,7 +25,7 @@ public class CandidateMemoryDao implements CandidateDao {
      public List<Candidate> getCandidatesByArea() {
         ArrayList<Candidate> candidates = new ArrayList<>();
         
-        //tietokannasta hakua ei vielä luotu, joten luodaan tässä
+        //tietokantaa ei vielä luotu, joten luodaan tässä
         //ehdokkaat ja vastaukset testaamista varten
  
         
@@ -36,23 +36,9 @@ public class CandidateMemoryDao implements CandidateDao {
         for (int i = 1; i <= 25; i++) {
             aku.setAnswer(i, 2);
             lasse.setAnswer(i, 5);
-            heli.setAnswer(i, 1);
+            heli.setAnswer(i, 3);
         }
-//        aku.setAnswer(1, 2);
-//        aku.setAnswer(2, 1);
-//        aku.setAnswer(3, 2);
-//        aku.setAnswer(4, 3);
-//        aku.setAnswer(5, 1);
-//        lasse.setAnswer(1, 3);
-//        lasse.setAnswer(2, 5);
-//        lasse.setAnswer(3, 4);
-//        lasse.setAnswer(4, 5);
-//        lasse.setAnswer(5, 5);
-//        heli.setAnswer(1, 1);
-//        heli.setAnswer(2, 1);
-//        heli.setAnswer(3, 1);
-//        heli.setAnswer(4, 1);
-//        heli.setAnswer(5, 1);
+
         
         candidates.add(aku);
         candidates.add(lasse);

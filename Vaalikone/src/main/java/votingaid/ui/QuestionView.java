@@ -27,7 +27,6 @@ import javafx.scene.text.TextAlignment;
 import votingaid.domain.Candidate;
 import votingaid.domain.CandidateLogic;
 import votingaid.domain.Question;
-import votingaid.domain.QuestionList;
 
 /**
  *
@@ -47,7 +46,7 @@ public class QuestionView {
     }
     
     public Scene getScene() {
-        Label qNumber = new Label(this.question.getId() + "/25"); 
+        Label qNumber = new Label(this.question.getId() + "/20"); 
         qNumber.setTextAlignment(TextAlignment.CENTER);
         qNumber.setPrefHeight(15);
         qNumber.setMaxHeight(15);
@@ -71,7 +70,7 @@ public class QuestionView {
         Label lb3 = new Label("En osaa\nsanoa");
         Label lb4 = new Label("Osittain\nsamaa\nmieltä");
         Label lb5 = new Label("Täysin\nsamaa\nmieltä");
-        lb1.setTextAlignment(TextAlignment.CENTER); //tekstin keskitys
+        lb1.setTextAlignment(TextAlignment.CENTER); 
         lb2.setTextAlignment(TextAlignment.CENTER);
         lb3.setTextAlignment(TextAlignment.CENTER);
         lb4.setTextAlignment(TextAlignment.CENTER);
@@ -111,7 +110,6 @@ public class QuestionView {
             listAnswers(5, lbResults);
         });
         
-        
         //edellinen/seuraava -napit
         Button prevButton = new Button("< Edellinen");
         Button nextButton = new Button("Seuraava >");
@@ -126,20 +124,12 @@ public class QuestionView {
             gui.showNextQuestion();
         });
 
-
         //asettelu
         GridPane questionView = new GridPane();
         for (int i = 1; i <= 5; i++) {
             questionView.getColumnConstraints().add(new ColumnConstraints(80));
         } 
-        
-        /*
-        GridPane gridpane = new GridPane();
-        ColumnConstraints column1 = new ColumnConstraints(100,100,Double.MAX_VALUE);
-        column1.setHgrow(Priority.ALWAYS);
-        ColumnConstraints column2 = new ColumnConstraints(100);
-        gridpane.getColumnConstraints().addAll(column1, column2); // first column gets any extra width
-        */
+       
         questionView.add(qNumber, 0, 0);
         questionView.add(lbQuestion, 0, 1);
 
@@ -184,7 +174,7 @@ public class QuestionView {
     }
     
     public void listAnswers(int answer, Label label) {
-        this.results = this.candidateLogic.compareToCandidates(answer, this.question.getId());
+        this.results = this.candidateLogic.compareToCandidates(this.question.getId(), answer);
         String candList = "";
         for (Candidate x : this.results) {
             candList = candList + x.toString() + "\n";

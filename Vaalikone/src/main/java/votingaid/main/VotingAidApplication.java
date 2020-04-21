@@ -5,8 +5,6 @@
  */
 package votingaid.main;
 
-//import votingaid.ui.UI;
-import java.util.*;
 import static javafx.application.Application.launch;
 import votingaid.ui.VotingAidUi;
 
@@ -17,12 +15,8 @@ import votingaid.ui.VotingAidUi;
 public class VotingAidApplication {
     
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
+        
         VotingAidUi gui = new VotingAidUi();
         launch(VotingAidUi.class);
-//        UI ui = new UI(scanner);
-//        ui.start();
     }
-    
 }
