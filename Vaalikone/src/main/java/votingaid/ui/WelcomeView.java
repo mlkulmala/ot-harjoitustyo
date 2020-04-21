@@ -30,9 +30,9 @@ import votingaid.domain.QuestionList;
  */
 public class WelcomeView {
     
-    GraphicUI gui;
+    VotingAidUi gui;
     
-    public WelcomeView(GraphicUI gui) {
+    public WelcomeView(VotingAidUi gui) {
         this.gui = gui;
     }
     
@@ -51,7 +51,8 @@ public class WelcomeView {
         lbIntro.setTextAlignment(TextAlignment.CENTER);
         lbIntro.setWrapText(true);
         lbIntro.setMaxWidth(400);
-
+        
+        //Toiminto puuttuu
         TextField tfArea = new TextField();
 
         Button startButton = new Button("Aloita");

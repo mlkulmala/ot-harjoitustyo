@@ -34,13 +34,13 @@ import votingaid.domain.QuestionList;
  * @author mlkul
  */
 public class QuestionView {
-    GraphicUI gui;
+    VotingAidUi gui;
     Question question;
     CandidateLogic candidateLogic;
     List<Candidate> results;
     
     
-    public QuestionView(GraphicUI gui, Question question, CandidateLogic candidateLogic) {
+    public QuestionView(VotingAidUi gui, Question question, CandidateLogic candidateLogic) {
         this.gui = gui;
         this.question = question;
         this.candidateLogic = candidateLogic;

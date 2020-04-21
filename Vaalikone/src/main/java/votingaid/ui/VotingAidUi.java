@@ -22,7 +22,7 @@ import votingaid.domain.QuestionList;
  *
  * @author mlkul
  */
-public class GraphicUI extends Application {
+public class VotingAidUi extends Application {
     
     private Stage stage;
     private CandidateLogic candidateLogic;
@@ -85,7 +85,6 @@ public class GraphicUI extends Application {
         setScene(welcomeView.getScene());
     }
     
-    //setScene(questionList.getNext().getScene())
     
     
     
