@@ -13,3 +13,8 @@ itse väitteisiin.
 
 [Arkkitehtuurikuvaus](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/Vaalikone/dokumentaatio/arkkitehtuuri.md)
 
+
+## Releaset
+
+[Viikko 5](https://github.com/mlkulmala/ot-harjoitustyo/releases/download/viikko5/Vaalikone_viikko5.jar)
+
