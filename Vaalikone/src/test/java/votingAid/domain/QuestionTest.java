@@ -6,6 +6,7 @@
 package votingAid.domain;
 
 import votingaid.domain.Question;
+import votingaid.dao.QuestionMemoryDao;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -23,13 +24,32 @@ public class QuestionTest {
     
     @Before
     public void setUp() {
-        question = new Question(2, "Mitä tämä tarkoittaa?");
+        QuestionMemoryDao questionMemoryDao = new QuestionMemoryDao();
+        question = questionMemoryDao.getQuestions().get(0);
+        //question = new Question(2, "Mitä tämä tarkoittaa?");
     }
     
     @Test
     public void questionNotAnsweredAtBeginning() {
         assertEquals(false, question.isAnswered());
     }
+    
+    @Test
+    public void questionTextIsCorrect() {
+        assertTrue(question.getQuestionText().contains("Sosiaaliturvaa"));
+    }
+    
+    @Test
+    public void questionIdIsCorrect() {
+        assertEquals(1, question.getId());
+    }
+    
+    @Test
+    public void questionUserAnswerIsCorrect() {
+        assertEquals(0, question.getUserAnswer());
+    }
+    
+    
     
     
 }
