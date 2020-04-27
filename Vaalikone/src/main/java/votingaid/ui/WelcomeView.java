@@ -22,10 +22,10 @@ import javafx.scene.text.TextAlignment;
  */
 public class WelcomeView {
     
-    VotingAidUi gui;
+    UI ui;
     
-    public WelcomeView(VotingAidUi gui) {
-        this.gui = gui;
+    public WelcomeView(UI ui) {
+        this.ui = ui;
     }
     
     public Scene getScene() {
@@ -67,8 +67,8 @@ public class WelcomeView {
         welcomeView.setPadding(new Insets(30, 20, 20, 20));
         
         startButton.setOnAction(action -> {
-            gui.initializeLists("Uusimaa");
-            gui.showFirstQuestion();
+            ui.initializeLists("Uusimaa");
+            ui.showFirstQuestion();
         });
         
         return new Scene(welcomeView);

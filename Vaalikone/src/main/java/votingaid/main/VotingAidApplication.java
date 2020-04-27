@@ -6,7 +6,7 @@
 package votingaid.main;
 
 import static javafx.application.Application.launch;
-import votingaid.ui.VotingAidUi;
+import votingaid.ui.UI;
 
 /**
  *
@@ -16,7 +16,7 @@ public class VotingAidApplication {
     
     public static void main(String[] args) {
         
-        VotingAidUi gui = new VotingAidUi();
-        launch(VotingAidUi.class);
+        UI gui = new UI();
+        launch(UI.class);
     }
 }

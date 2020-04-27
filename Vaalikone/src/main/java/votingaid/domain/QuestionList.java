@@ -25,6 +25,14 @@ public class QuestionList {
         this.index = 0;
     }
     
+    public int getIndex() {
+        return this.index;
+    }
+    
+    public int getSize() {
+        return this.questions.size();
+    }
+    
     public Question getCurrent() {
         return this.questions.get(index);
     }

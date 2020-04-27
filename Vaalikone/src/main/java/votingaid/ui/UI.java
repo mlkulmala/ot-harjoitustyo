@@ -14,12 +14,13 @@ import votingaid.dao.QuestionMemoryDao;
 import votingaid.domain.CandidateLogic;
 import votingaid.domain.Question;
 import votingaid.domain.QuestionList;
+import votingaid.domain.ResultsView;
 
 /**
  *
  * @author mlkul
  */
-public class VotingAidUi extends Application {
+public class UI extends Application {
     
     private Stage stage;
     private CandidateLogic candidateLogic;
@@ -45,17 +46,19 @@ public class VotingAidUi extends Application {
         
         CandidateMemoryDao candMemoryDao = new CandidateMemoryDao();
         this.candidateLogic = new CandidateLogic(candMemoryDao, area);
-        candidateLogic.createCandidateList();
+        this.candidateLogic.createAnswerList();
     }
     
     public void showFirstQuestion() {
         Question firstQuestion = this.questionList.getCurrent();
-        QuestionView questionView = new QuestionView(this, firstQuestion, this.candidateLogic);
+        int size = this.questionList.getSize();
+        QuestionView questionView = new QuestionView(this, firstQuestion, size, this.candidateLogic);
         setScene(questionView.getScene());
     }
     
-    public void showQuestion(Question question, CandidateLogic candidateLogic) {   
-        QuestionView questionView = new QuestionView(this, question, candidateLogic);
+    public void showQuestion(Question question, CandidateLogic candidateLogic) { 
+        int size = this.questionList.getSize();
+        QuestionView questionView = new QuestionView(this, question, size, candidateLogic);
         setScene(questionView.getScene());
     }
     
@@ -72,6 +75,11 @@ public class VotingAidUi extends Application {
     public void showWelcomeView() {
         WelcomeView welcomeView = new WelcomeView(this);
         setScene(welcomeView.getScene());
+    }
+    
+    public void showFinalResults() {
+        ResultsView resultsView = new ResultsView(this, this.candidateLogic);
+        setScene(resultsView.getScene());
     }
     
 }

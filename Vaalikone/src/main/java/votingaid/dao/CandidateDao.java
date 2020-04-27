@@ -6,7 +6,7 @@
 package votingaid.dao;
 
 import java.util.*;
-import votingaid.domain.Candidate;
+import votingaid.domain.AnswerList;
 
 /**
  *
@@ -14,6 +14,7 @@ import votingaid.domain.Candidate;
  */
 public interface CandidateDao {
     
-    public List<Candidate> getCandidatesByArea();
+    
+    public List<AnswerList> getAllAnswers();
     
 }

@@ -28,6 +28,11 @@ public class CandidateTest {
     }
     
     @Test
+    public void numberSettingIsCorrect() {
+        assertEquals(123, candidate.getNumber());
+    }
+    
+    @Test
     public void nameSettingIsCorrect() {
         assertEquals("Maija", candidate.getName());
     }
@@ -48,44 +53,11 @@ public class CandidateTest {
     }
     
     @Test
-    public void setAnswerGivesCorrect() {
-        candidate.setAnswer(1, 5);
-        candidate.setAnswer(2, 5);
-        assertEquals(5, candidate.getAnswer(2));
-    }
-   
-    @Test
-    public void zeroMatchAtBeginning() {
-        assertEquals(0, candidate.getMatchPercentage());
-    }
-    
-    @Test
-    public void singleMatchesGiveCorrectPercentage() {
-        candidate.setSingleMatch(1, 75);
-        candidate.setSingleMatch(2, 75);
-        candidate.setSingleMatch(3, 50);
-        candidate.setSingleMatch(4, 75);
-        candidate.setSingleMatch(5, 0);
-        assertEquals(55, candidate.getMatchPercentage());
-    }
-    
-    
-    @Test
-    public void setSingleMatchGivesRightPercentage() {
-        candidate.setSingleMatch(1, 75);
-        candidate.setSingleMatch(1, 25);
-        assertEquals(25, candidate.getSingleMatch(1));
-    }
-    
-    @Test
     public void toStringIsCorrect() {
-        candidate.setSingleMatch(1, 75);
-        candidate.setSingleMatch(2, 75);
-        candidate.setSingleMatch(3, 50);
-        candidate.setSingleMatch(4, 75);
-        candidate.setSingleMatch(5, 0);
-        assertEquals("55% Maija, VIHR", candidate.toString());
+        assertEquals("Maija, 30, VIHR", candidate.toString());
     }
+    
+    
 }
     
    
