@@ -36,7 +36,7 @@ public class QuestionTest {
     
     @Test
     public void questionTextIsCorrect() {
-        assertTrue(question.getQuestionText().contains("Sosiaaliturvaa"));
+        assertTrue(question.getQuestionText().contains("olla edelläkävijä"));
     }
     
     @Test
