@@ -22,11 +22,8 @@ public class AnswerList implements Comparable<AnswerList>{
     
     /**
      * Construct a new AnswerList. 
-     * @param candidate 
-     * @param answers a list of answers of this candidate
-     * @param singleMatches keep a tally of opinion matches of each question
-     * @param matchPercentage an average of opinion matches of all 
-     * answered questions
+     * @param candidate candidate
+     * 
      */
     public AnswerList(Candidate candidate) {
         this.candidate = candidate;

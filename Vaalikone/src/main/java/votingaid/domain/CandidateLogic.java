@@ -22,7 +22,7 @@ public class CandidateLogic {
     
     /**
      * Construct a new CandidateLogic using given DAO. 
-     * @param candidatedao 
+     * @param candidatedao dao that is used for loading candidates
      * @param district The district whose candidates are being listed.
      * 
      */
