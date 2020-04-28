@@ -4,7 +4,7 @@
 
 VotingAid-sovelluksen pakkausrakenne on seuraava:
 
-<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/pakkauskaavio1.png" width="300">
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/pakkauskaavio1.png" width="200">
 
 - `votingaid.main` TAITAA OLLA IHAN TURHA PAKKAUS, MUUTA TÄMÄ
 - `votingaid.ui`: JavaFX:llä toteutetun käyttöliittymä 
@@ -58,7 +58,7 @@ Sovelluksen toimintalogiikka sekvenssikaaviona.
 Sovellus avautuu näkymään, jossa esitellään Vaalikoneen toiminta. Vaalikone
 käynnistyy klikkaamalla *startButton*-painiketta.
 
-<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/sekvenssikaavio_ui.png" width="500">
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/sekvenssikaavio_ui.png" width="800">
 
 
 
