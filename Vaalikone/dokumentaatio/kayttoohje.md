@@ -14,7 +14,9 @@ java -jar Vaalikone_viikko5.jar
 Sovellus avautuu näkymään, jossa Vaalikoneen toiminta esitellään lyhyesti. Käyttäjä saa valittua 
 vaalikoneeseen oman vaalipiirinsä ehdokkaat kirjoittamalla syötekenttään oman vaalipiirinsä nimen
 ja painamalla *aloita*, jolloin siirrytään kysymysnäkymään ja ensimmäiseen kysymykseen.
-![welcomeview](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/Vaalikone/dokumentaatio/kuvat/welcomeView.PNG)
+
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/blob/master/Vaalikone/dokumentaatio/kuvat/welcomeView.png" width="500">
+
 
 ## Vastaaminen vaalikoneen väitteisiin
 
