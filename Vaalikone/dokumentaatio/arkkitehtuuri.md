@@ -2,17 +2,22 @@
 
 ## Rakenne
 
-VotingAid-sovelluksen pakkausrakenne on seuraava *(päivitä kuva)*:
+VotingAid-sovelluksen pakkausrakenne on seuraava:
 
-<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/pakkauskaavio.png" width="500">
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/pakkauskaavio1.png" width="300">
+
+- `votingaid.main` TAITAA OLLA IHAN TURHA PAKKAUS, MUUTA TÄMÄ
+- `votingaid.ui`: JavaFX:llä toteutetun käyttöliittymä 
+- `votingaid.domain`: sovelluslogiikka
+- `votingaid.dao`: tiedon pysyväitallennus 
 
 ## Käyttöliittymä
 
 Käyttöliittymässä on kolme erillistä näkymää, jotka on toteutettu omina luokkinaan.
 
-- aloitusnäkymä (WelcomeView)
-- kysymykset ja vastausvaihtoehdot (QuestionView)
-- vaalikoneen tulokset (ResultsView)
+- aloitusnäkymä `(WelcomeView)`
+- kysymykset ja vastausvaihtoehdot `(QuestionView)`
+- vaalikoneen tulokset `(ResultsView)`
 
 
 ## Sovelluslogiikka
@@ -40,7 +45,7 @@ tallennustapaa voidaan helposti vaihtaa.
 
 ### Tiedostot
 
-XXXXX
+XXXXX Tämä osuus saattaa mennä uusiksi XXXXXX
 
 ### Tietokanta
 
@@ -53,7 +58,7 @@ Sovelluksen toimintalogiikka sekvenssikaaviona.
 Sovellus avautuu näkymään, jossa esitellään Vaalikoneen toiminta. Vaalikone
 käynnistyy klikkaamalla *startButton*-painiketta.
 
-<img src "https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/sekvenssikaavio_ui.png" width="500">
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/sekvenssikaavio_ui.png" width="500">
 
 
 
