@@ -8,7 +8,7 @@ package votingaid.domain;
 import java.util.*;
 
 /**
- *
+ * 
  * @author mlkul
  */
 public class Candidate {

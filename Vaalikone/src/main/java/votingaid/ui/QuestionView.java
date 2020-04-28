@@ -30,7 +30,7 @@ import votingaid.domain.CandidateLogic;
 import votingaid.domain.Question;
 
 /**
- * QuestionView shows each question and the answer options.
+ * View for showing a question and the answer options.
  * @author mlkul
  */
 public class QuestionView {
@@ -52,7 +52,10 @@ public class QuestionView {
         this.listSize = listSize;
         this.candidateLogic = candidateLogic;
     }
-    
+    /**
+     * Scene implementing this view.
+     * @return Scene
+     */
     public Scene getScene() {
         //5x1 gridpane kysymyksenasettelulle
         GridPane questionView = createLayoutForQuestions();

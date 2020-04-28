@@ -9,7 +9,7 @@ import java.util.*;
 
 /**
  * An AnswerList is a collection of all answers of a single candidate.
- * It has a list of percentage of opinion matches on single questions 
+ * It has a list of opinion matches on single questions 
  * between the user and a candidate.
  * @author mlkul
  */
@@ -49,7 +49,7 @@ public class AnswerList implements Comparable<AnswerList>{
     }
     /**
      * Add new percentage when a question is answered
-     * @param question the number of the question in order
+     * @param question the number of the question in line
      * @param percentage percentage units that indicate how well the user's 
      * opinion matches this candidate's opinion on this question
      */
