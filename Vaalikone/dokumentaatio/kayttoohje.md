@@ -15,7 +15,8 @@ Sovellus avautuu näkymään, jossa Vaalikoneen toiminta esitellään lyhyesti. 
 vaalikoneeseen oman vaalipiirinsä ehdokkaat kirjoittamalla syötekenttään oman vaalipiirinsä nimen
 ja painamalla *aloita*, jolloin siirrytään kysymysnäkymään ja ensimmäiseen kysymykseen.
 
-<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/blob/master/Vaalikone/dokumentaatio/kuvat/welcomeView.png" width="500">
+![welcomeView](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/Vaalikone/dokumentaatio/kuvat/welcomeView.png)
+
 
 
 ## Vastaaminen vaalikoneen väitteisiin
