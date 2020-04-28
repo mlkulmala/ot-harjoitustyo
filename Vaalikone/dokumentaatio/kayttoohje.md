@@ -21,7 +21,7 @@ ja painamalla *aloita*, jolloin siirrytään kysymysnäkymään ja ensimmäiseen
 
 Kysymysnäkymässä käyttäjä voi valita viidestä vaihtoehdosta, mitä mieltä hän on esitetystä väitteestä.
 
-![QuestionView](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/Vaalikone/dokumentaatio/kuvat/questionView.png)
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/questionView.png" width="500">
 
 Painamalla vaihtoehtoa näkymän alalaitaan tulostuu niiden ehdokkaiden nimet, joiden mielipide on
 lähimpänä käyttäjän antamaa vastausta. Kysymysten välillä voi liikkua painikkeilla *edellinen* ja 
