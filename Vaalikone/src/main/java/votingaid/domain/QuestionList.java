@@ -9,7 +9,8 @@ import java.util.List;
 import votingaid.dao.QuestionDao;
 
 /**
- *
+ * QuestionList loads the questions from database and keeps count which 
+ * question is the next one in line to be shown to the user.
  * @author mlkul
  */
 public class QuestionList {
@@ -33,10 +34,26 @@ public class QuestionList {
         return this.questions.size();
     }
     
+    /**
+     * @return the current question in line
+     */
     public Question getCurrent() {
         return this.questions.get(index);
     }
-    
+    /**
+     * @return the next question in line
+     */
+    public Question getNext() {
+        if (this.index < 19) {
+            this.index++;
+            return this.questions.get(index);
+        }
+        return null;
+    }
+    /**
+     * 
+     * @return the previous question in line
+     */
     public Question getPrevious() {
         if (this.index > 0) {
             this.index--;
@@ -45,13 +62,7 @@ public class QuestionList {
         return null;
     }
     
-    public Question getNext() {
-        if (this.index < 19) {
-            this.index++;
-            return this.questions.get(index);
-        }
-        return null;
-    }
+    
     
 
     

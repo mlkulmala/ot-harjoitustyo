@@ -44,7 +44,7 @@ public class CandidateTest {
     
     @Test
     public void areaSettingIsCorrect() {
-        assertEquals("Uusimaa", candidate.getArea());
+        assertEquals("Uusimaa", candidate.getDistrict());
     }
     
     @Test

@@ -17,20 +17,15 @@ public class Candidate {
     private String name;
     private int age;
     private String party;
-//    private HashMap<Question, Integer> answers;
-//    private HashMap<Question, Integer> singleMatches;
-//    private int matchPercentage;
+
 	
-	
-    public Candidate(int number, String area, String name, int age, String party) {
+    
+    public Candidate(int number, String district, String name, int age, String party) {
         this.number = number;
         this.district = district;
         this.name = name;
         this.age = age;
         this.party = party;
-//        this.answers = new HashMap<>();
-//        this.singleMatches = new HashMap<>();
-//        this.matchPercentage = 0;
     }
 	
     public int getNumber() {

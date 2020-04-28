@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package votingaid.domain;
+package votingaid.ui;
 
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
+import votingaid.domain.CandidateLogic;
 import votingaid.ui.UI;
 
 /**

@@ -5,7 +5,6 @@
  */
 package votingaid.ui;
 
-import java.util.ArrayList;
 import java.util.List;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -27,12 +26,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import votingaid.domain.AnswerList;
-import votingaid.domain.Candidate;
 import votingaid.domain.CandidateLogic;
 import votingaid.domain.Question;
 
 /**
- *
+ * QuestionView shows each question and the answer options.
  * @author mlkul
  */
 public class QuestionView {
@@ -42,7 +40,12 @@ public class QuestionView {
     CandidateLogic candidateLogic;
     List<AnswerList> results;
     
-    
+    /**
+     * Construct
+     * @param ui parent ui.
+     * @param question the question in turn to be answered.
+     * @param listSize amount of questions.
+     */
     public QuestionView(UI ui, Question question, int listSize, CandidateLogic candidateLogic) {
         this.ui = ui;
         this.question = question;

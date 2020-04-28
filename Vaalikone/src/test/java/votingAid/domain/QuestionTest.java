@@ -29,10 +29,10 @@ public class QuestionTest {
         //question = new Question(2, "Mitä tämä tarkoittaa?");
     }
     
-    @Test
-    public void questionNotAnsweredAtBeginning() {
-        assertEquals(false, question.isAnswered());
-    }
+//    @Test
+//    public void questionNotAnsweredAtBeginning() {
+//        assertEquals(false, question.isAnswered());
+//    }
     
     @Test
     public void questionTextIsCorrect() {
@@ -44,10 +44,10 @@ public class QuestionTest {
         assertEquals(1, question.getId());
     }
     
-    @Test
-    public void questionUserAnswerIsCorrect() {
-        assertEquals(0, question.getUserAnswer());
-    }
+//    @Test
+//    public void questionUserAnswerIsCorrect() {
+//        assertEquals(0, question.getUserAnswer());
+//    }
     
     
     

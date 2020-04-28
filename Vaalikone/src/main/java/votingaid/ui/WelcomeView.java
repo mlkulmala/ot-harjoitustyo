@@ -17,7 +17,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
 /**
- *
+ * Starting point of the application. Introduces the application to the user. 
+ * Selection of the district whose candidates are shown.
  * @author mlkul
  */
 public class WelcomeView {

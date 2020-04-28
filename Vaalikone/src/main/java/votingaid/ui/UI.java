@@ -14,7 +14,6 @@ import votingaid.dao.QuestionMemoryDao;
 import votingaid.domain.CandidateLogic;
 import votingaid.domain.Question;
 import votingaid.domain.QuestionList;
-import votingaid.domain.ResultsView;
 
 /**
  *
