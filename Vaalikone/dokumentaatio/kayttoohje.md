@@ -15,13 +15,13 @@ Sovellus avautuu näkymään, jossa Vaalikoneen toiminta esitellään lyhyesti. 
 vaalikoneeseen oman vaalipiirinsä ehdokkaat kirjoittamalla syötekenttään oman vaalipiirinsä nimen
 ja painamalla *aloita*, jolloin siirrytään kysymysnäkymään ja ensimmäiseen kysymykseen.
 
-![welcomeView](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/Vaalikone/dokumentaatio/kuvat/welcomeView.png | width=500)
+![welcomeView](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/Vaalikone/dokumentaatio/kuvat/welcomeView.png)
 
 ## Vastaaminen vaalikoneen väitteisiin
 
 Kysymysnäkymässä käyttäjä voi valita viidestä vaihtoehdosta, mitä mieltä hän on esitetystä väitteestä.
 
-![QuestionView](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/Vaalikone/dokumentaatio/kuvat/questionView.png | width=500)
+![QuestionView](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/Vaalikone/dokumentaatio/kuvat/questionView.png)
 
 Painamalla vaihtoehtoa näkymän alalaitaan tulostuu niiden ehdokkaiden nimet, joiden mielipide on
 lähimpänä käyttäjän antamaa vastausta. Kysymysten välillä voi liikkua painikkeilla *edellinen* ja 
