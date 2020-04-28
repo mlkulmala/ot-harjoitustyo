@@ -24,4 +24,7 @@
 | 17.4. | 6    | graaf. käyttöliittymä, sovelluslogiikan korjausta |
 | 20.4. | 6    | graaf. käyttöliittymä, sovelluslogiikan korjausta |
 | 21.4. | 5    | graaf. käyttöliittymä, testien kirjoittamista  |
-| yht   | 80   |       |
+| 24.4. | 6    | graafinen käyttöliittymä, testien kirjoittamista |
+| 26.4. | 1    | tietokannan luominen  |
+| 27.4. | 6    | tietokantataulujen lisäys, testien kirjoittamista |
+| yht   | 93   |       |

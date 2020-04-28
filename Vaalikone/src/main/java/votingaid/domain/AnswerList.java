@@ -13,7 +13,7 @@ import java.util.*;
  * between the user and a candidate.
  * @author mlkul
  */
-public class AnswerList implements Comparable<AnswerList>{
+public class AnswerList implements Comparable<AnswerList> {
     
     Candidate candidate;
     private HashMap<Integer, Integer> answers;

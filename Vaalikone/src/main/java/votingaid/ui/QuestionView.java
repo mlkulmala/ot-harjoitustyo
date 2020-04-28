@@ -178,7 +178,7 @@ public class QuestionView {
         vbox.setPrefSize(700, 500);
         vbox.setAlignment(Pos.CENTER);
         
-        return new Scene(vbox );
+        return new Scene(vbox);
     }
     
     public void listAnswers(int answer, Label label) {
