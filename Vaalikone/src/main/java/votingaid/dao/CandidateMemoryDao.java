@@ -6,6 +6,7 @@
 package votingaid.dao;
 
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -26,7 +27,7 @@ public class CandidateMemoryDao implements CandidateDao {
     
     @Override
     public void getConnection() throws SQLException {
-        connection = DriverManager.getConnection("jdbc:h2:./votingAid", "sa", "");
+        connection = DriverManager.getConnection("jdbc:h2:~/votingAid", "sa", "");
     }
     
     @Override
@@ -55,22 +56,35 @@ public class CandidateMemoryDao implements CandidateDao {
     @Override
     public AnswerList getCandidateAnswers(Candidate candidate) throws SQLException {
         int candidate_id = candidate.getId();
-        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Answer "
-                + "JOIN Candidate ON Candidate.id = Answer.candidate_id "
-                + "WHERE Candidate.id = ? "); 
+//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Answer "
+//                + "JOIN Candidate ON Candidate.id = Answer.candidate_id "
+//                + "JOIN Question ON Question.id = Answer.question_id "
+//                + "WHERE Candidate.id = ? "); 
+        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Candidate "
+                + "JOIN Answer ON Candidate.id = Answer.candidate_id "
+                + "JOIN Question ON Question.id = Answer.question_id "
+                + "WHERE Candidate.id = ? ");
         stmt.setInt(1, candidate_id);
         ResultSet rs = stmt.executeQuery();
         
-        AnswerList answerList = new AnswerList(candidate);
-        while(rs.next()) {
+        while (rs.next()) {
+            AnswerList answerList = new AnswerList(candidate);
             int question = rs.getInt("Question.id");
             int answer = rs.getInt("Answer.answer");
             answerList.setAnswer(question, answer);
-        }
-        return answerList;
+            return answerList;
+        } 
+        return null;
     } 
     
-
+    @Override
+    public void close() throws IOException {
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     
     
     

@@ -16,7 +16,8 @@ public class VotingAidApplication {
     
     public static void main(String[] args) {
         
-        UI gui = new UI();
-        launch(UI.class);
+        //UI gui = new UI();
+        UI.main(args);
+        //launch(UI.class);
     }
 }

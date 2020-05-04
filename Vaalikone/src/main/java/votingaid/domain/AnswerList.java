@@ -32,11 +32,18 @@ public class AnswerList implements Comparable<AnswerList> {
         this.matchPercentage = 0;
     }
     
+    public Candidate getCandidate() {
+        return this.candidate;
+    }
+    
     public void setAnswer(int question, int answer) {
         this.answers.put(question, answer);
     }
     
     public int getAnswer(int question) {
+        if (!this.answers.containsKey(question)) {
+            return 0;
+        }
         return this.answers.get(question);
     }
     

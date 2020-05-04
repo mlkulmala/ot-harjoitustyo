@@ -24,6 +24,8 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
+import votingaid.domain.AnswerList;
+import votingaid.domain.Candidate;
 import votingaid.domain.CandidateLogic;
 import votingaid.ui.UI;
 
@@ -44,117 +46,123 @@ public class ResultsView {
         
         Label lbTitle = createRoundedLabel("ENITEN SAMAA MIELTÄ KANSSASI");
         
-        VBox resultsLayout = new VBox(10);
-        GridPane candidateLayout = createLayoutForCandidate();
-        
-        //ehdokkaan tiedot
-        Label lbCandidateName = new Label("123 Heli Vihervaara");
-        lbCandidateName.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-        Label lbParty = createRoundedLabel("VIHR");
-        Button infoButton = new Button("Tutustu ehdokkaaseen");
-        infoButton.setPrefWidth(150);
-        //tiedot asetettu VBoxiin
-        VBox candidateBox = new VBox(10);
-        candidateBox.getChildren().addAll(lbCandidateName, lbParty, infoButton);
-        //label prosentille
-        Label lbMatchPercentage = new Label("89%");
-        lbMatchPercentage.setFont(Font.font("Arial", FontWeight.BOLD, 60));
-        lbMatchPercentage.setPadding(new Insets(10, 0, 10, 0));
-        lbMatchPercentage.setTextAlignment(TextAlignment.LEFT);
-        //asetetaan Gridpaneen
-        candidateLayout.add(candidateBox, 0, 0);
-        candidateLayout.add(lbMatchPercentage, 0, 1);
-        
-        //2.ehdokas
-        VBox candidateLayout2 = new VBox(10);
-        Label lbCandidate2 = new Label("246 Lasse Lähtökuoppa");
-        lbCandidate2.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-        //lbCandidate2.setPadding(new Insets(20, 0, 20, 0));
-        
-        Label lbParty2 = createRoundedLabel("VAS");
-        Label lbMatchPercentage2 = new Label("72%");
-        lbMatchPercentage2.setFont(Font.font("Arial", FontWeight.BOLD, 60));
-        lbMatchPercentage2.setPadding(new Insets(10, 0, 10, 0));
-        lbMatchPercentage2.setTextAlignment(TextAlignment.RIGHT);
-        
-        Button infoButton2 = new Button("Tutustu ehdokkaaseen");
-        infoButton.setPrefWidth(150);
-        
-        candidateLayout2.getChildren().addAll(lbCandidate2, lbParty2, infoButton2);
-        
-        //3.ehdokas
-        VBox candidateLayout3 = new VBox(10);
-        Label lbCandidate3 = new Label("355 Jorma Johtaja");
-        lbCandidate3.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-        //lbCandidate2.setPadding(new Insets(20, 0, 20, 0));
-        
-        Label lbParty3 = createRoundedLabel("KOK");
-        Label lbMatchPercentage3 = new Label("65%");
-        lbMatchPercentage3.setFont(Font.font("Arial", FontWeight.BOLD, 60));
-        lbMatchPercentage3.setPadding(new Insets(10, 0, 10, 0));
-        lbMatchPercentage3.setTextAlignment(TextAlignment.RIGHT);
-        
-        Button infoButton3 = new Button("Tutustu ehdokkaaseen");
-        infoButton.setPrefWidth(150);
-        
-        candidateLayout2.getChildren().addAll(lbCandidate3, lbParty3, infoButton3);
-        
-       
+        GridPane resultsLayout = new GridPane();
+        resultsLayout.getColumnConstraints().add(new ColumnConstraints(250));
+        resultsLayout.getColumnConstraints().add(new ColumnConstraints(150));
+        resultsLayout.setVgap(15);
         
         
-//        resultsLayout.add(lbTitle, 0, 0);
-//        
-//        resultsLayout.add(candidateLayout, 0, 1);
-//        resultsLayout.add(lbMatchPercentage, 1, 1);
-//        
-//        resultsLayout.add(candidateLayout2, 0, 2);
-//        resultsLayout.add(lbMatchPercentage2, 1, 2);
-//        
-//        resultsLayout.add(candidateLayout3, 0, 3);
-//        resultsLayout.add(lbMatchPercentage3, 1, 3);
+        AnswerList a1 = this.candidateLogic.getAnswerList(0);
+        Candidate c1 = a1.getCandidate();
+        VBox candidate1 = createLayoutForCandidate(c1.getNumber(), c1.getName(), c1.getParty());
+        Label lbMatch1 = createLabelForMatchPercentage(a1.getMatchPercentage());
         
-        //resultsLayout.add(line, 0, 2);
+        AnswerList a2 = this.candidateLogic.getAnswerList(1);
+        Candidate c2 = a2.getCandidate();
+        VBox candidate2 = createLayoutForCandidate(c2.getNumber(), c2.getName(), c2.getParty());
+        Label lbMatch2 = createLabelForMatchPercentage(a2.getMatchPercentage());
+        
+        AnswerList a3 = this.candidateLogic.getAnswerList(2);
+        Candidate c3 = a3.getCandidate();
+        VBox candidate3 = createLayoutForCandidate(c3.getNumber(), c3.getName(), c3.getParty());
+        Label lbMatch3 = createLabelForMatchPercentage(a3.getMatchPercentage());
+        
+        
+        resultsLayout.add(lbTitle, 0, 0);
+        resultsLayout.add(candidate1, 0, 1);
+        resultsLayout.add(lbMatch1, 1, 1);
+        resultsLayout.add(candidate2, 0, 2);
+        resultsLayout.add(lbMatch2, 1, 2);
+        resultsLayout.add(candidate3, 0, 3);
+        resultsLayout.add(lbMatch3, 1, 3);
+
+        
         GridPane.setHalignment(lbTitle, HPos.CENTER);
         GridPane.setValignment(lbTitle, VPos.CENTER);
         GridPane.setColumnSpan(lbTitle, 3);
-        GridPane.setValignment(candidateLayout, VPos.TOP);
-        GridPane.setColumnSpan(candidateLayout, 2);
-        GridPane.setValignment(candidateLayout2, VPos.TOP);
-        GridPane.setColumnSpan(candidateLayout2, 2);
-        GridPane.setValignment(candidateLayout3, VPos.TOP);
-        GridPane.setColumnSpan(candidateLayout3, 2);
+        GridPane.setValignment(candidate1, VPos.TOP);
+        GridPane.setColumnSpan(candidate1, 2);
+        GridPane.setValignment(candidate2, VPos.TOP);
+        GridPane.setColumnSpan(candidate2, 2);
+        GridPane.setValignment(candidate3, VPos.TOP);
+        GridPane.setColumnSpan(candidate3, 2);
         
-        GridPane.setValignment(lbMatchPercentage, VPos.CENTER);
-        GridPane.setValignment(lbMatchPercentage2, VPos.CENTER);
-        GridPane.setValignment(lbMatchPercentage3, VPos.CENTER);
+        GridPane.setValignment(lbMatch1, VPos.CENTER);
+        GridPane.setValignment(lbMatch2, VPos.CENTER);
+        GridPane.setValignment(lbMatch3, VPos.CENTER);
         
+        resultsLayout.setPrefSize(700, 500);
+        resultsLayout.setAlignment(Pos.CENTER);
         
-        
-        //GridPane.setColumnSpan(line, 3);
         
         return new Scene(resultsLayout);
     }
-    
-    public GridPane createLayoutForCandidate() {
-        GridPane candidateLayout = new GridPane();
+    public VBox createLayoutForCandidate(int number, String name, String party) {
+        VBox candidateBox = new VBox(10);
         
-        candidateLayout.getColumnConstraints().add(new ColumnConstraints(250));
-        candidateLayout.getColumnConstraints().add(new ColumnConstraints(150));
+        Label lbCandidateName = new Label(number + " " + name);
+        lbCandidateName.setFont(Font.font("Arial", FontWeight.BOLD, 18));
         
-        return candidateLayout;
+        Label lbParty = createRoundedLabel(party);
+        
+        Button infoButton = new Button("Tutustu ehdokkaaseen");
+        infoButton.setPrefWidth(150);
+        
+        candidateBox.getChildren().addAll(lbCandidateName, lbParty, infoButton);
+        
+        return candidateBox;
     }
+    
+    public Label createLabelForMatchPercentage(int percent) {
+        Label lbMatchPercentage = new Label(percent + "%");
+        lbMatchPercentage.setFont(Font.font("Arial", FontWeight.BOLD, 60));
+        lbMatchPercentage.setPadding(new Insets(10, 0, 10, 0));
+        lbMatchPercentage.setTextAlignment(TextAlignment.LEFT);
+        
+        return lbMatchPercentage;
+    }
+    
+//    public GridPane createLayoutForCandidate(int number, String name, String party, int percent) {
+//        GridPane candidateLayout = new GridPane();
+//        candidateLayout.getColumnConstraints().add(new ColumnConstraints(250));
+//        candidateLayout.getColumnConstraints().add(new ColumnConstraints(150));
+//        
+//        Label lbCandidateName = new Label(number + " " + name);
+//        lbCandidateName.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+//        
+//        Label lbParty = createRoundedLabel(party);
+//        
+//        Button infoButton = new Button("Tutustu ehdokkaaseen");
+//        infoButton.setPrefWidth(150);
+//        //tiedot asetettu VBoxiin
+//        VBox candidateBox = new VBox(10);
+//        candidateBox.getChildren().addAll(lbCandidateName, lbParty, infoButton);
+//        //label prosentille
+//        Label lbMatchPercentage = new Label(percent + "%");
+//        lbMatchPercentage.setFont(Font.font("Arial", FontWeight.BOLD, 60));
+//        lbMatchPercentage.setPadding(new Insets(10, 0, 10, 0));
+//        lbMatchPercentage.setTextAlignment(TextAlignment.LEFT);
+//        //asetetaan Gridpaneen
+//        candidateLayout.add(candidateBox, 0, 0);
+//        candidateLayout.add(lbMatchPercentage, 0, 1);
+//        GridPane.setValignment(candidateLayout, VPos.TOP);
+//        GridPane.setValignment(lbMatchPercentage, VPos.CENTER);
+//        
+//        
+//        return candidateLayout;
+//    }
     
     public Label createRoundedLabel(String text) {
         Label label = new Label(text); //questionList.getSize() ???
         label.setTextAlignment(TextAlignment.CENTER); //tekstin keskitys
-        label.setPrefHeight(15);
-        label.setMaxHeight(15);
+//        label.setPrefHeight(15);
+//        label.setMaxHeight(15);
         label.setFont(Font.font("Arial", FontWeight.BOLD, 12));
         label.setTextFill(Color.WHITE);
         CornerRadii corner10 = new CornerRadii(15);
         Color color = chooseColorByParty(text);
         label.setBackground(new Background(new BackgroundFill(color, corner10, Insets.EMPTY)));
-        label.setPadding(new Insets(10, 0, 0, 10));  
+        label.setPadding(new Insets(5, 8, 5, 8));  //laatikon marginaalit
         
         return label;
     }

@@ -68,7 +68,7 @@ public class WelcomeView {
         welcomeView.setPadding(new Insets(30, 20, 20, 20));
         
         startButton.setOnAction(action -> {
-            ui.initializeLists("Uusimaa");
+            ui.initializeLists("Helsinki");
             ui.showFirstQuestion();
         });
         

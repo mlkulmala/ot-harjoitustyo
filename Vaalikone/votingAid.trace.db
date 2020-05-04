@@ -1,3 +1,9 @@
 2020-05-04 12:25:32 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLException: Table "CANDIDATE" not found; SQL statement:
 SELECT * FROM Candidate JOIN District ON District.id = Candidate.district_id JOIN Party ON Party.id = Candidate.party_id WHERE District.name = ?  [42102-190]
+2020-05-04 14:58:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "CANDIDATE" not found; SQL statement:
+SELECT * FROM Candidate JOIN District ON District.id = Candidate.district_id JOIN Party ON Party.id = Candidate.party_id WHERE District.name = ?  [42102-190]
+2020-05-04 15:02:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "CANDIDATE" not found; SQL statement:
+SELECT * FROM Candidate JOIN District ON District.id = Candidate.district_id JOIN Party ON Party.id = Candidate.party_id WHERE District.name = ?  [42102-190]

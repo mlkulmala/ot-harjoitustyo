@@ -92,4 +92,7 @@ public class UI extends Application {
         setScene(resultsView.getScene());
     }
     
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
