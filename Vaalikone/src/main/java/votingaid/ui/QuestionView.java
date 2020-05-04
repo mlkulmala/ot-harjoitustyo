@@ -37,6 +37,7 @@ public class QuestionView {
     UI ui;
     Question question;
     int listSize;
+    Label lbResults;
     CandidateLogic candidateLogic;
     List<AnswerList> results;
     
@@ -46,10 +47,11 @@ public class QuestionView {
      * @param question the question in turn to be answered.
      * @param listSize amount of questions.
      */
-    public QuestionView(UI ui, Question question, int listSize, CandidateLogic candidateLogic) {
+    public QuestionView(UI ui, Question question, int listSize, Label lbResults, CandidateLogic candidateLogic) {
         this.ui = ui;
         this.question = question;
         this.listSize = listSize;
+        this.lbResults = lbResults;
         this.candidateLogic = candidateLogic;
     }
     /**
@@ -89,8 +91,7 @@ public class QuestionView {
         rb5.setToggleGroup(rButtons);
         
         //tulokset 
-        
-        Label lbResults = new Label();
+        //Label lbResults = new Label();
         lbResults.setWrapText(true);
         
         //valintanappien toiminnot
@@ -164,6 +165,7 @@ public class QuestionView {
         GridPane.setHalignment(nextButton, HPos.RIGHT);
         GridPane.setValignment(nextButton, VPos.TOP);
         GridPane.setHalignment(resultsButton, HPos.RIGHT);
+        GridPane.setValignment(resultsButton, VPos.TOP);
         GridPane.setColumnSpan(qNumber, 5);
         GridPane.setColumnSpan(lbQuestion, 5);
         
@@ -181,15 +183,20 @@ public class QuestionView {
         return new Scene(vbox);
     }
     
+    
+    
     public void listAnswers(int answer, Label label) {
         //System.out.println(this.question.getId());
         this.results = this.candidateLogic.compareToCandidateAnswers(this.question.getId(), answer);
-        String candList = "";
-        for (AnswerList x : this.results) {
-            candList = candList + x.toString() + "\n";
+        String topResults = "";
+        for (AnswerList x : this.results) {  //for (int i=0; i <= 2; i++) {
+            topResults = topResults + x.toString() + "\n";   //candList = candList + this.results.get(i) + "\n";
         }
-        label.setText(candList);
+        label.setWrapText(true);
+        label.setText(topResults);
     }
+    
+    
     
     public GridPane createLayoutForQuestions() {
         GridPane questionLayout = new GridPane();
@@ -243,7 +250,7 @@ public class QuestionView {
         Button prevButton = new Button("< Edellinen");
         prevButton.setPrefWidth(80);
         prevButton.setOnAction((event) -> {
-            ui.showPreviousQuestion();
+            ui.showPreviousQuestion(lbResults);
         });
         return prevButton;
     }
@@ -252,7 +259,7 @@ public class QuestionView {
         Button nextButton = new Button("Seuraava >");
         nextButton.setPrefWidth(80);
         nextButton.setOnAction((event) -> {
-            ui.showNextQuestion();
+            ui.showNextQuestion(lbResults);
         });
         return nextButton;
     }
@@ -262,7 +269,7 @@ public class QuestionView {
         resultsButton.setPrefWidth(100);
         
         resultsButton.setOnAction((event) -> {
-            ui.showFinalResults();
+            ui.showFinalResults( );
         });
         return resultsButton;
     }

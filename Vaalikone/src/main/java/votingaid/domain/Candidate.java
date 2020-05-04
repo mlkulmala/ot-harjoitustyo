@@ -12,6 +12,7 @@ import java.util.*;
  * @author mlkul
  */
 public class Candidate {
+    private int id;
     private int number;
     private String district;
     private String name;
@@ -20,7 +21,8 @@ public class Candidate {
 
 	
     
-    public Candidate(int number, String district, String name, int age, String party) {
+    public Candidate(int id, int number, String district, String name, int age, String party) {
+        this.id = id;
         this.number = number;
         this.district = district;
         this.name = name;
@@ -28,6 +30,10 @@ public class Candidate {
         this.party = party;
     }
 	
+    public int getId() {
+        return this.id;
+    }
+    
     public int getNumber() {
         return this.number;
     }		

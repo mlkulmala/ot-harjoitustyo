@@ -44,7 +44,7 @@ public class QuestionList {
      * @return the next question in line
      */
     public Question getNext() {
-        if (this.index < 19) {
+        if (this.index < questions.size() - 1) {
             this.index++;
             return this.questions.get(index);
         }

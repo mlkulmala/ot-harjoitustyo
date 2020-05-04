@@ -23,7 +23,7 @@ public class AnswerListTest {
     
     @Before
     public void setUp() {
-        candidate = new Candidate(331, "Uusimaa", "Aku", 34, "KOK");
+        candidate = new Candidate(1, 331, "Uusimaa", "Aku", 34, "KOK");
         answerList = new AnswerList(candidate);
     }
     

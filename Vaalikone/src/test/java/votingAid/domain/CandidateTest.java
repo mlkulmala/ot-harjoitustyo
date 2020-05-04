@@ -24,7 +24,7 @@ public class CandidateTest {
     
     @Before
     public void setUp() {
-        candidate = new Candidate(123, "Uusimaa", "Maija", 30, "VIHR");
+        candidate = new Candidate(1, 123, "Uusimaa", "Maija", 30, "VIHR");
     }
     
     @Test

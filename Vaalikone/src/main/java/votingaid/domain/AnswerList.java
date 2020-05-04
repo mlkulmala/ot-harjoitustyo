@@ -32,10 +32,6 @@ public class AnswerList implements Comparable<AnswerList> {
         this.matchPercentage = 0;
     }
     
-    public Map<Integer, Integer> getAnswers() {
-        return this.answers;
-    }
-    
     public void setAnswer(int question, int answer) {
         this.answers.put(question, answer);
     }

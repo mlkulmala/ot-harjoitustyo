@@ -61,7 +61,7 @@ public class WelcomeView {
         welcomeView.setColumnSpan(tfArea, 5);
         welcomeView.setColumnSpan(startButton, 5);
 
-        welcomeView.setPrefSize(700, 400);
+        welcomeView.setPrefSize(700, 500);
         welcomeView.setAlignment(Pos.CENTER);
         welcomeView.setVgap(10);
         welcomeView.setHgap(20);

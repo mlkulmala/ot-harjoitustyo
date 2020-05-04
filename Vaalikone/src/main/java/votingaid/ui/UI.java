@@ -6,8 +6,12 @@
 package votingaid.ui;
 
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import votingaid.dao.CandidateMemoryDao;
 import votingaid.dao.QuestionMemoryDao;
@@ -39,36 +43,43 @@ public class UI extends Application {
     }
     
     
-    public void initializeLists(String area) {
+    public void initializeLists(String district) {
         QuestionMemoryDao questionMemoryDao = new QuestionMemoryDao(); 
         this.questionList = new QuestionList(questionMemoryDao);
         
         CandidateMemoryDao candMemoryDao = new CandidateMemoryDao();
-        this.candidateLogic = new CandidateLogic(candMemoryDao, area);
-        this.candidateLogic.createAnswerList();
+        this.candidateLogic = new CandidateLogic(candMemoryDao);
+        
+        try {
+            this.candidateLogic.createAnswerList(district);
+        } catch (SQLException ex) {
+            //mitä tässä pitäisi olla????
+            Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void showFirstQuestion() {
         Question firstQuestion = this.questionList.getCurrent();
         int size = this.questionList.getSize();
-        QuestionView questionView = new QuestionView(this, firstQuestion, size, this.candidateLogic);
+        Label label = new Label();
+        QuestionView questionView = new QuestionView(this, firstQuestion, size, label, this.candidateLogic);
         setScene(questionView.getScene());
     }
     
-    public void showQuestion(Question question, CandidateLogic candidateLogic) { 
+    public void showQuestion(Question question, Label label, CandidateLogic candidateLogic) { 
         int size = this.questionList.getSize();
-        QuestionView questionView = new QuestionView(this, question, size, candidateLogic);
+        QuestionView questionView = new QuestionView(this, question, size, label, candidateLogic);
         setScene(questionView.getScene());
     }
     
-    public void showNextQuestion() {
+    public void showNextQuestion(Label label) {
         Question next = questionList.getNext();
-        showQuestion(next, this.candidateLogic);
+        showQuestion(next, label, this.candidateLogic);
     }
     
-    public void showPreviousQuestion() {
+    public void showPreviousQuestion(Label label) {
         Question previous = questionList.getPrevious();
-        showQuestion(previous, candidateLogic);
+        showQuestion(previous, label, candidateLogic);
     }
     
     public void showWelcomeView() {

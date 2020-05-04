@@ -7,12 +7,15 @@ package votingAid.domain;
 
 
 
+import java.sql.SQLException;
 import votingaid.domain.CandidateLogic;
 import votingaid.domain.Candidate;
 import votingaid.domain.AnswerList;
 import votingaid.dao.CandidateMemoryDao;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -32,8 +35,13 @@ public class CandidateLogicTest {
     @Before
     public void setUp() {
         CandidateMemoryDao candMemoryDao = new CandidateMemoryDao();
-        candidateLogic = new CandidateLogic(candMemoryDao, "Uusimaa");
-        candidateLogic.createAnswerList();
+        candidateLogic = new CandidateLogic(candMemoryDao);
+        try {
+            candidateLogic.createAnswerList("Helsinki");
+        } catch (SQLException ex) {
+            //miten nää poikkeukset pitäisi käsitellä???
+            Logger.getLogger(CandidateLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
