@@ -33,6 +33,10 @@ public class CandidateLogic {
         candidateDao = candidatedao;
     }
     
+    public int getCountOfAllAnswerLists() {
+        return allAnswers.size();
+    }
+    
     /**
      * Loads all candidates and their answers from database.
      */
@@ -60,14 +64,15 @@ public class CandidateLogic {
      */
     public List<AnswerList> compareToCandidateAnswers(int questionNumber, int userAnswer) {
         for (AnswerList answerList : allAnswers) {
-            System.out.println(answerList.getCandidate().getName());
-            System.out.println(answerList.getAnswer(questionNumber));
-            int candAnswer = answerList.getAnswer(questionNumber);
-            if (candAnswer != 0) {
-                int diff = Math.abs(userAnswer - candAnswer);
-                int percentage = 100 - diff * 25;
-                answerList.setSingleMatch(questionNumber, percentage);
+            if (!answerList.getAnswers().keySet().isEmpty()) {
+                int candAnswer = answerList.getAnswer(questionNumber);
+                if (candAnswer != 0) {
+                    int diff = Math.abs(userAnswer - candAnswer);
+                    int percentage = 100 - diff * 25;
+                    answerList.setSingleMatch(questionNumber, percentage);
+                }
             }
+            
         } 
         Collections.sort(allAnswers);
         return allAnswers;

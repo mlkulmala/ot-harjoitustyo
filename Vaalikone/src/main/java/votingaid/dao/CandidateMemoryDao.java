@@ -56,10 +56,6 @@ public class CandidateMemoryDao implements CandidateDao {
     @Override
     public AnswerList getCandidateAnswers(Candidate candidate) throws SQLException {
         int candidate_id = candidate.getId();
-//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Answer "
-//                + "JOIN Candidate ON Candidate.id = Answer.candidate_id "
-//                + "JOIN Question ON Question.id = Answer.question_id "
-//                + "WHERE Candidate.id = ? "); 
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Candidate "
                 + "JOIN Answer ON Candidate.id = Answer.candidate_id "
                 + "JOIN Question ON Question.id = Answer.question_id "
@@ -67,14 +63,13 @@ public class CandidateMemoryDao implements CandidateDao {
         stmt.setInt(1, candidate_id);
         ResultSet rs = stmt.executeQuery();
         
+        AnswerList answerList = new AnswerList(candidate);
         while (rs.next()) {
-            AnswerList answerList = new AnswerList(candidate);
             int question = rs.getInt("Question.id");
             int answer = rs.getInt("Answer.answer");
             answerList.setAnswer(question, answer);
-            return answerList;
         } 
-        return null;
+        return answerList;
     } 
     
     @Override
@@ -85,40 +80,5 @@ public class CandidateMemoryDao implements CandidateDao {
             e.printStackTrace();
         }
     }
-    
-    
-    
-    
-//    @Override
-//    public List<AnswerList> getAllAnswers() {
-//        ArrayList<AnswerList> allAnswers = new ArrayList<>();
-//        
-//        //tietokantaa ei vielä luotu, joten luodaan tässä
-//        //ehdokkaat ja vastaukset testaamista varten
-//        
-//        Candidate aku = new Candidate(331, "Uusimaa", "Aku", 34, "KOK");
-//        Candidate lasse = new Candidate(124, "Uusimaa", "Lasse", 49, "VAS");
-//        Candidate heli = new Candidate(127, "Uusimaa", "Heli", 25, "VIHR");
-//        
-//        AnswerList listAku = new AnswerList(aku);
-//        AnswerList listLasse = new AnswerList(lasse);
-//        AnswerList listHeli = new AnswerList(heli);
-//        
-//        for (int i = 1; i <= 20; i++) {
-//            listAku.setAnswer(i, 2);
-//            listLasse.setAnswer(i, 5);
-//            listHeli.setAnswer(i, 3);
-//        }
-//        
-//        allAnswers.add(listAku); 
-//        allAnswers.add(listLasse);
-//        allAnswers.add(listHeli);
-//        
-//        
-//        
-//        return allAnswers;
-//    }
-     
-     
-    
+   
 }

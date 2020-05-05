@@ -36,6 +36,10 @@ public class AnswerList implements Comparable<AnswerList> {
         return this.candidate;
     }
     
+    public Map<Integer, Integer> getAnswers() {
+        return this.answers;
+    }
+    
     public void setAnswer(int question, int answer) {
         this.answers.put(question, answer);
     }

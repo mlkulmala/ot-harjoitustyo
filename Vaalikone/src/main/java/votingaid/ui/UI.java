@@ -6,6 +6,7 @@
 package votingaid.ui;
 
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,7 +44,7 @@ public class UI extends Application {
     }
     
     
-    public void initializeLists(String district) {
+    public void initializeLists(String district) throws IOException {
         QuestionMemoryDao questionMemoryDao = new QuestionMemoryDao(); 
         this.questionList = new QuestionList(questionMemoryDao);
         
@@ -87,8 +88,8 @@ public class UI extends Application {
         setScene(welcomeView.getScene());
     }
     
-    public void showFinalResults() {
-        ResultsView resultsView = new ResultsView(this, this.candidateLogic);
+    public void showFinalResults(int next) {
+        ResultsView resultsView = new ResultsView(this, this.candidateLogic, next);
         setScene(resultsView.getScene());
     }
     

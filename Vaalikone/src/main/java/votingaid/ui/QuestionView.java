@@ -24,6 +24,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import votingaid.domain.AnswerList;
 import votingaid.domain.CandidateLogic;
@@ -97,18 +98,23 @@ public class QuestionView {
         //valintanappien toiminnot
         rb1.setOnAction((event) -> {
             listAnswers(1, lbResults);
+            ui.showNextQuestion(lbResults);
         });
         rb2.setOnAction((event) -> {
             listAnswers(2, lbResults);
+            ui.showNextQuestion(lbResults);
         });
         rb3.setOnAction((event) -> {
             listAnswers(3, lbResults);
+            ui.showNextQuestion(lbResults);
         });
         rb4.setOnAction((event) -> {
             listAnswers(4, lbResults);
+            ui.showNextQuestion(lbResults);
         });
         rb5.setOnAction((event) -> {
             listAnswers(5, lbResults);
+            ui.showNextQuestion(lbResults);
         });
         
         //edellinen/seuraava -napit
@@ -189,9 +195,12 @@ public class QuestionView {
         //System.out.println(this.question.getId());
         this.results = this.candidateLogic.compareToCandidateAnswers(this.question.getId(), answer);
         String topResults = "";
-        for (AnswerList x : this.results) {  //for (int i=0; i <= 2; i++) {
-            topResults = topResults + x.toString() + "\n";   //candList = candList + this.results.get(i) + "\n";
+        for (int i = 0; i <= 2; i++) {
+            topResults = topResults + this.results.get(i) + "\n";
         }
+//        for (AnswerList x : this.results) {  //for (int i=0; i <= 2; i++) {
+//            topResults = topResults + x.toString() + "\n";  
+//        }
         label.setWrapText(true);
         label.setText(topResults);
     }
@@ -204,7 +213,7 @@ public class QuestionView {
             questionLayout.getColumnConstraints().add(new ColumnConstraints(80));
         } 
         questionLayout.getRowConstraints().add(new RowConstraints(80));
-        questionLayout.getRowConstraints().add(new RowConstraints(100));
+        questionLayout.getRowConstraints().add(new RowConstraints(150));
         questionLayout.getRowConstraints().add(new RowConstraints(50));
         questionLayout.getRowConstraints().add(new RowConstraints(30));
         
@@ -224,12 +233,13 @@ public class QuestionView {
     public Label createLabelForQNumber() {
         Label qNumber = new Label(this.question.getId() + "/" +  listSize); //questionList.getSize() ???
         qNumber.setTextAlignment(TextAlignment.CENTER); //tekstin keskitys
+        qNumber.setAlignment(Pos.CENTER);
         qNumber.setPrefHeight(15);
-        qNumber.setMaxHeight(15);
+        qNumber.setPrefWidth(55);
+        qNumber.setStyle("-fx-font-weight: bold");
         qNumber.setTextFill(Color.WHITE);
-        Color colorA = Color.rgb(200, 80, 5);
         CornerRadii corner10 = new CornerRadii(10);
-        qNumber.setBackground(new Background(new BackgroundFill(colorA, corner10, Insets.EMPTY)));
+        qNumber.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, corner10, Insets.EMPTY)));
         qNumber.setPadding(new Insets(10, 10, 10, 10));  //laatikon marginaalit
         
         return qNumber;
@@ -269,7 +279,7 @@ public class QuestionView {
         resultsButton.setPrefWidth(100);
         
         resultsButton.setOnAction((event) -> {
-            ui.showFinalResults( );
+            ui.showFinalResults(0);
         });
         return resultsButton;
     }
