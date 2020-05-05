@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import votingaid.dao.CandidateMemoryDao;
 import votingaid.dao.QuestionMemoryDao;
+import votingaid.domain.Candidate;
 import votingaid.domain.CandidateLogic;
 import votingaid.domain.Question;
 import votingaid.domain.QuestionList;
@@ -88,9 +89,14 @@ public class UI extends Application {
         setScene(welcomeView.getScene());
     }
     
-    public void showFinalResults(int next) {
-        ResultsView resultsView = new ResultsView(this, this.candidateLogic, next);
+    public void showFinalResults(int current) {
+        ResultsView resultsView = new ResultsView(this, this.candidateLogic, current);
         setScene(resultsView.getScene());
+    }
+    
+    public void showCandidateView(Candidate candidate, int next) {
+        CandidateView candidateView = new CandidateView(this, candidate, next);
+        setScene(candidateView.getScene());
     }
     
     public static void main(String[] args) {

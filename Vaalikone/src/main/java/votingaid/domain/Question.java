@@ -13,14 +13,14 @@ public class Question {
     
     private int id;
     private String questionText;
-//    private boolean answered;
-//    private int userAnswer;
+    private boolean answered;
+    private int userAnswer;
     
     public Question(int id, String questionText) {
         this.id = id;
         this.questionText = questionText;
-//        this.answered = false;
-//        this.userAnswer = 0;
+        this.answered = false;
+        this.userAnswer = 0;
     }
     
     public int getId() {
@@ -31,21 +31,21 @@ public class Question {
         return this.questionText;
     }
     
-//    public boolean isAnswered() {
-//        return answered;
-//    }
-//    
-//    public void setAnswered() {
-//        this.answered = true;
-//    }
-//    
-//    public int getUserAnswer() {
-//        return this.userAnswer;
-//    }
-//    
-//    public void setUserAnswer(int userAnswer) {
-//        this.userAnswer = userAnswer;
-//        this.answered = true;
-//    }
+    public boolean isAnswered() {
+        return answered;
+    }
+    
+    public void setAnswered() {
+        this.answered = true;
+    }
+    
+    public int getUserAnswer() {
+        return this.userAnswer;
+    }
+    
+    public void setUserAnswer(int userAnswer) {
+        this.userAnswer = userAnswer;
+        this.answered = true;
+    }
     
 }

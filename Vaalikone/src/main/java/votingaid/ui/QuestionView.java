@@ -80,10 +80,26 @@ public class QuestionView {
         
         //valintapainikkeet
         RadioButton rb1 = new RadioButton();
+        if (this.question.isAnswered() && this.question.getUserAnswer() == 1) {
+            rb1.setSelected(true);
+        }
         RadioButton rb2 = new RadioButton();
+        if (this.question.isAnswered() && this.question.getUserAnswer() == 2) {
+            rb2.setSelected(true);
+        }
         RadioButton rb3 = new RadioButton();
+        if (this.question.isAnswered() && this.question.getUserAnswer() == 3) {
+            rb3.setSelected(true);
+        }
         RadioButton rb4 = new RadioButton();
+        if (this.question.isAnswered() && this.question.getUserAnswer() == 4) {
+            rb4.setSelected(true);
+        }
         RadioButton rb5 = new RadioButton();
+        if (this.question.isAnswered() && this.question.getUserAnswer() == 5) {
+            rb5.setSelected(true);
+        }
+        
         ToggleGroup rButtons = new ToggleGroup();
         rb1.setToggleGroup(rButtons);
         rb2.setToggleGroup(rButtons);
@@ -97,24 +113,39 @@ public class QuestionView {
         
         //valintanappien toiminnot
         rb1.setOnAction((event) -> {
+            this.question.setUserAnswer(1);
             listAnswers(1, lbResults);
-            ui.showNextQuestion(lbResults);
+//            if (this.question.getId() < this.listSize) {
+//                ui.showNextQuestion(lbResults);
+//            }
         });
         rb2.setOnAction((event) -> {
+            this.question.setUserAnswer(2);
             listAnswers(2, lbResults);
-            ui.showNextQuestion(lbResults);
+//            if (this.question.getId() < this.listSize) {
+//                ui.showNextQuestion(lbResults);
+//            }
         });
         rb3.setOnAction((event) -> {
+            this.question.setUserAnswer(3);
             listAnswers(3, lbResults);
-            ui.showNextQuestion(lbResults);
+//            if (this.question.getId() < this.listSize) {
+//                ui.showNextQuestion(lbResults);
+//            }
         });
         rb4.setOnAction((event) -> {
+            this.question.setUserAnswer(4);
             listAnswers(4, lbResults);
-            ui.showNextQuestion(lbResults);
+//            if (this.question.getId() < this.listSize) {
+//                ui.showNextQuestion(lbResults);
+//            }
         });
         rb5.setOnAction((event) -> {
+            this.question.setUserAnswer(5);
             listAnswers(5, lbResults);
-            ui.showNextQuestion(lbResults);
+//            if (this.question.getId() < this.listSize) {
+//                ui.showNextQuestion(lbResults);
+//            }
         });
         
         //edellinen/seuraava -napit

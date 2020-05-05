@@ -37,13 +37,13 @@ import votingaid.ui.UI;
 public class ResultsView {
     UI ui;
     CandidateLogic candidateLogic;
-    int next;
+    int currentOnList;
     GridPane resultsLayout;
     
-    public ResultsView(UI ui, CandidateLogic candidateLogic, int next) {
+    public ResultsView(UI ui, CandidateLogic candidateLogic, int currentOnList) {
         this.ui = ui;
         this.candidateLogic = candidateLogic;
-        this.next = next;
+        this.currentOnList = currentOnList;
     }
     
     public Scene getScene() {
@@ -55,28 +55,32 @@ public class ResultsView {
         GridPane.setValignment(lbTitle, VPos.BOTTOM);
         GridPane.setColumnSpan(lbTitle, 3);
         
-        int i = 1;
-        while (next < this.candidateLogic.getCountOfAllAnswerLists()) {
-            addCandidateToGrid(next, i);
-            next++;
-            i++;
-            if (i > 3) {
-                break;
+        for (int i = 1; i <= 3; i++) {
+            if (currentOnList < candidateLogic.getCountOfAllAnswerLists()) {
+                addCandidateToGrid(currentOnList, i);
+                currentOnList++;
             }
         }
+        
+        int previous = countCurrentOnListOnPreviousPage();
 
-        Button nextButton = createButtonForNextPage(next);
+        Button nextButton = createButtonForNavigation("Seuraava >", currentOnList);
+        Button prevButton = createButtonForNavigation("< Edellinen", previous); 
+        
         Button startButton = createButtonForNewStart();
         GridPane buttons = new GridPane();
         buttons.getColumnConstraints().add(new ColumnConstraints(100));
         buttons.getColumnConstraints().add(new ColumnConstraints(100));
+        buttons.getColumnConstraints().add(new ColumnConstraints(100));
         
-        if (next < this.candidateLogic.getCountOfAllAnswerLists()) {
-            buttons.add(nextButton, 0, 0);
-        }  
-        buttons.add(startButton, 1, 0);
+        if (currentOnList > 3) {
+            buttons.add(prevButton, 0, 0);
+        }
+        if (currentOnList < this.candidateLogic.getCountOfAllAnswerLists()) {
+            buttons.add(nextButton, 1, 0);
+        } 
+        buttons.add(startButton, 2, 0);
         buttons.setVgap(10);
-        //buttons.getChildren().addAll(nextButton, startButton);
         resultsLayout.add(buttons, 0, 4);
         
         return new Scene(resultsLayout);
@@ -98,10 +102,10 @@ public class ResultsView {
         return resultsLayout;
     }
     
-    public void addCandidateToGrid(int nextResult, int i) {
-        AnswerList a = this.candidateLogic.getAnswerList(nextResult);
+    public void addCandidateToGrid(int current, int i) {
+        AnswerList a = this.candidateLogic.getAnswerList(current);
         Candidate c = a.getCandidate();
-        VBox candidate1 = createLayoutForCandidate(c.getNumber(), c.getName(), c.getParty());
+        VBox candidate1 = createLayoutForCandidate(c);
         resultsLayout.add(candidate1, 0, i);
         GridPane.setValignment(candidate1, VPos.TOP);
         GridPane.setColumnSpan(candidate1, 2);
@@ -111,16 +115,19 @@ public class ResultsView {
     }
     
     
-    public VBox createLayoutForCandidate(int number, String name, String party) {
+    public VBox createLayoutForCandidate(Candidate candidate) {
         VBox candidateBox = new VBox(10);
         
-        Label lbCandidateName = new Label(number + " " + name);
+        Label lbCandidateName = new Label(candidate.getNumber() + " " + candidate.getName());
         lbCandidateName.setFont(Font.font("Arial", FontWeight.BOLD, 18));
         
-        Label lbParty = createRoundedLabel(party);
+        Label lbParty = createRoundedLabel(candidate.getParty());
         
         Button infoButton = new Button("Tutustu ehdokkaaseen");
         infoButton.setPrefWidth(150);
+        infoButton.setOnAction((event) -> {
+            ui.showCandidateView(candidate, currentOnList);
+        }); 
         
         candidateBox.getChildren().addAll(lbCandidateName, lbParty, infoButton);
         
@@ -136,10 +143,10 @@ public class ResultsView {
         return lbMatchPercentage;
     }
     
-    public Button createButtonForNextPage(int next) {
-        Button nextButton = new Button("Seuraava >");
+    public Button createButtonForNavigation(String buttonText, int current) {
+        Button nextButton = new Button(buttonText);
         nextButton.setOnAction((event) -> {
-            ui.showFinalResults(next);
+            ui.showFinalResults(current);
         });
         return nextButton;
     }
@@ -154,14 +161,14 @@ public class ResultsView {
 
     
     public Label createRoundedLabel(String text) {
-        Label label = new Label(text); //questionList.getSize() ???
-        label.setTextAlignment(TextAlignment.CENTER); //tekstin keskitys
+        Label label = new Label(text); 
+        label.setTextAlignment(TextAlignment.CENTER); 
         label.setFont(Font.font("Arial", FontWeight.BOLD, 12));
         label.setTextFill(Color.WHITE);
         CornerRadii corner10 = new CornerRadii(15);
         Color color = chooseColorByParty(text);
         label.setBackground(new Background(new BackgroundFill(color, corner10, Insets.EMPTY)));
-        label.setPadding(new Insets(5, 8, 5, 8));  //laatikon marginaalit
+        label.setPadding(new Insets(5, 8, 5, 8)); 
         
         return label;
     }
@@ -201,5 +208,16 @@ public class ResultsView {
                 break;
         }
         return color;
+    }
+    
+    public int countCurrentOnListOnPreviousPage() {
+        switch (currentOnList % 3) {
+            case 1:
+                return currentOnList - 4;
+            case 2:
+                return currentOnList - 5;
+            default:
+                return currentOnList - 6;
+        }
     }
 }
