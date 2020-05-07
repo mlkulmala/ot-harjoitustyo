@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package votingaid.ui;
 
 import javafx.geometry.HPos;
@@ -12,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
@@ -30,6 +24,10 @@ public class WelcomeView {
         this.ui = ui;
     }
     
+    /**
+     * Scene implementing this view.
+     * @return Scene
+     */
     public Scene getScene() {
         Label lbWelcome = createLabelForTitle("Tervetuloa vaalikoneeseen!");
 
@@ -38,14 +36,11 @@ public class WelcomeView {
                 + "vaalikone kertoo, keiden näkemykset ovat lähellä omiasi.\n\n"
                 + "Aloita kertomalla kotikuntasi.");
 
-        
-        //Toiminto puuttuu
-        TextField tfDistrict = new TextField();
         Label lbMessage = createLabelForText("");
         
         ChoiceBox cbDistricts = new ChoiceBox();
         cbDistricts.getItems().addAll("Helsinki", "Tampere", "Turku");
-        cbDistricts.setPrefWidth(200);
+        cbDistricts.setPrefWidth(100);
         GridPane.setHalignment(cbDistricts, HPos.CENTER);
         
 
@@ -76,12 +71,13 @@ public class WelcomeView {
                 try {
                     ui.initializeLists(district);
                     ui.showFirstQuestion();
+                } catch (NullPointerException  e) {
+                    lbMessage.setText("Valitsemassasi vaalipiirissä ei ole vielä ehdokkaita.");
                 } catch (Exception e) {
-                    lbMessage.setText("Vaalipiiriä ei löytynyt. Kokeile Helsinkiä!");
+                    lbMessage.setText("Yhteys tietokantaan epäonnistui.");
                 }
             } else {
-                tfDistrict.clear();
-                lbMessage.setText("Kunnalla ei ole yhtään ehdokasta.\n");
+                lbMessage.setText("Vaalipiiriä ei ole valittu.\n");
             }
         });
         

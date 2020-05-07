@@ -5,18 +5,13 @@
  */
 package votingaid.dao;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
-import java.util.Scanner;
-import votingaid.dao.QuestionDao;
 import votingaid.domain.Question;
 
 /**
@@ -24,28 +19,29 @@ import votingaid.domain.Question;
  * @author mlkul
  */
 public class QuestionMemoryDao implements QuestionDao {
-
+    
+    private Connection connection;
+    
     @Override
-    public List<Question> getQuestions() {
-        ArrayList<Question> questions = new ArrayList<>();
-        try {
-            File fileDir = new File("questions_new.txt");
-            BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileDir), "UTF8"));
-            String str;
-            int i = 1;
-            while ((str = in.readLine()) != null) {
-                questions.add(new Question(i, str));
-                i++;
-            }
-            in.close();
-        } catch (UnsupportedEncodingException e) {
-            System.out.println(e.getMessage());
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    public List<Question> getQuestions( ) throws SQLException {
+        connection = DriverManager.getConnection("jdbc:h2:~/votingAid", "sa", "");
+        
+        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Question"); 
+        ResultSet rs = stmt.executeQuery();
+        ArrayList<Question> questionList = new ArrayList<>();
+        
+        while(rs.next()) {
+            int id = rs.getInt("Question.id");
+            String questionText = rs.getString("Question.questionText");
+            Question question = new Question(id, questionText);
+            questionList.add(question);
         }
-        return questions;
+        
+        stmt.close();
+        rs.close();
+        connection.close();
+        
+        return questionList;
     }
     
 }

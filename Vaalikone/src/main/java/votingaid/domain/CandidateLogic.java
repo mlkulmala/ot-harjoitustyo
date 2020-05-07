@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package votingaid.domain;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import votingaid.domain.AnswerList;
-import votingaid.domain.Candidate;
 import votingaid.dao.CandidateDao;
 import java.util.*;
 
 /**
- * CandidateLogic 
+ * A class that contains lists of all candidates and their answers. 
+ * Contains the operation needed for comparison of election candidates.
  * @author mlkul
  */
 public class CandidateLogic {
@@ -38,9 +32,10 @@ public class CandidateLogic {
     }
     
     /**
-     * Loads all candidates and their answers from database.
+     * Load all candidates and their answers from database.
+     * @district Electional district whose candidates' answers are loaded.
      */
-    public void createAnswerList(String district) throws SQLException, IOException {
+    public void createAnswerLists(String district) throws SQLException, IOException {
         
         candidateDao.getConnection();
         allCandidates = candidateDao.getCandidatesByDistrict(district);
@@ -49,8 +44,6 @@ public class CandidateLogic {
             allAnswers.add(answerList);
         }
         candidateDao.close();
-        
-        //allAnswers = getAllAnswers();
     }
                                                                 
     /**
@@ -72,36 +65,8 @@ public class CandidateLogic {
                     answerList.setSingleMatch(questionNumber, percentage);
                 }
             }
-            
         } 
         Collections.sort(allAnswers);
-        return allAnswers;
-    }
-    
-    public List<AnswerList> getAllAnswers() {
-        ArrayList<AnswerList> allAnswers = new ArrayList<>();
-        
-        //tietokantaa ei vielä luotu, joten luodaan tässä
-        //ehdokkaat ja vastaukset testaamista varten
-        
-        Candidate aku = new Candidate(1, 331, "Uusimaa", "Aku", 34, "KOK");
-        Candidate lasse = new Candidate(2, 124, "Uusimaa", "Lasse", 49, "VAS");
-        Candidate heli = new Candidate(3, 127, "Uusimaa", "Heli", 25, "VIHR");
-        
-        AnswerList listAku = new AnswerList(aku);
-        AnswerList listLasse = new AnswerList(lasse);
-        AnswerList listHeli = new AnswerList(heli);
-        
-        for (int i = 1; i <= 25; i++) {
-            listAku.setAnswer(i, 2);
-            listLasse.setAnswer(i, 5);
-            listHeli.setAnswer(i, 3);
-        }
-        
-        allAnswers.add(listAku); 
-        allAnswers.add(listLasse);
-        allAnswers.add(listHeli);
-        
         return allAnswers;
     }
     

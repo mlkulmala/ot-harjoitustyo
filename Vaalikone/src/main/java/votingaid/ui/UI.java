@@ -8,15 +8,15 @@ package votingaid.ui;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import votingaid.dao.CandidateInfoDao;
 import votingaid.dao.CandidateMemoryDao;
 import votingaid.dao.QuestionMemoryDao;
 import votingaid.domain.Candidate;
+import votingaid.domain.CandidateInfo;
 import votingaid.domain.CandidateLogic;
 import votingaid.domain.Question;
 import votingaid.domain.QuestionList;
@@ -30,6 +30,7 @@ public class UI extends Application {
     private Stage stage;
     private CandidateLogic candidateLogic;
     private QuestionList questionList;
+    private CandidateInfo candidateInfo;
     
     
     @Override
@@ -45,20 +46,17 @@ public class UI extends Application {
     }
     
     
-    public void initializeLists(String district) throws IOException {
+    public void initializeLists(String district) throws IOException, SQLException {
         QuestionMemoryDao questionMemoryDao = new QuestionMemoryDao(); 
         this.questionList = new QuestionList(questionMemoryDao);
+        this.questionList.getQuestions();
         
         CandidateMemoryDao candMemoryDao = new CandidateMemoryDao();
         this.candidateLogic = new CandidateLogic(candMemoryDao);
         
-        try {
-            this.candidateLogic.createAnswerList(district);
-        } catch (SQLException ex) {
-            //mitä tässä pitäisi olla????
-            Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.candidateLogic.createAnswerLists(district);
     }
+    
     
     public void showFirstQuestion() {
         Question firstQuestion = this.questionList.getCurrent();
@@ -95,9 +93,21 @@ public class UI extends Application {
     }
     
     public void showCandidateView(Candidate candidate, int next) {
-        CandidateView candidateView = new CandidateView(this, candidate, next);
+        CandidateInfoDao candidateInfoDao = new CandidateInfoDao();
+        
+        CandidateInfo info;
+        try {
+            info = candidateInfoDao.getCandidateInfo(candidate);
+        } catch (SQLException ex) {
+            info = new CandidateInfo(candidate.getId());
+        }
+        
+        CandidateView candidateView = new CandidateView(this, candidate, next, info);
+        
         setScene(candidateView.getScene());
     }
+    
+     
     
     public static void main(String[] args) {
         launch(args);

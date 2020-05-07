@@ -6,7 +6,7 @@
 package votingAid.domain;
 
 import votingaid.domain.Question;
-import votingaid.dao.QuestionMemoryDao;
+import votingaid.dao.QuestionFileDao;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -24,30 +24,38 @@ public class QuestionTest {
     
     @Before
     public void setUp() {
-        QuestionMemoryDao questionMemoryDao = new QuestionMemoryDao();
+        QuestionFileDao questionMemoryDao = new QuestionFileDao();
         question = questionMemoryDao.getQuestions().get(0);
-        //question = new Question(2, "Mitä tämä tarkoittaa?");
     }
     
-//    @Test
-//    public void questionNotAnsweredAtBeginning() {
-//        assertEquals(false, question.isAnswered());
-//    }
+    @Test
+    public void questionNotAnsweredAtBeginning() {
+        assertEquals(false, question.isAnswered());
+    }
     
     @Test
-    public void questionTextIsCorrect() {
+    public void questionSetAnswered() {
+        question.setAnswered();
+        assertEquals(true, question.isAnswered());
+    }
+    
+    @Test
+    public void firstQuestionIsReadCorrectly() {
+        assertEquals(false, question.isAnswered());
         assertTrue(question.getQuestionText().contains("olla edelläkävijä"));
+        assertEquals(1, question.getId());
+        assertEquals(0, question.getUserAnswer());
     }
     
     @Test
-    public void questionIdIsCorrect() {
-        assertEquals(1, question.getId());
+    public void setUserAnswerGivesCorrectAnswer() {
+        question.setUserAnswer(5);
+        question.setUserAnswer(3);
+        assertEquals(3, question.getUserAnswer());
+        assertEquals(true, question.isAnswered());
     }
     
-//    @Test
-//    public void questionUserAnswerIsCorrect() {
-//        assertEquals(0, question.getUserAnswer());
-//    }
+    
     
     
     

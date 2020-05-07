@@ -1,23 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package votingaid.domain;
 
 import java.util.*;
 
 /**
- * 
+ * A class representing an election candidate.
  * @author mlkul
  */
 public class Candidate {
-    private int id;
-    private int number;
-    private String district;
-    private String name;
-    private int age;
-    private String party;
+    final int id;
+    final int number;
+    final String district;
+    final String name;
+    final int age;
+    final String party;
 
 	
     

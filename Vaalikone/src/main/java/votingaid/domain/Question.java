@@ -6,7 +6,7 @@
 package votingaid.domain;
 
 /**
- *
+ * A class representing a question in this voting aid.
  * @author mlkul
  */
 public class Question {

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package votingaid.domain;
 
 import java.util.*;
@@ -66,7 +61,7 @@ public class AnswerList implements Comparable<AnswerList> {
     }
     /**
      * Count the averige of opinion matches on single questions
-     * between the user and a candidate
+     * between the user and a candidate and round up 
      */
     public void updateMatchPercentage() {
         int sum = 0;
@@ -74,7 +69,7 @@ public class AnswerList implements Comparable<AnswerList> {
             for (int percentage : this.singleMatches.values()) {
                 sum += percentage;
             }
-            sum = sum / this.singleMatches.size();
+            sum = (int) Math.round(sum * 1.0 / this.singleMatches.size());
         }
         this.matchPercentage = sum;
     }

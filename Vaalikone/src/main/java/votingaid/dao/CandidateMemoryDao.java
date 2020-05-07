@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package votingaid.dao;
 
 
@@ -12,7 +7,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import votingaid.dao.CandidateDao;
 import java.util.*;
 import votingaid.domain.AnswerList;
 import votingaid.domain.Candidate;
@@ -39,6 +33,10 @@ public class CandidateMemoryDao implements CandidateDao {
                 + "JOIN Party ON Party.id = Candidate.party_id WHERE District.name = ? "); 
         stmt.setString(1, district);
         ResultSet rs = stmt.executeQuery();
+        if (rs.next() == false) { 
+            return null; 
+        }
+        
         ArrayList<Candidate> candidateList = new ArrayList<>();
         
         while(rs.next()) {

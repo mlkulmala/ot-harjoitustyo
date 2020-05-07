@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package votingaid.domain;
 
+import java.sql.SQLException;
 import java.util.List;
 import votingaid.dao.QuestionDao;
 
 /**
- * QuestionList loads the questions from database and keeps count which 
+ * A class that loads the questions from the database. Keeps count which 
  * question is the next one in line to be shown to the user.
  * @author mlkul
  */
@@ -21,9 +17,16 @@ public class QuestionList {
     
     
     public QuestionList(QuestionDao questionDao) {
-        this.questions = questionDao.getQuestions(); //hakee kysymykset tiedostosta
         this.questionDao = questionDao;
         this.index = 0;
+    }
+    
+    /**
+     * Load the questions from the database.
+     * @throws SQLException 
+     */
+    public void getQuestions() throws SQLException {
+        this.questions = questionDao.getQuestions();
     }
     
     public int getIndex() {

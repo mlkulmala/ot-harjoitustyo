@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package votingAid.domain;
 
-import votingaid.dao.QuestionMemoryDao;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import votingaid.domain.QuestionList;
-import votingaid.domain.Question;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import votingaid.dao.QuestionMemoryDao;
 
 /**
  *
@@ -27,6 +21,11 @@ public class QuestionListTest {
     public void setUp() {
         QuestionMemoryDao questionMemoryDao = new QuestionMemoryDao();
         questionList = new QuestionList(questionMemoryDao);
+        try {
+            questionList.getQuestions();
+        } catch (Exception ex) {
+            ex.printStackTrace();;
+        }
     }
     
     @Test
@@ -53,11 +52,11 @@ public class QuestionListTest {
     }
     
     @Test
-    public void getNextGivesNullAtTheEnd() {
-        for (int i = 1; i <= 19; i++) {
+    public void indexGrowsCorrectly() {
+        for (int i = 1; i <= 5; i++) {
             questionList.getNext();
         }
-        assertEquals(null, questionList.getNext());
+        assertEquals(5, questionList.getIndex());
     }
     
 }

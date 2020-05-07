@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package votingaid.ui;
 
 import java.util.List;
@@ -41,12 +36,17 @@ public class QuestionView {
     Label lbResults;
     CandidateLogic candidateLogic;
     List<AnswerList> results;
+    GridPane questionLayout;
     
     /**
-     * Construct
+     * Construct a view for a question.
      * @param ui parent ui.
      * @param question the question in turn to be answered.
-     * @param listSize amount of questions.
+     * @param listSize amount of questions to be answered.
+     * @param lbResults label where top results are shown. It is shown 
+     * in next QuestionView scene until the new question has been answered.
+     * @candidateLogic class that contains all information of the candidates 
+     * and their answers.
      */
     public QuestionView(UI ui, Question question, int listSize, Label lbResults, CandidateLogic candidateLogic) {
         this.ui = ui;
@@ -55,122 +55,114 @@ public class QuestionView {
         this.lbResults = lbResults;
         this.candidateLogic = candidateLogic;
     }
+    
     /**
      * Scene implementing this view.
      * @return Scene
      */
     public Scene getScene() {
-        //5x1 gridpane kysymyksenasettelulle
-        GridPane questionView = createLayoutForQuestions();
+        questionLayout = createLayoutForQuestions();
         
-        Label qNumber = createLabelForQNumber();
-        Label lbQuestion = createLabelForQuestion(); 
+        addQuestionNumberLabelToGrid();
+        addQuestionLabelToGrid();
         
-        Label lb1 = new Label("Täysin\neri mieltä");
-        Label lb2 = new Label("Osittain\neri mieltä");
-        Label lb3 = new Label("En osaa\nsanoa");
-        Label lb4 = new Label("Osittain\nsamaa\nmieltä");
-        Label lb5 = new Label("Täysin\nsamaa\nmieltä");
-        lb1.setTextAlignment(TextAlignment.CENTER); 
-        lb2.setTextAlignment(TextAlignment.CENTER);
-        lb3.setTextAlignment(TextAlignment.CENTER);
-        lb4.setTextAlignment(TextAlignment.CENTER);
-        lb5.setTextAlignment(TextAlignment.CENTER);
-        
-        
-        //valintapainikkeet
-        RadioButton rb1 = new RadioButton();
-        if (this.question.isAnswered() && this.question.getUserAnswer() == 1) {
-            rb1.setSelected(true);
-        }
-        RadioButton rb2 = new RadioButton();
-        if (this.question.isAnswered() && this.question.getUserAnswer() == 2) {
-            rb2.setSelected(true);
-        }
-        RadioButton rb3 = new RadioButton();
-        if (this.question.isAnswered() && this.question.getUserAnswer() == 3) {
-            rb3.setSelected(true);
-        }
-        RadioButton rb4 = new RadioButton();
-        if (this.question.isAnswered() && this.question.getUserAnswer() == 4) {
-            rb4.setSelected(true);
-        }
-        RadioButton rb5 = new RadioButton();
-        if (this.question.isAnswered() && this.question.getUserAnswer() == 5) {
-            rb5.setSelected(true);
-        }
+        addOpinionLabelToGrid("Täysin\neri mieltä", 0);
+        addOpinionLabelToGrid("Osittain\neri mieltä", 1);
+        addOpinionLabelToGrid("En osaa\nsanoa", 2);
+        addOpinionLabelToGrid("Osittain\nsamaa\nmieltä", 3);
+        addOpinionLabelToGrid("Täysin\nsamaa\nmieltä", 4);
         
         ToggleGroup rButtons = new ToggleGroup();
-        rb1.setToggleGroup(rButtons);
-        rb2.setToggleGroup(rButtons);
-        rb3.setToggleGroup(rButtons);
-        rb4.setToggleGroup(rButtons);
-        rb5.setToggleGroup(rButtons);
+        for (int i = 1; i <= 5; i++) {
+            addRadioButtonToGrid(rButtons, i);
+        }
         
-        //tulokset 
-        //Label lbResults = new Label();
         lbResults.setWrapText(true);
+        GridPane.setHalignment(lbResults, HPos.CENTER);
+        GridPane.setValignment(lbResults, VPos.TOP);
+
+        GridPane buttonView = createLayoutForButtons();
+        addNavigationButtonsToGrid(buttonView);
+
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(questionLayout, buttonView);
+        vbox.setPrefSize(700, 500);
+        vbox.setAlignment(Pos.CENTER);
         
-        //valintanappien toiminnot
-        rb1.setOnAction((event) -> {
-            this.question.setUserAnswer(1);
-            listAnswers(1, lbResults);
-//            if (this.question.getId() < this.listSize) {
-//                ui.showNextQuestion(lbResults);
-//            }
-        });
-        rb2.setOnAction((event) -> {
-            this.question.setUserAnswer(2);
-            listAnswers(2, lbResults);
-//            if (this.question.getId() < this.listSize) {
-//                ui.showNextQuestion(lbResults);
-//            }
-        });
-        rb3.setOnAction((event) -> {
-            this.question.setUserAnswer(3);
-            listAnswers(3, lbResults);
-//            if (this.question.getId() < this.listSize) {
-//                ui.showNextQuestion(lbResults);
-//            }
-        });
-        rb4.setOnAction((event) -> {
-            this.question.setUserAnswer(4);
-            listAnswers(4, lbResults);
-//            if (this.question.getId() < this.listSize) {
-//                ui.showNextQuestion(lbResults);
-//            }
-        });
-        rb5.setOnAction((event) -> {
-            this.question.setUserAnswer(5);
-            listAnswers(5, lbResults);
-//            if (this.question.getId() < this.listSize) {
-//                ui.showNextQuestion(lbResults);
-//            }
-        });
+        return new Scene(vbox);
+    }
+    
+    
+    public void listAnswers(int answer, Label label) {
+        this.results = this.candidateLogic.compareToCandidateAnswers(this.question.getId(), answer);
+        String topResults = "";
+        for (int i = 0; i <= 2; i++) {
+            topResults = topResults + this.results.get(i) + "\n";
+        }
+        label.setWrapText(true);
+        label.setText(topResults);
+    }
+    
+    
+    public GridPane createLayoutForQuestions() {
+        GridPane gridpane = new GridPane();
+        for (int i = 1; i <= 5; i++) {
+            gridpane.getColumnConstraints().add(new ColumnConstraints(80));
+        } 
+        gridpane.getRowConstraints().add(new RowConstraints(80));
+        gridpane.getRowConstraints().add(new RowConstraints(150));
+        gridpane.getRowConstraints().add(new RowConstraints(50));
+        gridpane.getRowConstraints().add(new RowConstraints(30));
+        gridpane.setAlignment(Pos.CENTER);
+        gridpane.setVgap(10);
+        gridpane.setHgap(10);
+        gridpane.setPadding(new Insets(10, 20, 20, 10));
         
-        //edellinen/seuraava -napit
+        return gridpane;
+    }
+    
+    public void addQuestionNumberLabelToGrid() {
+        Label qNumber = createLabelForQNumber();
+        questionLayout.add(qNumber, 0, 0);
+        GridPane.setHalignment(qNumber, HPos.CENTER);
+        GridPane.setColumnSpan(qNumber, 5);
+    }
+    
+    public void addQuestionLabelToGrid() {
+        Label lbQuestion = createLabelForQuestion();
+        questionLayout.add(lbQuestion, 0, 1);
+        GridPane.setColumnSpan(lbQuestion, 5);
+    }
+    
+    public void addOpinionLabelToGrid(String labelText, int column) {
+        Label lb = new Label(labelText);
+        lb.setTextAlignment(TextAlignment.CENTER);
+        questionLayout.add(lb, column, 2);
+        GridPane.setHalignment(lb, HPos.CENTER);
+    }
+    
+    public void addRadioButtonToGrid(ToggleGroup group, int number) {
+        RadioButton rb = new RadioButton();
+        rb.setFocusTraversable(true);
+        if (this.question.isAnswered() && this.question.getUserAnswer() == number) {
+            rb.setSelected(true);
+        }
+        rb.setToggleGroup(group);
+        rb.setOnAction((event) -> {
+            this.question.setUserAnswer(number);
+            listAnswers(number, lbResults);
+//            if (this.question.getId() < this.listSize) {
+//                ui.showNextQuestion(lbResults);
+//            }
+        });
+        questionLayout.add(rb, number - 1, 3);
+        GridPane.setHalignment(rb, HPos.CENTER);
+    }
+    
+    public void addNavigationButtonsToGrid(GridPane buttonView) {
         Button prevButton = createButtonForPreviousQuestion();
         Button nextButton = createButtonForNextQuestion();
         Button resultsButton = createButtonForShowResults();
-
-        
-        questionView.add(qNumber, 0, 0);
-        questionView.add(lbQuestion, 0, 1);
-        questionView.add(lb1, 0, 2);
-        questionView.add(lb2, 1, 2);
-        questionView.add(lb3, 2, 2);
-        questionView.add(lb4, 3, 2);
-        questionView.add(lb5, 4, 2);
-        
-        questionView.add(rb1, 0, 3);
-        questionView.add(rb2, 1, 3);
-        questionView.add(rb3, 2, 3);
-        questionView.add(rb4, 3, 3);
-        questionView.add(rb5, 4, 3);
-        
-        
-        //luodaan toinen 3x1 gridpane napeille
-        GridPane buttonView = createLayoutForButtons();
 
         buttonView.add(lbResults, 1, 0);  
         if (this.question.getId() != 1) {
@@ -182,73 +174,12 @@ public class QuestionView {
             buttonView.add(resultsButton, 2, 0);
         }
         
-        
-        GridPane.setHalignment(qNumber, HPos.CENTER);
-        GridPane.setHalignment(lb1, HPos.CENTER);
-        GridPane.setHalignment(lb2, HPos.CENTER);
-        GridPane.setHalignment(lb3, HPos.CENTER);
-        GridPane.setHalignment(lb4, HPos.CENTER);
-        GridPane.setHalignment(lb5, HPos.CENTER);
-        GridPane.setHalignment(rb1, HPos.CENTER);
-        GridPane.setHalignment(rb2, HPos.CENTER);
-        GridPane.setHalignment(rb3, HPos.CENTER);
-        GridPane.setHalignment(rb4, HPos.CENTER);
-        GridPane.setHalignment(rb5, HPos.CENTER);
-        
-        GridPane.setHalignment(lbResults, HPos.CENTER);
-        GridPane.setValignment(lbResults, VPos.TOP);
         GridPane.setHalignment(prevButton, HPos.LEFT);
         GridPane.setValignment(prevButton, VPos.TOP);
         GridPane.setHalignment(nextButton, HPos.RIGHT);
         GridPane.setValignment(nextButton, VPos.TOP);
         GridPane.setHalignment(resultsButton, HPos.RIGHT);
         GridPane.setValignment(resultsButton, VPos.TOP);
-        GridPane.setColumnSpan(qNumber, 5);
-        GridPane.setColumnSpan(lbQuestion, 5);
-        
-        //questionView.setPrefSize(700, 400);
-        questionView.setAlignment(Pos.CENTER);
-        questionView.setVgap(10);
-        questionView.setHgap(10);
-        questionView.setPadding(new Insets(10, 20, 20, 10));
-        
-        VBox vbox = new VBox();
-        vbox.getChildren().addAll(questionView, buttonView);
-        vbox.setPrefSize(700, 500);
-        vbox.setAlignment(Pos.CENTER);
-        
-        return new Scene(vbox);
-    }
-    
-    
-    
-    public void listAnswers(int answer, Label label) {
-        //System.out.println(this.question.getId());
-        this.results = this.candidateLogic.compareToCandidateAnswers(this.question.getId(), answer);
-        String topResults = "";
-        for (int i = 0; i <= 2; i++) {
-            topResults = topResults + this.results.get(i) + "\n";
-        }
-//        for (AnswerList x : this.results) {  //for (int i=0; i <= 2; i++) {
-//            topResults = topResults + x.toString() + "\n";  
-//        }
-        label.setWrapText(true);
-        label.setText(topResults);
-    }
-    
-    
-    
-    public GridPane createLayoutForQuestions() {
-        GridPane questionLayout = new GridPane();
-        for (int i = 1; i <= 5; i++) {
-            questionLayout.getColumnConstraints().add(new ColumnConstraints(80));
-        } 
-        questionLayout.getRowConstraints().add(new RowConstraints(80));
-        questionLayout.getRowConstraints().add(new RowConstraints(150));
-        questionLayout.getRowConstraints().add(new RowConstraints(50));
-        questionLayout.getRowConstraints().add(new RowConstraints(30));
-        
-        return questionLayout;
     }
     
     public GridPane createLayoutForButtons() {
@@ -271,7 +202,7 @@ public class QuestionView {
         qNumber.setTextFill(Color.WHITE);
         CornerRadii corner10 = new CornerRadii(10);
         qNumber.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, corner10, Insets.EMPTY)));
-        qNumber.setPadding(new Insets(10, 10, 10, 10));  //laatikon marginaalit
+        qNumber.setPadding(new Insets(10, 10, 10, 10));  
         
         return qNumber;
     }
@@ -279,6 +210,7 @@ public class QuestionView {
     public Label createLabelForQuestion() {
         Label lbQuestion = new Label(this.question.getQuestionText());
         lbQuestion.setTextAlignment(TextAlignment.CENTER);
+        lbQuestion.setAlignment(Pos.CENTER);
         lbQuestion.setWrapText(true);
         lbQuestion.setMaxWidth(500);
         lbQuestion.setPadding(new Insets(10, 10, 10, 10));

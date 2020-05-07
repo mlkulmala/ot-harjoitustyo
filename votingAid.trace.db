@@ -1,0 +1,240 @@
+2020-04-27 15:17:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE CANDIDATE (
+	ID INTEGER,
+	NAME VARCHAR(30),
+	AGE INTEGER,
+	NUMBER INTEGER,
+	PARTY_ID INTEGER,
+	DISTRICT_ID INTEGER,
+	PRIMARY KEY (ID)
+	FOREIGN[*] KEY (PARTY_ID) REFERENCES PARTY(ID)
+) "; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE Candidate (
+	id INTEGER,
+	name VARCHAR(30),
+	age INTEGER,
+	number INTEGER,
+	party_id INTEGER,
+	district_id INTEGER,
+	PRIMARY KEY (id)
+	FOREIGN KEY (party_id) REFERENCES Party(id)
+) [42001-199]
+2020-04-27 15:21:49 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE CANDIDATE (
+	ID INTEGER,
+	NAME VARCHAR(30),
+	AGE INTEGER,
+	NUMBER INTEGER,
+	PARTY_ID INTEGER,
+	DISTRICT_ID INTEGER,
+	PRIMARY KEY (ID)
+	FOREIGN[*] KEY (PARTY_ID) REFERENCES PARTY(ID)
+        FOREIGN KEY (DISTRICT_ID) REFERENCES DISTRICT(ID)
+) "; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE Candidate (
+	id INTEGER,
+	name VARCHAR(30),
+	age INTEGER,
+	number INTEGER,
+	party_id INTEGER,
+	district_id INTEGER,
+	PRIMARY KEY (id)
+	FOREIGN KEY (party_id) REFERENCES Party(id)
+        FOREIGN KEY (district_id) REFERENCES District(id)
+) [42001-199]
+2020-04-27 15:26:39 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE CANDIDATE (
+	ID INTEGER,
+	NAME VARCHAR(30),
+	AGE INTEGER,
+	NUMBER INTEGER,
+	PARTY_ID INTEGER,
+	DISTRICT_ID INTEGER,
+	PRIMARY KEY (ID)
+	FOREIGN[*](INDEX) KEY (PARTY_ID) REFERENCES PARTY(ID)
+        FOREIGN KEY (DISTRICT_ID) REFERENCES DISTRICT(ID)
+) "; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE Candidate (
+	id INTEGER,
+	name VARCHAR(30),
+	age INTEGER,
+	number INTEGER,
+	party_id INTEGER,
+	district_id INTEGER,
+	PRIMARY KEY (id)
+	FOREIGN(INDEX) KEY (party_id) REFERENCES Party(id)
+        FOREIGN KEY (district_id) REFERENCES District(id)
+) [42001-199]
+2020-04-27 15:51:38 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE CANDIDATE (
+	ID INTEGER,
+	NAME VARCHAR(30),
+	AGE INTEGER,
+	NUMBER INTEGER,
+	PARTY_ID INTEGER,
+	DISTRICT_ID INTEGER,
+	PRIMARY KEY (ID)
+	FOREIGN[*] KEY (PARTY_ID) REFERENCES PARTY(ID)
+        FOREIGN KEY (DISTRICT_ID) REFERENCES DISTRICT(ID)
+) "; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE Candidate (
+	id INTEGER,
+	name VARCHAR(30),
+	age INTEGER,
+	number INTEGER,
+	party_id INTEGER,
+	district_id INTEGER,
+	PRIMARY KEY (id)
+	FOREIGN KEY (party_id) REFERENCES Party(id)
+        FOREIGN KEY (district_id) REFERENCES District(id)
+) [42001-199]
+2020-04-27 18:15:47 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE CANDIDATE (
+	ID INTEGER,
+	NAME VARCHAR(30),
+	AGE INTEGER,
+	NUMBER INTEGER,
+	PARTY_ID INTEGER,
+	DISTRICT_ID INTEGER,
+	PRIMARY KEY (ID)
+	FOREIGN[*] KEY (PARTY_ID) REFERENCES PARTY(ID)
+        FOREIGN KEY (DISTRICT_ID) REFERENCES DISTRICT(ID)
+) "; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE Candidate (
+	id INTEGER,
+	name VARCHAR(30),
+	age INTEGER,
+	number INTEGER,
+	party_id INTEGER,
+	district_id INTEGER,
+	PRIMARY KEY (id)
+	FOREIGN KEY (party_id) REFERENCES Party(id)
+        FOREIGN KEY (district_id) REFERENCES District(id)
+) [42001-199]
+2020-04-27 19:01:55 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO PARTY (ID, NAME, ABBR)
+	VALUES (1, KANSALLINEN KOKOOMUS[*], KOK) "; expected "., (, [, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO Party (id, name, abbr)
+	VALUES (1, Kansallinen Kokoomus, KOK) [42001-199]
+2020-04-27 19:09:38 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "HELSINKI" not found; SQL statement:
+INSERT INTO District (id, name)
+	VALUES (1, Helsinki) [42122-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:451)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:176)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:158)
+	at org.h2.command.dml.Insert.prepare(Insert.java:322)
+	at org.h2.command.Parser.prepareCommand(Parser.java:689)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:1113)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1436)
+	at org.h2.server.web.WebApp.query(WebApp.java:1111)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1073)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1060)
+	at org.h2.server.web.WebThread.process(WebThread.java:173)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2020-04-27 19:21:19 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ALVIINA" not found; SQL statement:
+INSERT INTO Candidate (id, name, age, number, party_id, district_id)
+	VALUES (1, Alviina, 26, 16, 2, 1) [42122-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:451)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:176)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:158)
+	at org.h2.command.dml.Insert.prepare(Insert.java:322)
+	at org.h2.command.Parser.prepareCommand(Parser.java:689)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:1113)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1436)
+	at org.h2.server.web.WebApp.query(WebApp.java:1111)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1073)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1060)
+	at org.h2.server.web.WebThread.process(WebThread.java:173)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2020-04-27 21:27:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "QUESTION" not found; SQL statement:
+ALTER TABLE Question
+	ALTER COLUMN Question INTEGER AUTO_INCREMENT [42122-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:451)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.table.Table.getColumn(Table.java:708)
+	at org.h2.command.Parser.columnIfTableExists(Parser.java:7505)
+	at org.h2.command.Parser.parseAlterTable(Parser.java:7385)
+	at org.h2.command.Parser.parseAlter(Parser.java:6546)
+	at org.h2.command.Parser.parsePrepared(Parser.java:828)
+	at org.h2.command.Parser.parse(Parser.java:788)
+	at org.h2.command.Parser.parse(Parser.java:760)
+	at org.h2.command.Parser.prepareCommand(Parser.java:683)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:1113)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1436)
+	at org.h2.server.web.WebApp.query(WebApp.java:1111)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1073)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1060)
+	at org.h2.server.web.WebThread.process(WebThread.java:173)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2020-04-27 21:47:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column count does not match; SQL statement:
+INSERT INTO Answer (candidate_id, question_id, answer, argument)
+	VALUES (2, 7, 1, ) [21002-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:451)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.command.dml.Insert.prepare(Insert.java:314)
+	at org.h2.command.Parser.prepareCommand(Parser.java:689)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:1113)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1436)
+	at org.h2.server.web.WebApp.query(WebApp.java:1111)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1073)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1060)
+	at org.h2.server.web.WebThread.process(WebThread.java:173)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2020-04-27 21:47:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column count does not match; SQL statement:
+INSERT INTO Answer (candidate_id, question_id, answer, argument)
+	VALUES (2, 9, 2, ) [21002-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:451)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.command.dml.Insert.prepare(Insert.java:314)
+	at org.h2.command.Parser.prepareCommand(Parser.java:689)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:1113)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1436)
+	at org.h2.server.web.WebApp.query(WebApp.java:1111)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1073)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1060)
+	at org.h2.server.web.WebThread.process(WebThread.java:173)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.base/java.lang.Thread.run(Thread.java:834)

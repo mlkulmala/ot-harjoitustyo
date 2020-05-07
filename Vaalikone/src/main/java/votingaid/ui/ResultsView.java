@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package votingaid.ui;
 
 import javafx.geometry.HPos;
@@ -17,21 +12,19 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import votingaid.domain.AnswerList;
 import votingaid.domain.Candidate;
 import votingaid.domain.CandidateLogic;
-import votingaid.ui.UI;
 
 /**
- *
+ * View for showing an overview of the voting aid results.
+ * Three candidates are shown simultaneously.
  * @author mlkul
  */
 public class ResultsView {
@@ -40,20 +33,32 @@ public class ResultsView {
     int currentOnList;
     GridPane resultsLayout;
     
+    /**
+     * Construct a view for voting aid results.
+     * @param ui parent ui.
+     * @param candidateLogic class that contains all information of the candidates 
+     * and their answers.
+     * @param currentOnList an index that keeps count of the candidate 
+     * on top of the list in this view.
+     */
     public ResultsView(UI ui, CandidateLogic candidateLogic, int currentOnList) {
         this.ui = ui;
         this.candidateLogic = candidateLogic;
         this.currentOnList = currentOnList;
     }
     
+    /**
+     * Scene implementing this view.
+     * @return Scene
+     */
     public Scene getScene() {
         resultsLayout = createGridPaneForResults();
         
         Label lbTitle = createRoundedLabel("ENITEN SAMAA MIELTÄ KANSSASI");
         resultsLayout.add(lbTitle, 0, 0);
-        GridPane.setHalignment(lbTitle, HPos.CENTER);
+        GridPane.setHalignment(lbTitle, HPos.LEFT);
         GridPane.setValignment(lbTitle, VPos.BOTTOM);
-        GridPane.setColumnSpan(lbTitle, 3);
+        GridPane.setColumnSpan(lbTitle, 2);
         
         for (int i = 1; i <= 3; i++) {
             if (currentOnList < candidateLogic.getCountOfAllAnswerLists()) {
@@ -89,8 +94,8 @@ public class ResultsView {
     public GridPane createGridPaneForResults() {
         resultsLayout = new GridPane();
         resultsLayout.getColumnConstraints().add(new ColumnConstraints(200));
-        resultsLayout.getColumnConstraints().add(new ColumnConstraints(180));
-        resultsLayout.getRowConstraints().add(new RowConstraints(80));
+        resultsLayout.getColumnConstraints().add(new ColumnConstraints(230));
+        resultsLayout.getRowConstraints().add(new RowConstraints(60));
         resultsLayout.getRowConstraints().add(new RowConstraints(100));
         resultsLayout.getRowConstraints().add(new RowConstraints(100));
         resultsLayout.getRowConstraints().add(new RowConstraints(100));
@@ -158,7 +163,6 @@ public class ResultsView {
         });
         return startButton;
     }
-
     
     public Label createRoundedLabel(String text) {
         Label label = new Label(text); 

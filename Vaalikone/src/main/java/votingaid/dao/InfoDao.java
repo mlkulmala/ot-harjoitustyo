@@ -5,16 +5,15 @@
  */
 package votingaid.dao;
 
-import java.sql.SQLException;
-import java.util.List;
-import votingaid.domain.Question;
+import votingaid.domain.Candidate;
+import votingaid.domain.CandidateInfo;
 
 /**
  *
  * @author mlkul
  */
-public interface QuestionDao {
+public interface InfoDao {
     
-    public List<Question> getQuestions() throws SQLException;
+    public CandidateInfo getCandidateInfo(Candidate candidate) throws Exception;
     
 }

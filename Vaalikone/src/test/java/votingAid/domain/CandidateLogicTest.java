@@ -1,25 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package votingAid.domain;
 
 
 
+import java.io.IOException;
 import java.sql.SQLException;
 import votingaid.domain.CandidateLogic;
-import votingaid.domain.Candidate;
 import votingaid.domain.AnswerList;
 import votingaid.dao.CandidateMemoryDao;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -33,52 +22,66 @@ public class CandidateLogicTest {
     List<AnswerList> allAnswers;
     
     @Before
-    public void setUp() {
+    public void setUp() throws SQLException, IOException {
         CandidateMemoryDao candMemoryDao = new CandidateMemoryDao();
-        candidateLogic = new CandidateLogic(candMemoryDao);
-        try {
-            candidateLogic.createAnswerList("Helsinki");
-        } catch (SQLException ex) {
-            //miten nää poikkeukset pitäisi käsitellä???
-            Logger.getLogger(CandidateLogicTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.candidateLogic = new CandidateLogic(candMemoryDao);
+        this.candidateLogic.createAnswerLists("Helsinki");
     }
     
-    
-    
+   
     @Test
     public void firstOneOnFirstQuestionIsCorrect() {
-        allAnswers = candidateLogic.compareToCandidateAnswers(1, 3);
-        assertEquals("100% Heli, VIHR", allAnswers.get(0).toString());
+        allAnswers = candidateLogic.compareToCandidateAnswers(1, 1);
+        assertEquals("100% Jussi, PS", allAnswers.get(0).toString());
     }
     
     @Test
-    public void secondOneOnFirstQuestionIsCorrect() {
-        allAnswers = candidateLogic.compareToCandidateAnswers(1, 3);
-        assertEquals("75% Aku, KOK", allAnswers.get(1).toString());
-    }
-    
-    @Test
-    public void thirdOneOnFirstQuestionIsCorrect() {
-        allAnswers = candidateLogic.compareToCandidateAnswers(1, 3);
-        assertEquals("50% Lasse, VAS", allAnswers.get(2).toString());
-    }
-    
-    @Test
-    public void thirdOneOnSecondQuestionIsCorrect() {
-        candidateLogic.compareToCandidateAnswers(1, 3);
+    public void firstOneAfterSecondQuestionIsCorrect() {
+        candidateLogic.compareToCandidateAnswers(1, 4);
         allAnswers = candidateLogic.compareToCandidateAnswers(2, 2);
-        assertEquals("37% Lasse, VAS", allAnswers.get(2).toString());
+        assertEquals("100% Eveliina, SDP", allAnswers.get(0).toString());
+    }
+    
+    @Test
+    public void secondOneAfterSecondQuestionIsCorrect() {
+        candidateLogic.compareToCandidateAnswers(1, 4);
+        allAnswers = candidateLogic.compareToCandidateAnswers(2, 2);
+        assertEquals("88% Juha, PS", allAnswers.get(1).toString());
+    }
+    
+    @Test
+    public void thirdOneAfterSecondQuestionIsCorrect() {
+        candidateLogic.compareToCandidateAnswers(1, 4);
+        allAnswers = candidateLogic.compareToCandidateAnswers(2, 2);
+        assertEquals("88% Lotta, KOK", allAnswers.get(2).toString());
+    }
+    
+    @Test
+    public void firstOneAfterThirdQuestionIsCorrect() {
+        candidateLogic.compareToCandidateAnswers(1, 4);
+        candidateLogic.compareToCandidateAnswers(2, 4);
+        allAnswers = candidateLogic.compareToCandidateAnswers(3, 3);
+        assertEquals("92% Ben, KOK", allAnswers.get(0).toString());
+    }
+    
+    @Test
+    public void secondOneAfterThirdQuestionIsCorrect() {
+        candidateLogic.compareToCandidateAnswers(1, 4);
+        candidateLogic.compareToCandidateAnswers(2, 4);
+        allAnswers = candidateLogic.compareToCandidateAnswers(3, 3);
+        assertEquals("83% Jaana, KOK", allAnswers.get(1).toString());
     }
     
     @Test
     public void firstOneOnFifthQuestionIsCorrect() {
-        candidateLogic.compareToCandidateAnswers(1, 3);
-        candidateLogic.compareToCandidateAnswers(2, 2);
-        candidateLogic.compareToCandidateAnswers(3, 2);
-        candidateLogic.compareToCandidateAnswers(4, 4);
-        allAnswers = candidateLogic.compareToCandidateAnswers(5, 5);
-        assertEquals("75% Heli, VIHR", allAnswers.get(0).toString());
+        candidateLogic.compareToCandidateAnswers(1, 5);
+        candidateLogic.compareToCandidateAnswers(2, 1);
+        candidateLogic.compareToCandidateAnswers(3, 5);
+        candidateLogic.compareToCandidateAnswers(4, 5);
+        allAnswers = candidateLogic.compareToCandidateAnswers(5, 4);
+        assertEquals("100% Atte, VIHR", allAnswers.get(0).toString());
+        assertEquals("100% Atte, VIHR", candidateLogic.getAnswerList(0).toString());
     }
    
+    
 }

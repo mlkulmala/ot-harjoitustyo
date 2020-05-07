@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package votingAid.domain;
 
 
@@ -27,6 +22,15 @@ public class AnswerListTest {
         answerList = new AnswerList(candidate);
     }
     
+    @Test
+    public void getCandidateGivesCorrect() {
+        Candidate ben = new Candidate(2, 345, "Helsinki", "Ben", 56, "KOK");
+        answerList = new AnswerList(ben);
+        answerList.setAnswer(1, 5);
+        answerList.setAnswer(1, 1);
+        assertEquals("Ben", answerList.getCandidate().getName());
+        assertEquals(1, answerList.getAnswer(1));
+    }
     
     @Test
     public void setAnswerGivesCorrect() {
