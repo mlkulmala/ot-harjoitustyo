@@ -34,7 +34,7 @@ näkymä vaihtuu tulosnäkymään.
 
 Tulosnäkymässä on listattuna kolme ehdokasta kerrallaan:
 
-<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/resultsView.png" width="500">
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/resultsView.PNG" width="500">
 
 Jokaisen ehdokkaan kohdalla on painike *Tutustu ehdokkaaseen*, josta pääsee ehdokkaan esittelevään näkymään.
 
