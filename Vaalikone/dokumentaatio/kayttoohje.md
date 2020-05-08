@@ -11,9 +11,9 @@ java -jar Vaalikone_viikko5.jar
 
 ## Vaalikoneen aloittaminen
 
-Sovellus avautuu näkymään, jossa Vaalikoneen toiminta esitellään lyhyesti. Käyttäjä saa valittua 
-vaalikoneeseen oman vaalipiirinsä ehdokkaat kirjoittamalla syötekenttään oman vaalipiirinsä nimen
-ja painamalla *aloita*, jolloin siirrytään kysymysnäkymään ja ensimmäiseen kysymykseen.
+Sovellus avautuu näkymään, jossa Vaalikoneen toiminta esitellään lyhyesti. Käyttäjä saa valittua vaalikoneeseen oman vaalipiirinsä 
+ehdokkaat valitsemalla valikosta oman vaalipiirinsä ja painamalla *aloita*, jolloin siirrytään seuraavaan näkymään ja ensimmäiseen 
+väitteeseen.
 
 <img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/welcomeView.png" width="500">
 
@@ -21,15 +21,23 @@ ja painamalla *aloita*, jolloin siirrytään kysymysnäkymään ja ensimmäiseen
 
 Kysymysnäkymässä käyttäjä voi valita viidestä vaihtoehdosta, mitä mieltä hän on esitetystä väitteestä.
 
-<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/questionView.png" width="500">
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/questionView2.png" width="500">
 
-Painamalla vaihtoehtoa näkymän alalaitaan tulostuu niiden ehdokkaiden nimet, joiden mielipide on
-lähimpänä käyttäjän antamaa vastausta. Kysymysten välillä voi liikkua painikkeilla *edellinen* ja 
-*seuraava*.
+Joka kerta käyttäjän painaessa vastausvaihtoehtoa näkymän alalaitaan tulostuu kolme ehdokasta, joiden mielipide on
+lähimpänä käyttäjän antamaa vastausta sekä prosenttiluku, joka kertoo kuinka hyvin mielipiteet ovat vastanneet toisiaan kaikkien tähän asti vastattujen väitteiden osalta. Väitteiden välillä voi liikkua painikkeilla *edellinen* ja 
+*seuraava*. Samaan väitteeseen voi vastata monta kertaa ja aiempien väitteiden vastaukset säilyvät näkymästä toiseen siirryttäessä.
 
 ## Vaalikoneen tulokset
 
-Viimeisen kysymyksen jälkeen päästään vaalikoneen tuloksiin klikkaamall  *Siirry tuloksiin*, jolloin
-näkymä vaihtuu (tämä näkymä ei ole vielä valmis).
+Viimeisen väitteen jälkeen päästään vaalikoneen tuloksiin klikkaamall *Siirry tuloksiin*, jolloin
+näkymä vaihtuu tulosnäkymään. Tulosnäkymässä on listattuna kolme ehdokasta kerrallaan
 
-(lisätään kuva viimeisestä näkymästä)
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/resultsView.png" width="500">
+
+## Ehdokkaan esittely
+
+Tulosnäkymässä jokaisella ehdokkaan kohdalla on painike *Tutustu ehdokkaaseen*, josta pääsee ehdokkaan esittelevään näkymään.
+
+<img src="https//raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/candidateView.png" width="500">
+
+
