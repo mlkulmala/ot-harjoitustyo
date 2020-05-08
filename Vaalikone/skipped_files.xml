@@ -6,4 +6,7 @@
 
 <suppressions>
     <suppress files="votingAid.ui.UI.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="votingAid.ui.QuestionView.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="votingAid.ui.ResultsView.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="votingAid.ui.WelcomeView.java" checks="[a-zA-Z0-9]*"/>    
 </suppressions>
