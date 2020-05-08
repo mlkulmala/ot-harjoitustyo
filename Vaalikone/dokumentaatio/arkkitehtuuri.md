@@ -4,7 +4,7 @@
 
 VotingAid-sovelluksen pakkausrakenne on seuraava:
 
-<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/luokkakaavio_Vaalikone.png" width="300">
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/luokkakaavio_Vaalikone.png" width="400">
 
 - `votingaid.main` sovelluksen käynnistys
 - `votingaid.ui`: JavaFX:llä toteutettu käyttöliittymä 
@@ -72,8 +72,18 @@ käynnistyy klikkaamalla *startButton*-painiketta.
 
 <img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/sekvenssikaavio_ui.png" width="800">
 
-Kun käyttäjä vastaa väitteeseen, sovelluksen kontrolli etenee seuraavasti:
+Kun käyttäjä vastaa väitteeseen klikkaamalla jotain vastauspainiketta, sovelluksen kontrolli etenee seuraavasti:
 
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/sekvenssikaavio_compare.png" width="700">
+
+Tapahtumankäsittelijä kutsuu luokan `CandidateLogic` metodia `compareToCandidateAnswers`, joka saa
+parametriksi vastattavan väitteen id-numeron ja käyttäjän antaman vastauksen. `CandidateLogic` käy 
+läpi listallaan pitämät `AnswerList`-oliot, vertaa käyttäjän vastausta kunkin ehdokkaan vastaukseen 
+ja laskee ja tallentaa vastaavuusprosentin `AnswerList`-olioon. Kun kaikki oliot on käyty läpi, metodi 
+palauttaa `AnswerList`-olioiden järjestetyn listan. jonka mukaan käyttäjää lähimmäs vastanneet ehdokkaat 
+listataan kärkeen.
+
+Tulosnäkymässä järjestetyn `AnswerList`-olioiden listalta poimitaan oikeat tiedot kultakin ehdokkaalta.
 
 
 
