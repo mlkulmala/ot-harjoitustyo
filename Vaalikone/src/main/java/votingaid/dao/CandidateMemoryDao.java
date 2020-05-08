@@ -21,31 +21,26 @@ public class CandidateMemoryDao implements CandidateDao {
     
     @Override
     public void getConnection() throws SQLException {
-        connection = DriverManager.getConnection("jdbc:h2:~/votingAid", "sa", "");
+        connection = DriverManager.getConnection("jdbc:h2:./votingAid", "sa", "");
     }
     
     @Override
     public List<Candidate> getCandidatesByDistrict(String district) throws SQLException {
-        //Connection connection = DriverManager.getConnection("jdbc:h2:~/votingAid", "sa", "");
-        
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Candidate "
                 + "JOIN District ON District.id = Candidate.district_id "
                 + "JOIN Party ON Party.id = Candidate.party_id WHERE District.name = ? "); 
         stmt.setString(1, district);
         ResultSet rs = stmt.executeQuery();
-        if (rs.next() == false) { 
-            return null; 
-        }
+//        if (rs.next() == false) { 
+//            return null; 
+//        }
         
         ArrayList<Candidate> candidateList = new ArrayList<>();
-        
-        while(rs.next()) {
-            int id = rs.getInt("Candidate.id");
-            int number = rs.getInt("Candidate.number");
-            String name = rs.getString("Candidate.name");
-            int age = rs.getInt("Candidate.age");
-            String party = rs.getString("Party.abbr");
-            Candidate candidate = new Candidate(id, number, district, name, age, party);
+        while (rs.next()) {
+            Candidate candidate = new Candidate(rs.getInt("Candidate.id"),
+                    rs.getInt("Candidate.number"), district, 
+                    rs.getString("Candidate.name"), rs.getInt("Candidate.age"),
+                    rs.getString("Party.abbr"));
             candidateList.add(candidate);
         }
         return candidateList;
@@ -53,12 +48,12 @@ public class CandidateMemoryDao implements CandidateDao {
     
     @Override
     public AnswerList getCandidateAnswers(Candidate candidate) throws SQLException {
-        int candidate_id = candidate.getId();
+        int candidateId = candidate.getId();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Candidate "
                 + "JOIN Answer ON Candidate.id = Answer.candidate_id "
                 + "JOIN Question ON Question.id = Answer.question_id "
                 + "WHERE Candidate.id = ? ");
-        stmt.setInt(1, candidate_id);
+        stmt.setInt(1, candidateId);
         ResultSet rs = stmt.executeQuery();
         
         AnswerList answerList = new AnswerList(candidate);

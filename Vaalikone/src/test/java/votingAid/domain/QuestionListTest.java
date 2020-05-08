@@ -44,6 +44,14 @@ public class QuestionListTest {
     }
     
     @Test
+    public void getNextGivesCorrectAtTheEnd() {
+        for (int i = 1; i <= questionList.getSize() - 1; i++) {
+            questionList.getNext();
+        }
+        assertEquals(null, questionList.getNext());
+    }
+    
+    @Test
     public void getPreviousGivesCorrect() {
         questionList.getNext();
         questionList.getNext();

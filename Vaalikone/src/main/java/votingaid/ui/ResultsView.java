@@ -54,11 +54,7 @@ public class ResultsView {
     public Scene getScene() {
         resultsLayout = createGridPaneForResults();
         
-        Label lbTitle = createRoundedLabel("ENITEN SAMAA MIELTÄ KANSSASI");
-        resultsLayout.add(lbTitle, 0, 0);
-        GridPane.setHalignment(lbTitle, HPos.LEFT);
-        GridPane.setValignment(lbTitle, VPos.BOTTOM);
-        GridPane.setColumnSpan(lbTitle, 2);
+        addTitleLabelToGrid(0, 0);
         
         for (int i = 1; i <= 3; i++) {
             if (currentOnList < candidateLogic.getCountOfAllAnswerLists()) {
@@ -66,18 +62,14 @@ public class ResultsView {
                 currentOnList++;
             }
         }
-        
         int previous = countCurrentOnListOnPreviousPage();
 
         Button nextButton = createButtonForNavigation("Seuraava >", currentOnList);
         Button prevButton = createButtonForNavigation("< Edellinen", previous); 
         
         Button startButton = createButtonForNewStart();
-        GridPane buttons = new GridPane();
-        buttons.getColumnConstraints().add(new ColumnConstraints(100));
-        buttons.getColumnConstraints().add(new ColumnConstraints(100));
-        buttons.getColumnConstraints().add(new ColumnConstraints(100));
-        
+        GridPane buttons = createGridPaneForButtons();
+       
         if (currentOnList > 3) {
             buttons.add(prevButton, 0, 0);
         }
@@ -105,6 +97,14 @@ public class ResultsView {
         resultsLayout.setAlignment(Pos.CENTER);
         
         return resultsLayout;
+    }
+    
+    public void addTitleLabelToGrid(int x, int y) {
+        Label lbTitle = createRoundedLabel("ENITEN SAMAA MIELTÄ KANSSASI");
+        resultsLayout.add(lbTitle, x, y);
+        GridPane.setHalignment(lbTitle, HPos.LEFT);
+        GridPane.setValignment(lbTitle, VPos.BOTTOM);
+        GridPane.setColumnSpan(lbTitle, 2);
     }
     
     public void addCandidateToGrid(int current, int i) {
@@ -162,6 +162,14 @@ public class ResultsView {
             ui.showWelcomeView();
         });
         return startButton;
+    }
+    
+    public GridPane createGridPaneForButtons() {
+        GridPane buttons = new GridPane();
+        buttons.getColumnConstraints().add(new ColumnConstraints(100));
+        buttons.getColumnConstraints().add(new ColumnConstraints(100));
+        buttons.getColumnConstraints().add(new ColumnConstraints(100));
+        return buttons;
     }
     
     public Label createRoundedLabel(String text) {

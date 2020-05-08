@@ -17,8 +17,7 @@ public class AnswerList implements Comparable<AnswerList> {
     
     /**
      * Construct a new AnswerList. 
-     * @param candidate candidate
-     * 
+     * @param candidate Election candidate whose answers are listed.
      */
     public AnswerList(Candidate candidate) {
         this.candidate = candidate;
@@ -50,7 +49,7 @@ public class AnswerList implements Comparable<AnswerList> {
         return this.singleMatches.get(question);
     }
     /**
-     * Add new percentage when a question is answered
+     * Add new percentage when a question is answered.
      * @param question the number of the question in line
      * @param percentage percentage units that indicate how well the user's 
      * opinion matches this candidate's opinion on this question
@@ -61,7 +60,7 @@ public class AnswerList implements Comparable<AnswerList> {
     }
     /**
      * Count the averige of opinion matches on single questions
-     * between the user and a candidate and round up 
+     * between the user and a candidate. 
      */
     public void updateMatchPercentage() {
         int sum = 0;

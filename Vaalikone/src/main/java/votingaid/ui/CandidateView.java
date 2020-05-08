@@ -43,34 +43,14 @@ public class CandidateView {
     public Scene getScene() {
         GridPane candidateLayout = createLayoutForCandidateView();
         
-        Button resultsButton = new Button("Takaisin tuloksiin");
-        candidateLayout.add(resultsButton, 0, 1);
-        GridPane.setValignment(resultsButton, VPos.TOP);
-        int firstOnList = getCurrentOnList();
-        resultsButton.setOnAction((event) -> {
-            ui.showFinalResults(firstOnList);
-        });
-        
-        Label lbCandidateName = new Label(candidate.getNumber() + " " + candidate.getName());
-        lbCandidateName.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-        candidateLayout.add(lbCandidateName, 0, 2);
+        addResultsButtonToGrid(candidateLayout, 0, 1);
+        addCandidateLabelToGrid(candidateLayout, 0, 2);
         
         Label lbParty = createRoundedLabel(candidate.getParty());
         candidateLayout.add(lbParty, 0, 3);
         
-        TextFlow eDistrict = createTextElementWithBoldText("Vaalipiiri:\n", info.getElectoralDistrict() + "\n");
-        TextFlow age = createTextElementWithBoldText("Ikä:\n", String.valueOf(candidate.getAge()) + "\n");
-        TextFlow profession = createTextElementWithBoldText("Ammatti:\n", info.getProfession()+ "\n");
-        VBox left = new VBox();
-        left.getChildren().addAll(eDistrict, age, profession);
-        candidateLayout.add(left, 0, 4);
-        
-        TextFlow candidateNumber = createTextElementWithBoldText("Ehdokasnumero:\n", String.valueOf(candidate.getNumber()) + "\n");
-        TextFlow language = createTextElementWithBoldText("Äidinkieli:\n", info.getLanguage() + "\n");
-        TextFlow education = createTextElementWithBoldText("Koulutus:\n", info.getEducation() + "\n");
-        VBox right = new VBox();
-        right.getChildren().addAll(candidateNumber, language, education);
-        candidateLayout.add(right, 1, 4);
+        addLeftColumnToGrid(candidateLayout, 0, 4);
+        addRightColumnToGrid(candidateLayout, 1, 4);
         
         TextFlow reasoning = createTextElementWithBoldText("Miksi minut pitäisi valita eduskuntaan:\n", info.getReasoning());
         candidateLayout.add(reasoning, 0, 5);
@@ -86,15 +66,46 @@ public class CandidateView {
         
         candidateLayout.getRowConstraints().add(new RowConstraints(30));
         candidateLayout.getRowConstraints().add(new RowConstraints(35));
-//        candidateLayout.getRowConstraints().add(new RowConstraints(20));
-//        candidateLayout.getRowConstraints().add(new RowConstraints(25));
-//        candidateLayout.getRowConstraints().add(new RowConstraints(80));
 
         candidateLayout.setVgap(10);
         candidateLayout.setPrefSize(700, 500);
         candidateLayout.setAlignment(Pos.TOP_CENTER);
 
         return candidateLayout;
+    }
+    
+    public void addResultsButtonToGrid(GridPane candidateLayout, int x, int y) {
+        Button resultsButton = new Button("Takaisin tuloksiin");
+        candidateLayout.add(resultsButton, x, y);
+        GridPane.setValignment(resultsButton, VPos.TOP);
+        int firstOnList = getCurrentOnList();
+        resultsButton.setOnAction((event) -> {
+            ui.showFinalResults(firstOnList);
+        });
+    }
+    
+    public void addCandidateLabelToGrid(GridPane grid, int x, int y) {
+        Label lbCandidateName = new Label(candidate.getNumber() + " " + candidate.getName());
+        lbCandidateName.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+        grid.add(lbCandidateName, x, y);
+    }
+    
+    public void addLeftColumnToGrid(GridPane grid, int x, int y) {
+        TextFlow eDistrict = createTextElementWithBoldText("Vaalipiiri:\n", info.getElectoralDistrict() + "\n");
+        TextFlow age = createTextElementWithBoldText("Ikä:\n", String.valueOf(candidate.getAge()) + "\n");
+        TextFlow profession = createTextElementWithBoldText("Ammatti:\n", info.getProfession() + "\n");
+        VBox left = new VBox();
+        left.getChildren().addAll(eDistrict, age, profession);
+        grid.add(left, 0, 4);
+    }
+    
+    public void addRightColumnToGrid(GridPane grid, int x, int y) {
+        TextFlow candidateNumber = createTextElementWithBoldText("Ehdokasnumero:\n", String.valueOf(candidate.getNumber()) + "\n");
+        TextFlow language = createTextElementWithBoldText("Äidinkieli:\n", info.getLanguage() + "\n");
+        TextFlow education = createTextElementWithBoldText("Koulutus:\n", info.getEducation() + "\n");
+        VBox right = new VBox();
+        right.getChildren().addAll(candidateNumber, language, education);
+        grid.add(right, 1, 4);
     }
     
     public Label createLabelForTitle(String title) {

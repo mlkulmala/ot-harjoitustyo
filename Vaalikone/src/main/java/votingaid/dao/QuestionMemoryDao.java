@@ -23,14 +23,14 @@ public class QuestionMemoryDao implements QuestionDao {
     private Connection connection;
     
     @Override
-    public List<Question> getQuestions( ) throws SQLException {
+    public List<Question> getQuestions() throws SQLException {
         connection = DriverManager.getConnection("jdbc:h2:~/votingAid", "sa", "");
         
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Question"); 
         ResultSet rs = stmt.executeQuery();
         ArrayList<Question> questionList = new ArrayList<>();
         
-        while(rs.next()) {
+        while (rs.next()) {
             int id = rs.getInt("Question.id");
             String questionText = rs.getString("Question.questionText");
             Question question = new Question(id, questionText);

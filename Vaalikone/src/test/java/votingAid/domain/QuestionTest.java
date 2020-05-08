@@ -6,13 +6,11 @@
 package votingAid.domain;
 
 import votingaid.domain.Question;
-import votingaid.dao.QuestionFileDao;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import votingaid.dao.QuestionMemoryDao;
+import votingaid.domain.QuestionList;
 
 /**
  *
@@ -24,8 +22,7 @@ public class QuestionTest {
     
     @Before
     public void setUp() {
-        QuestionFileDao questionMemoryDao = new QuestionFileDao();
-        question = questionMemoryDao.getQuestions().get(0);
+        question = new Question(1, "VotingAid");
     }
     
     @Test
@@ -37,14 +34,6 @@ public class QuestionTest {
     public void questionSetAnswered() {
         question.setAnswered();
         assertEquals(true, question.isAnswered());
-    }
-    
-    @Test
-    public void firstQuestionIsReadCorrectly() {
-        assertEquals(false, question.isAnswered());
-        assertTrue(question.getQuestionText().contains("olla edelläkävijä"));
-        assertEquals(1, question.getId());
-        assertEquals(0, question.getUserAnswer());
     }
     
     @Test

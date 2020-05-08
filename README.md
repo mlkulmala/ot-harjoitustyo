@@ -1,17 +1,27 @@
-# VotingAidApp
+# VotingAid
 
-Sovelluksen avulla käyttäjä voi verrata omia mielipiteitään vaaliehdokkaiden
-mielipiteisiin ja saada selville, keiden kanssa näkemykset kohtaavat parhaiten.
-Ehdokkaita ja heidän mielipiteitään on mahdollista myös selata vastaamatta 
-itse väitteisiin.
+VotingAid eli vaalikone on sovellus, jossa esitettyihin väitteisiin vastaamalla
+käyttäjä voi verrata omia mielipiteitään vaaliehdokkaiden mielipiteisiin ja 
+saada selville, keiden kanssa näkemykset kohtaavat parhaiten.
+
+VotingAidin oletuksena käyttämässä tietokannassa olevat väitteet ja ehdokkaat 
+ovat suoraan Ylen tekemästä eduskuntavaalien 2019 vaalikoneesta. Ehdokkaiden
+esiintyvät etunimillä ja heidän vastauksiaan on lyhennetty. Sovellus on tehty
+Helsingin yliopiston Ohjelmistotekniikka-kurssin harjoitustyönä, eikä sillä 
+ole kaupallista käyttötarkoitusta.
+
 
 ## Dokumentaatio
 
-[Tyoaikakirjanpito](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
+[Käyttöohje](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/Vaalikone/dokumentaatio/kayttoohje.md)
 
-[Vaatimusmaarittely](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+[Vaatimusmaarittely](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/Vaalikone/dokumentaatio/vaatimusmaarittely.md)
 
 [Arkkitehtuurikuvaus](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/Vaalikone/dokumentaatio/arkkitehtuuri.md)
+
+[Testausdokumentti]
+
+[Tyoaikakirjanpito](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 
 
 ## Releaset
@@ -58,5 +68,5 @@ Tiedoston checkstyle.xml määrittelemät tarkistukset suoritetaan komennolla
 ```
 mvn jxr:jxr checkstyle:checkstyle
 ```
-Mahdolliset virheilmitukset selviävät avaamalla selaimella tiedosto *target/site/checkstyle.html*
+Mahdollisia virheilmoituksia voi tarkastella avaamalla selaimella tiedoston *target/site/checkstyle.html*
 

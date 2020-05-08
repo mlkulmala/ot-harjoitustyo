@@ -29,42 +29,30 @@ public class WelcomeView {
      * @return Scene
      */
     public Scene getScene() {
-        Label lbWelcome = createLabelForTitle("Tervetuloa vaalikoneeseen!");
-
-        Label lbIntro = createLabelForText("Vaalikone auttaa sinua tutustumaan "
-                + "eduskuntavaalien ehdokkaisiin. Vastaa väitteisiin ja "
-                + "vaalikone kertoo, keiden näkemykset ovat lähellä omiasi.\n\n"
-                + "Aloita kertomalla kotikuntasi.");
-
-        Label lbMessage = createLabelForText("");
+        GridPane welcomeLayout = createGridPaneForWelcomeView();
         
+        Label lbWelcome = createLabelForTitle("Tervetuloa vaalikoneeseen!");
+        welcomeLayout.add(lbWelcome, 0, 0);
+        welcomeLayout.setColumnSpan(lbWelcome, 5);
+        
+        addIntroductionTextToGrid(welcomeLayout, 0, 1);
+
         ChoiceBox cbDistricts = new ChoiceBox();
-        cbDistricts.getItems().addAll("Helsinki", "Tampere", "Turku");
+        cbDistricts.getItems().add("Helsinki");
         cbDistricts.setPrefWidth(100);
         GridPane.setHalignment(cbDistricts, HPos.CENTER);
+        welcomeLayout.add(cbDistricts, 0, 2);
+        welcomeLayout.setColumnSpan(cbDistricts, 5);
         
+        Label lbMessage = createLabelForText("");
+        welcomeLayout.add(lbMessage, 0, 3);
+        welcomeLayout.setColumnSpan(lbMessage, 5);
 
         Button startButton = new Button("Aloita");
         GridPane.setHalignment(startButton, HPos.CENTER);
-
-        GridPane welcomeView = new GridPane();
-        welcomeView.add(lbWelcome, 0, 0);
-        welcomeView.add(lbIntro, 0, 1);
-        welcomeView.add(cbDistricts, 0, 2);
-        welcomeView.add(startButton, 0, 4);
-        welcomeView.add(lbMessage, 0, 3);
-        welcomeView.setColumnSpan(lbWelcome, 5);
-        welcomeView.setColumnSpan(lbIntro, 5);
-        welcomeView.setColumnSpan(cbDistricts, 5);
-        welcomeView.setColumnSpan(lbMessage, 5);
-        welcomeView.setColumnSpan(startButton, 5);
-
-        welcomeView.setPrefSize(700, 500);
-        welcomeView.setAlignment(Pos.CENTER);
-        welcomeView.setVgap(20);
-        welcomeView.setHgap(20);
-        welcomeView.setPadding(new Insets(30, 20, 20, 20));
-        
+        welcomeLayout.add(startButton, 0, 4);
+        welcomeLayout.setColumnSpan(startButton, 5);
+           
         startButton.setOnAction(action -> {
             if (cbDistricts.getValue() != null) {
                 String district = (String) cbDistricts.getValue();
@@ -81,8 +69,34 @@ public class WelcomeView {
             }
         });
         
-        return new Scene(welcomeView);
+        return new Scene(welcomeLayout);
     }
+    
+    public GridPane createGridPaneForWelcomeView() {
+        GridPane grid = new GridPane();
+        grid.setPrefSize(700, 500);
+        grid.setAlignment(Pos.CENTER);
+        grid.setVgap(20);
+        grid.setHgap(20);
+        grid.setPadding(new Insets(30, 20, 20, 20));
+        return grid;
+    }
+    
+    public void addIntroductionTextToGrid(GridPane grid, int x, int y) {
+        Label lbIntro = createLabelForText("Vaalikone auttaa sinua tutustumaan "
+                + "eduskuntavaalien ehdokkaisiin. Vastaa väitteisiin ja "
+                + "vaalikone kertoo, keiden näkemykset ovat lähellä omiasi.\n\n"
+                + "Aloita kertomalla kotikuntasi.");
+        grid.add(lbIntro, x, y);
+        grid.setColumnSpan(lbIntro, 5);
+    }
+    
+    public void addMessageLabelToGrid(GridPane grid, int x, int y) {
+        Label lbMessage = createLabelForText("");
+        grid.add(lbMessage, x, y);
+        grid.setColumnSpan(lbMessage, 5);
+    }
+    
     
     public Label createLabelForTitle(String title) {
         Label lbWelcome = new Label(title);

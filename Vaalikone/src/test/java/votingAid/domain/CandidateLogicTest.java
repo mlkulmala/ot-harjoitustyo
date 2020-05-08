@@ -1,10 +1,10 @@
 package votingAid.domain;
 
-
-
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import votingaid.domain.CandidateLogic;
+import votingaid.domain.Candidate;
 import votingaid.domain.AnswerList;
 import votingaid.dao.CandidateMemoryDao;
 import java.util.List;
@@ -83,5 +83,8 @@ public class CandidateLogicTest {
         assertEquals("100% Atte, VIHR", candidateLogic.getAnswerList(0).toString());
     }
    
-    
+    @Test
+    public void getCountGivesCorrect() {
+        assertEquals(12, candidateLogic.getCountOfAllAnswerLists());
+    }
 }

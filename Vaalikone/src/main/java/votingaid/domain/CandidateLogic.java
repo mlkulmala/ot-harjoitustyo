@@ -33,7 +33,7 @@ public class CandidateLogic {
     
     /**
      * Load all candidates and their answers from database.
-     * @district Electional district whose candidates' answers are loaded.
+     * @param district Electional district whose candidates' answers are loaded.
      */
     public void createAnswerLists(String district) throws SQLException, IOException {
         

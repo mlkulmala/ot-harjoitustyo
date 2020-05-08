@@ -19,7 +19,6 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import votingaid.domain.AnswerList;
 import votingaid.domain.CandidateLogic;
@@ -45,7 +44,7 @@ public class QuestionView {
      * @param listSize amount of questions to be answered.
      * @param lbResults label where top results are shown. It is shown 
      * in next QuestionView scene until the new question has been answered.
-     * @candidateLogic class that contains all information of the candidates 
+     * @param candidateLogic class that contains all information of the candidates 
      * and their answers.
      */
     public QuestionView(UI ui, Question question, int listSize, Label lbResults, CandidateLogic candidateLogic) {

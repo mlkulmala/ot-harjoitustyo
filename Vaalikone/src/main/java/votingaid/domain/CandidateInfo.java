@@ -11,21 +11,16 @@ public class CandidateInfo {
     final String profession;
     final String education;
     final String reasoning;
-    final String promise1;
-    final String promise2;
-    final String promise3;
+
     
-    public CandidateInfo(int id, String eDistrict, String lang, String prof, String edu, 
-            String reason, String pro1, String pro2, String pro3) {
+    public CandidateInfo(int id, String eDistrict, String lang, String prof, 
+            String edu, String reason) {
         this.id = id;
         this.electoralDistrict = eDistrict;
         this.language = lang;
         this.profession = prof;
         this.education = edu;
         this.reasoning = reason;
-        this.promise1 = pro1;
-        this.promise2 = pro2;
-        this.promise3 = pro3;
     }
     
     /**
@@ -40,9 +35,6 @@ public class CandidateInfo {
         this.profession = "-";
         this.education = "-";
         this.reasoning = "-";
-        this.promise1 = "-";
-        this.promise2 = "-";
-        this.promise3 = "-";
     }
     
     public int getId() {
@@ -69,16 +61,5 @@ public class CandidateInfo {
         return this.reasoning;
     }
     
-    public String getPromise1() {
-        return this.promise1;
-    }
-    
-    public String getPromise2() {
-        return this.promise2;
-    }
-    
-    public String getPromise3() {
-        return this.promise3;
-    }
     
 }

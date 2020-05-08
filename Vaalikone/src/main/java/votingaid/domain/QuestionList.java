@@ -15,7 +15,10 @@ public class QuestionList {
     QuestionDao questionDao;
     int index;
     
-    
+    /**
+     * Construct 
+     * @param questionDao 
+     */
     public QuestionList(QuestionDao questionDao) {
         this.questionDao = questionDao;
         this.index = 0;
