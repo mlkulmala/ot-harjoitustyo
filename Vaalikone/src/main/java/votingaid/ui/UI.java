@@ -132,7 +132,7 @@ public class UI extends Application {
             info = candMemoryDao.getCandidateInfo(candidate);
             candMemoryDao.close();
         } catch (Exception e) {
-            info = new CandidateInfo(candidate.getId());
+            info = new CandidateInfo(candidate);
         }
         
         CandidateView candidateView = new CandidateView(this, candidate, current, info);

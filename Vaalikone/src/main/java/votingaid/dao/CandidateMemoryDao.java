@@ -76,9 +76,9 @@ public class CandidateMemoryDao implements CandidateDao {
 //        if (rs.next() == false) { 
 //            return new CandidateInfo(candidate.getId()); 
 //        }
-        CandidateInfo candidateInfo = new CandidateInfo(candidate.getId());
+        CandidateInfo candidateInfo = new CandidateInfo(candidate);
         if (rs.next()) {
-            candidateInfo = new CandidateInfo(rs.getInt("candidate_id"),
+            candidateInfo = new CandidateInfo(candidate,
                 rs.getString("electoraldistrict"), rs.getString("language"), 
                 rs.getString("profession"), rs.getString("education"), 
                 rs.getString("reasoning"));

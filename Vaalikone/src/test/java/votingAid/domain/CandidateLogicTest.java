@@ -85,6 +85,6 @@ public class CandidateLogicTest {
    
     @Test
     public void getCountGivesCorrect() {
-        assertEquals(12, candidateLogic.getCountOfAllAnswerLists());
+        assertEquals(13, candidateLogic.getCountOfAllAnswerLists());
     }
 }

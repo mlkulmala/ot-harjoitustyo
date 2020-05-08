@@ -5,7 +5,7 @@ package votingaid.domain;
  * @author mlkul
  */
 public class CandidateInfo {
-    final int id;
+    private Candidate candidate;
     final String electoralDistrict;
     final String language;
     final String profession;
@@ -13,9 +13,9 @@ public class CandidateInfo {
     final String reasoning;
 
     
-    public CandidateInfo(int id, String eDistrict, String lang, String prof, 
+    public CandidateInfo(Candidate candidate, String eDistrict, String lang, String prof, 
             String edu, String reason) {
-        this.id = id;
+        this.candidate = candidate;
         this.electoralDistrict = eDistrict;
         this.language = lang;
         this.profession = prof;
@@ -28,8 +28,8 @@ public class CandidateInfo {
      * if there's no data available in the database.
      * @param id 
      */
-    public CandidateInfo(int id) {
-        this.id = id;
+    public CandidateInfo(Candidate candidate) {
+        this.candidate = candidate;
         this.electoralDistrict = "-";
         this.language = "-";
         this.profession = "-";
@@ -37,8 +37,8 @@ public class CandidateInfo {
         this.reasoning = "-";
     }
     
-    public int getId() {
-        return this.id;
+    public Candidate getCandidate() {
+        return this.candidate;
     }
     
     public String getElectoralDistrict() {
