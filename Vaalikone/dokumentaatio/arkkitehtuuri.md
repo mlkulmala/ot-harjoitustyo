@@ -23,30 +23,42 @@ Käyttöliittymässä on neljä erillistä näkymää, jotka on toteutettu omina
 
 ## Sovelluslogiikka
 
-<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/luokkakaavio_Answers.png" width="500">
-
 `Candidate`-luokan oliot pitävät sisällään ehdokkaan tiedot. `AnswerList` pitää 
-kirjaa kunkin ehdokkaan vastauksista, kysymyskohtaisista prosenteista, jotka 
+kirjaa kunkin ehdokkaan vastauksista, väitekohtaisista osumaprosenteista, jotka 
 ilmaisevat missä määrin ehdokkaan ja käyttäjän antamat näkemykset käyvät yksiin 
-sekä vaalikoneen etenemisen myötä päivittävästä prosenttiluvusta, joka ilmaisee 
-mielipiteiden yhtenevyyttä kullakin hetkellä vastattujen kysymysten osalta. 
+tietyn väitteen kohdalla sekä vaalikoneen etenemisen myötä päivittävästä 
+prosenttiluvusta, joka ilmaisee mielipiteiden yhtenevyyttä kaikkien sillä hetkellä
+vastattujen väitteiden osalta. 
+
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/luokkakaavio_Answers.png" width="500">
 
 `CandidateLogic` sisältää listan kaikista `AnswerList`-olioista ja sen myötä 
 ehdokkaista. `CandidateLogic`-luokan metodi `compareToCandidateAnswers` 
 suorittaa vertailun käyttäjän ja ehdokkaan välillä ja järjestää ehdokkaat 
-järjestykseen sen mukaan, miten näkymykset vastaavat toisiaan.
+järjestykseen kaikkien väitteiden osumaprosentin mukaan.
+
+Luokka `Question` sisältää väitteen, tiedon siitä, onko väitteeseen jo vastattu sekä käyttäjän
+antaman vastauksen, joka säilyy siihen asti, kun vaalikone aloitetaan alusta. `QuestionList` pitää
+kirjaa kaikista väitteistä sekä tietoa siitä, mikä väite on vastausvuorossa eli aktiivinen.
+
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/luokkakaavio_Questions.png" width="500">
+
 
 ## Tietojen haku 
 
 Pakkauksen `votingaid.dao` luokka `CandidateMemoryDao` hakee ehdokkaiden tiedot 
-ja heidän vastauksensa tietokannasta ja luokka `QuestionMemoryDao` hakee 
-kysymykset tiedostosta. Sovelluslogiikka ei käytä luokkia suoraan, vaan ne on
+ja heidän vastauksensa ja luokka `QuestionMemoryDao` hakee 
+kysymykset tietokannasta. Sovelluslogiikka ei käytä luokkia suoraan, vaan ne on
 eristetty rajapintojen `CandidateDao` ja `QuestionDao` taakse. Näin tiedon 
 tallennustapaa voidaan helposti vaihtaa.
 
 ### Tietokanta
 
-XXXX Työn alla XXXX 
+Sovellus olettaa, että suoritushakemistossa on `votingAid.mv.db`-niminen tietokanta.
+Tietokannan rakenne on seuraava:
+
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/tietokantakaavio.png" width="500">
+
 
 ## Päätoiminnallisuudet
 
@@ -58,5 +70,14 @@ käynnistyy klikkaamalla *startButton*-painiketta.
 <img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/sekvenssikaavio_ui.png" width="800">
 
 
+## Ohjelman rakenteeseen jääneet heikkoudet
 
+Käyttöliittymä on erotettu neljään eri luokkaan, joiden koodi on jaettu useisiin metodeihin. 
+Metodit eivät kuitenkaan noudata kovin yhtenäistä logiikkaa. Käyttöliittymän luokat käyttävät 
+myös melko samankaltaisia ja osittain myös samoja metodeja.
+
+Aloitusnäkymässä vaalipiirin valinta on nyt koodiin kirjoitettu (ainoa vaihtoehto on "Helsinki"),
+koska sovelluksen mukana tuleva tietokanta sisältää vain yhden vaalipiirin ehdokkaita. Parempi 
+toteutus olisi esimerkiksi automaattisella tekstintäydennyksellä toimiva tekstikenttä, joka 
+tarjoaisi tietokannasta löytyvät vaihtoehdot.
 
