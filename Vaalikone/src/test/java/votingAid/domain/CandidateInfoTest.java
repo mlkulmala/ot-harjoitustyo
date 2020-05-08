@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import votingaid.domain.CandidateInfo;
+import votingaid.domain.Candidate;
 
 /**
  *
@@ -15,13 +16,14 @@ public class CandidateInfoTest {
     
     @Before
     public void setUp() {
-        info = new CandidateInfo(11, "Hki", "Suomi", "opiskelija", 
+        Candidate maija = new Candidate(11, 123, "Hki", "Maija", 25, "FP");
+        info = new CandidateInfo(maija, "Hki", "Suomi", "opiskelija", 
                 "korkeakoulututkinto", "Koska olen paras.");
     }
     
     @Test
-    public void constructionCorrect() {
-        assertEquals(11, info.getId());
+    public void constructionOk() {
+        assertEquals("Maija", info.getCandidate().getName());
         assertEquals("Hki", info.getElectoralDistrict());
         assertEquals("Suomi", info.getLanguage());
         assertEquals("opiskelija", info.getProfession());
@@ -30,9 +32,10 @@ public class CandidateInfoTest {
     }
     
     @Test
-    public void constructionOfEmptyInfoCorrect() {
-        info = new CandidateInfo(17);
-        assertEquals(17, info.getId());
+    public void constructionOfEmptyInfoOk() {
+        Candidate matti = new Candidate(15, 246, "Hki", "Matti", 70, "PS");
+        info = new CandidateInfo(matti);
+        assertEquals(15, info.getCandidate().getId());
         assertEquals("-", info.getElectoralDistrict());
         assertEquals("-", info.getLanguage());
         assertEquals("-", info.getProfession());
