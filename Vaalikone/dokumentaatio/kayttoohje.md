@@ -21,7 +21,7 @@ väitteeseen.
 
 Kysymysnäkymässä käyttäjä voi valita viidestä vaihtoehdosta, mitä mieltä hän on esitetystä väitteestä.
 
-<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/questionView2.png" width="500">
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/questionView.png" width="500">
 
 Joka kerta käyttäjän painaessa vastausvaihtoehtoa näkymän alalaitaan tulostuu kolme ehdokasta, joiden mielipide on
 lähimpänä käyttäjän antamaa vastausta sekä prosenttiluku, joka kertoo kuinka hyvin mielipiteet ovat vastanneet toisiaan kaikkien tähän asti vastattujen väitteiden osalta. Väitteiden välillä voi liikkua painikkeilla *edellinen* ja 
