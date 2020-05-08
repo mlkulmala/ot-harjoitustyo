@@ -15,7 +15,7 @@ Sovellus avautuu näkymään, jossa Vaalikoneen toiminta esitellään lyhyesti. 
 ehdokkaat valitsemalla valikosta oman vaalipiirinsä ja painamalla *aloita*, jolloin siirrytään seuraavaan näkymään ja ensimmäiseen 
 väitteeseen.
 
-<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/welcomeView.png" width="500">
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/welcomeView2.png" width="500">
 
 ## Vastaaminen vaalikoneen väitteisiin
 
@@ -38,6 +38,4 @@ näkymä vaihtuu tulosnäkymään. Tulosnäkymässä on listattuna kolme ehdokas
 
 Tulosnäkymässä jokaisella ehdokkaan kohdalla on painike *Tutustu ehdokkaaseen*, josta pääsee ehdokkaan esittelevään näkymään.
 
-<img src="https//raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/candidateView.png" width="500">
-
-
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/candidateView.png" width="500">
