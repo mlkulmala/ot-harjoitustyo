@@ -5,7 +5,7 @@ import java.util.List;
 import votingaid.dao.QuestionDao;
 
 /**
- * A class that loads the questions from the database. Keeps count which 
+ * A class that contains all the questions in voting aid. Keeps count which 
  * question is the next one in line to be shown to the user.
  * @author mlkul
  */
@@ -25,8 +25,8 @@ public class QuestionList {
     }
     
     /**
-     * Load the questions from the database.
-     * @throws SQLException 
+     * Calls QuestionDao which loads the questions from the database.
+     * @throws SQLException if the query fails.
      */
     public void getQuestions() throws SQLException {
         this.questions = questionDao.getQuestions();

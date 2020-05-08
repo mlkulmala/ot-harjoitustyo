@@ -13,18 +13,28 @@ import votingaid.domain.Candidate;
 import votingaid.domain.CandidateInfo;
 
 /**
- *
+ * Class that loads all information related to the candidates and answers.
  * @author mlkul
  */
 public class CandidateMemoryDao implements CandidateDao {
     
     private Connection connection;
     
+    /**
+     * Activate connection to the database.
+     * @throws SQLException thrown on connection fail.
+     */
     @Override
     public void getConnection() throws SQLException {
         connection = DriverManager.getConnection("jdbc:h2:./votingAid", "sa", "");
     }
     
+    /**
+     * Get all candidates.
+     * @param district Electoral district of the candidates that will be listed.
+     * @return List of Candidates.
+     * @throws SQLException thrown if query fails.
+     */
     @Override
     public List<Candidate> getCandidatesByDistrict(String district) throws SQLException {
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Candidate "
@@ -32,9 +42,6 @@ public class CandidateMemoryDao implements CandidateDao {
                 + "JOIN Party ON Party.id = Candidate.party_id WHERE District.name = ? "); 
         stmt.setString(1, district);
         ResultSet rs = stmt.executeQuery();
-//        if (rs.next() == false) { 
-//            return null; 
-//        }
         
         ArrayList<Candidate> candidateList = new ArrayList<>();
         while (rs.next()) {
@@ -47,6 +54,13 @@ public class CandidateMemoryDao implements CandidateDao {
         return candidateList;
     }
     
+    
+    /**
+     * Get all answers of a candidate.
+     * @param candidate
+     * @return AnswerList with all answers of a single candidate.
+     * @throws SQLException thrown if query fails.
+     */
     @Override
     public AnswerList getCandidateAnswers(Candidate candidate) throws SQLException {
         int candidateId = candidate.getId();
@@ -66,16 +80,19 @@ public class CandidateMemoryDao implements CandidateDao {
         return answerList;
     } 
     
+    /**
+     * Get additional information of a candidate.
+     * @param candidate
+     * @return CandidateInfo.
+     * @throws SQLException 
+     */
     @Override
     public CandidateInfo getCandidateInfo(Candidate candidate) throws SQLException {
-        //connection = DriverManager.getConnection("jdbc:h2:./votingAid", "sa", "");
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM CandidateInfo "
             + "WHERE candidate_id = ? "); 
         stmt.setInt(1, candidate.getId());
         ResultSet rs = stmt.executeQuery();
-//        if (rs.next() == false) { 
-//            return new CandidateInfo(candidate.getId()); 
-//        }
+
         CandidateInfo candidateInfo = new CandidateInfo(candidate);
         if (rs.next()) {
             candidateInfo = new CandidateInfo(candidate,
@@ -83,14 +100,16 @@ public class CandidateMemoryDao implements CandidateDao {
                 rs.getString("profession"), rs.getString("education"), 
                 rs.getString("reasoning"));
         }
-        
          
         stmt.close();
         rs.close();
-        //connection.close();
         return candidateInfo;
     }
     
+    /**
+     * Close the database connection.
+     * @throws IOException  
+     */
     @Override
     public void close() throws IOException {
         try {

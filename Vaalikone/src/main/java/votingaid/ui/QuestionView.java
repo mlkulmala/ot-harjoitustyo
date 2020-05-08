@@ -73,7 +73,7 @@ public class QuestionView {
         
         ToggleGroup rButtons = new ToggleGroup();
         for (int i = 1; i <= 5; i++) {
-            addRadioButtonToGrid(rButtons, i);
+            addAnswerButtonsToGrid(rButtons, i);
         }
         
         lbResults.setWrapText(true);
@@ -134,28 +134,25 @@ public class QuestionView {
     }
     
     public void addOpinionLabelToGrid(String labelText, int column) {
-        Label lb = new Label(labelText);
-        lb.setTextAlignment(TextAlignment.CENTER);
-        questionLayout.add(lb, column, 2);
-        GridPane.setHalignment(lb, HPos.CENTER);
+        Label opinionLabel = new Label(labelText);
+        opinionLabel.setTextAlignment(TextAlignment.CENTER);
+        questionLayout.add(opinionLabel, column, 2);
+        GridPane.setHalignment(opinionLabel, HPos.CENTER);
     }
     
-    public void addRadioButtonToGrid(ToggleGroup group, int number) {
-        RadioButton rb = new RadioButton();
-        rb.setFocusTraversable(true);
+    public void addAnswerButtonsToGrid(ToggleGroup group, int number) {
+        RadioButton answerButton = new RadioButton();
+        answerButton.setFocusTraversable(true);
         if (this.question.isAnswered() && this.question.getUserAnswer() == number) {
-            rb.setSelected(true);
+            answerButton.setSelected(true);
         }
-        rb.setToggleGroup(group);
-        rb.setOnAction((event) -> {
+        answerButton.setToggleGroup(group);
+        answerButton.setOnAction((event) -> {
             this.question.setUserAnswer(number);
             listAnswers(number, lbResults);
-//            if (this.question.getId() < this.listSize) {
-//                ui.showNextQuestion(lbResults);
-//            }
         });
-        questionLayout.add(rb, number - 1, 3);
-        GridPane.setHalignment(rb, HPos.CENTER);
+        questionLayout.add(answerButton, number - 1, 3);
+        GridPane.setHalignment(answerButton, HPos.CENTER);
     }
     
     public void addNavigationButtonsToGrid(GridPane buttonView) {
@@ -192,8 +189,8 @@ public class QuestionView {
     }
     
     public Label createLabelForQNumber() {
-        Label qNumber = new Label(this.question.getId() + "/" +  listSize); //questionList.getSize() ???
-        qNumber.setTextAlignment(TextAlignment.CENTER); //tekstin keskitys
+        Label qNumber = new Label(this.question.getId() + "/" +  listSize);  
+        qNumber.setTextAlignment(TextAlignment.CENTER); 
         qNumber.setAlignment(Pos.CENTER);
         qNumber.setPrefHeight(15);
         qNumber.setPrefWidth(55);
@@ -245,7 +242,5 @@ public class QuestionView {
         });
         return resultsButton;
     }
-    
-    
     
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package votingaid.dao;
 
 import java.sql.Connection;
@@ -15,16 +10,21 @@ import java.util.List;
 import votingaid.domain.Question;
 
 /**
- *
+ * Class that loads all questions from the database.
  * @author mlkul
  */
 public class QuestionMemoryDao implements QuestionDao {
     
     private Connection connection;
     
+    /**
+     * Get all questions from the database.
+     * @return List of Questions.
+     * @throws SQLException thrown if the query fails.
+     */
     @Override
     public List<Question> getQuestions() throws SQLException {
-        connection = DriverManager.getConnection("jdbc:h2:~/votingAid", "sa", "");
+        connection = DriverManager.getConnection("jdbc:h2:./votingAid", "sa", "");
         
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Question"); 
         ResultSet rs = stmt.executeQuery();
