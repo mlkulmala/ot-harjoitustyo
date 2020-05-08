@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.*;
 import votingaid.domain.AnswerList;
 import votingaid.domain.Candidate;
+import votingaid.domain.CandidateInfo;
 
 /**
  *
@@ -17,6 +18,8 @@ public interface CandidateDao {
     public List<Candidate> getCandidatesByDistrict(String district) throws SQLException;
     
     public AnswerList getCandidateAnswers(Candidate candidate) throws SQLException;
+    
+    public CandidateInfo getCandidateInfo(Candidate candidate) throws SQLException; 
     
     public void close() throws IOException; 
     

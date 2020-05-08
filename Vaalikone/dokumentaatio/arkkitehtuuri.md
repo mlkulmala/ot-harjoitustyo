@@ -6,18 +6,19 @@ VotingAid-sovelluksen pakkausrakenne on seuraava:
 
 <img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/pakkauskaavio1.png" width="200">
 
-- `votingaid.main` TAITAA OLLA IHAN TURHA PAKKAUS, MUUTA TÄMÄ
-- `votingaid.ui`: JavaFX:llä toteutetun käyttöliittymä 
+- `votingaid.main` sovelluksen käynnistys
+- `votingaid.ui`: JavaFX:llä toteutettu käyttöliittymä 
 - `votingaid.domain`: sovelluslogiikka
-- `votingaid.dao`: tiedon pysyväitallennus 
+- `votingaid.dao`: tiedon pysyväistallennus 
 
 ## Käyttöliittymä
 
-Käyttöliittymässä on kolme erillistä näkymää, jotka on toteutettu omina luokkinaan.
+Käyttöliittymässä on neljä erillistä näkymää, jotka on toteutettu omina luokkinaan.
 
 - aloitusnäkymä `(WelcomeView)`
-- kysymykset ja vastausvaihtoehdot `(QuestionView)`
+- väitteet ja vastausvaihtoehdot `(QuestionView)`
 - vaalikoneen tulokset `(ResultsView)`
+- ehdokkaan esittely `(CandidateView)`
 
 
 ## Sovelluslogiikka
@@ -42,10 +43,6 @@ ja heidän vastauksensa tietokannasta ja luokka `QuestionMemoryDao` hakee
 kysymykset tiedostosta. Sovelluslogiikka ei käytä luokkia suoraan, vaan ne on
 eristetty rajapintojen `CandidateDao` ja `QuestionDao` taakse. Näin tiedon 
 tallennustapaa voidaan helposti vaihtaa.
-
-### Tiedostot
-
-XXXXX Tämä osuus saattaa mennä uusiksi XXXXXX
 
 ### Tietokanta
 

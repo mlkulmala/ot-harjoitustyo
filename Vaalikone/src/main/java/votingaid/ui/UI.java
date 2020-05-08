@@ -12,7 +12,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import votingaid.dao.CandidateInfoDao;
 import votingaid.dao.CandidateMemoryDao;
 import votingaid.dao.QuestionMemoryDao;
 import votingaid.domain.Candidate;
@@ -125,12 +124,14 @@ public class UI extends Application {
      * @param current An index pointing to the first result on the list in the previous scene.
      */
     public void showCandidateView(Candidate candidate, int current) {
-        CandidateInfoDao candidateInfoDao = new CandidateInfoDao();
+        CandidateMemoryDao candMemoryDao = new CandidateMemoryDao();
         
         CandidateInfo info;
         try {
-            info = candidateInfoDao.getCandidateInfo(candidate);
-        } catch (SQLException ex) {
+            candMemoryDao.getConnection();
+            info = candMemoryDao.getCandidateInfo(candidate);
+            candMemoryDao.close();
+        } catch (Exception e) {
             info = new CandidateInfo(candidate.getId());
         }
         
