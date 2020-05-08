@@ -4,7 +4,7 @@
 
 VotingAid-sovelluksen pakkausrakenne on seuraava:
 
-<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/pakkauskaavio1.png" width="200">
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/luokkakaavio_Vaalikone.png" width="300">
 
 - `votingaid.main` sovelluksen käynnistys
 - `votingaid.ui`: JavaFX:llä toteutettu käyttöliittymä 
@@ -19,6 +19,7 @@ Käyttöliittymässä on neljä erillistä näkymää, jotka on toteutettu omina
 - väitteet ja vastausvaihtoehdot `(QuestionView)`
 - vaalikoneen tulokset `(ResultsView)`
 - ehdokkaan esittely `(CandidateView)`
+
 
 
 ## Sovelluslogiikka
@@ -41,7 +42,8 @@ Luokka `Question` sisältää väitteen, tiedon siitä, onko väitteeseen jo vas
 antaman vastauksen, joka säilyy siihen asti, kun vaalikone aloitetaan alusta. `QuestionList` pitää
 kirjaa kaikista väitteistä sekä tietoa siitä, mikä väite on vastausvuorossa eli aktiivinen.
 
-<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/luokkakaavio_Questions.png" width="500">
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/luokkakaavio_Questions.png" width="300">
+
 
 
 ## Tietojen haku 
@@ -57,7 +59,8 @@ tallennustapaa voidaan helposti vaihtaa.
 Sovellus olettaa, että suoritushakemistossa on `votingAid.mv.db`-niminen tietokanta.
 Tietokannan rakenne on seuraava:
 
-<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/tietokantakaavio.png" width="500">
+<img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/tietokantakaavio.png" width="750">
+
 
 
 ## Päätoiminnallisuudet
@@ -70,6 +73,7 @@ käynnistyy klikkaamalla *startButton*-painiketta.
 <img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/sekvenssikaavio_ui.png" width="800">
 
 
+
 ## Ohjelman rakenteeseen jääneet heikkoudet
 
 Käyttöliittymä on erotettu neljään eri luokkaan, joiden koodi on jaettu useisiin metodeihin. 
@@ -80,4 +84,5 @@ Aloitusnäkymässä vaalipiirin valinta on nyt koodiin kirjoitettu (ainoa vaihto
 koska sovelluksen mukana tuleva tietokanta sisältää vain yhden vaalipiirin ehdokkaita. Parempi 
 toteutus olisi esimerkiksi automaattisella tekstintäydennyksellä toimiva tekstikenttä, joka 
 tarjoaisi tietokannasta löytyvät vaihtoehdot.
+
 
