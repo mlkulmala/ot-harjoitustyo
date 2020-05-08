@@ -24,11 +24,11 @@ Käyttöliittymässä on neljä erillistä näkymää, jotka on toteutettu omina
 
 ## Sovelluslogiikka
 
-`Candidate`-luokan oliot pitävät sisällään ehdokkaan tiedot. `AnswerList` pitää 
+`Candidate`-luokan oliot pitävät sisällään ehdokkaiden tiedot. `AnswerList` pitää 
 kirjaa kunkin ehdokkaan vastauksista, väitekohtaisista osumaprosenteista, jotka 
 ilmaisevat missä määrin ehdokkaan ja käyttäjän antamat näkemykset käyvät yksiin 
-tietyn väitteen kohdalla sekä vaalikoneen etenemisen myötä päivittävästä 
-prosenttiluvusta, joka ilmaisee mielipiteiden yhtenevyyttä kaikkien sillä hetkellä
+kyseisen väitteen kohdalla sekä vaalikoneen etenemisen myötä päivitettävästä 
+osumaprosentista, joka ilmaisee mielipiteiden yhtenevyyttä kaikkien sillä hetkellä
 vastattujen väitteiden osalta. 
 
 <img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/luokkakaavio_Answers.png" width="500">
@@ -36,9 +36,9 @@ vastattujen väitteiden osalta.
 `CandidateLogic` sisältää listan kaikista `AnswerList`-olioista ja sen myötä 
 ehdokkaista. `CandidateLogic`-luokan metodi `compareToCandidateAnswers` 
 suorittaa vertailun käyttäjän ja ehdokkaan välillä ja järjestää ehdokkaat 
-järjestykseen kaikkien väitteiden osumaprosentin mukaan.
+järjestykseen yllä mainitun osumaprosentin mukaan.
 
-Luokka `Question` sisältää väitteen, tiedon siitä, onko väitteeseen jo vastattu sekä käyttäjän
+Luokka `Question` sisältää väitteen, tiedon siitä, onko väitteeseen jo vastattu, sekä käyttäjän
 antaman vastauksen, joka säilyy siihen asti, kun vaalikone aloitetaan alusta. `QuestionList` pitää
 kirjaa kaikista väitteistä sekä tietoa siitä, mikä väite on vastausvuorossa eli aktiivinen.
 
@@ -71,6 +71,9 @@ Sovellus avautuu näkymään, jossa esitellään Vaalikoneen toiminta. Vaalikone
 käynnistyy klikkaamalla *startButton*-painiketta.
 
 <img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/sekvenssikaavio_ui.png" width="800">
+
+Kun käyttäjä vastaa väitteeseen, sovelluksen kontrolli etenee seuraavasti:
+
 
 
 
