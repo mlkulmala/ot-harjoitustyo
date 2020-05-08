@@ -98,4 +98,7 @@ koska sovelluksen mukana tuleva tietokanta sisältää vain yhden vaalipiirin eh
 toteutus olisi esimerkiksi automaattisella tekstintäydennyksellä toimiva tekstikenttä, joka 
 tarjoaisi tietokannasta löytyvät vaihtoehdot.
 
+Sovellus sisältää vain vaalikoneen käyttäjän osuuden eli sovelluksessa ei ole mahdollista lisätä 
+tai muuttaa vaalikoneen käyttämää tietokantaa.
+
 
