@@ -4,10 +4,10 @@ VotingAid eli vaalikone on sovellus, jossa esitettyihin väitteisiin vastaamalla
 käyttäjä voi verrata omia mielipiteitään vaaliehdokkaiden mielipiteisiin ja 
 saada selville, keiden kanssa näkemykset kohtaavat parhaiten.
 
-VotingAidin oletuksena käyttämässä tietokannassa olevat väitteet ja ehdokkaat 
-ovat suoraan Ylen tekemästä eduskuntavaalien 2019 vaalikoneesta. Ehdokkaiden
+Sovelluksen mukana tulevassa tietokannassa olevat väitteet on kopioitu suoraan Ylen tekemästä 
+eduskuntavaalien 2019 vaalikoneesta, samoin ehdokkaat ja heidän vastauksensa. Ehdokkaat 
 esiintyvät etunimillä ja heidän vastauksiaan on lyhennetty. Sovellus on tehty
-Helsingin yliopiston Ohjelmistotekniikka-kurssin harjoitustyönä, eikä sillä 
+Helsingin yliopiston kevään 2020 Ohjelmistotekniikka-kurssin harjoitustyönä eikä sillä 
 ole kaupallista käyttötarkoitusta.
 
 
@@ -19,16 +19,13 @@ ole kaupallista käyttötarkoitusta.
 
 [Arkkitehtuurikuvaus](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/Vaalikone/dokumentaatio/arkkitehtuuri.md)
 
-[Testausdokumentti]
+[Testausdokumentti](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/Vaalikone/dokumentaatio/testaus.md)
 
 [Tyoaikakirjanpito](https://github.com/mlkulmala/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 
-
 ## Releaset
 
-[Viikko 5](https://github.com/mlkulmala/ot-harjoitustyo/releases/download/viikko5/Vaalikone_viikko5.jar)
-
-[Viikko 6](https://github.com/mlkulmala/ot-harjoitustyo/releases/download/viikko6/Vaalikone_viikko6.jar)
+[releaset](https://github.com/mlkulmala/ot-harjoitustyo/releases)
 
 ## Komentorivitoiminnot
 
