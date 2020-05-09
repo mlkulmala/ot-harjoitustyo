@@ -25,7 +25,7 @@ Käyttöliittymässä on neljä erillistä näkymää, jotka on toteutettu omina
 ## Sovelluslogiikka
 
 `Candidate`-luokan oliot pitävät sisällään ehdokkaiden tiedot. `AnswerList` pitää 
-kirjaa kunkin ehdokkaan vastauksista, väitekohtaisista osumaprosenteista, jotka 
+kirjaa kunkin ehdokkaan vastauksista, väitekohtaisista vastaavuusprosenteista, jotka 
 ilmaisevat missä määrin ehdokkaan ja käyttäjän antamat näkemykset käyvät yksiin 
 kyseisen väitteen kohdalla sekä vaalikoneen etenemisen myötä päivitettävästä 
 osumaprosentista, joka ilmaisee mielipiteiden yhtenevyyttä kaikkien sillä hetkellä
@@ -79,8 +79,8 @@ Kun käyttäjä vastaa väitteeseen klikkaamalla jotain vastauspainiketta, sovel
 Tapahtumankäsittelijä kutsuu luokan `CandidateLogic` metodia `compareToCandidateAnswers`, joka saa
 parametriksi vastattavan väitteen id-numeron ja käyttäjän antaman vastauksen. `CandidateLogic` käy 
 läpi listallaan pitämät `AnswerList`-oliot, vertaa käyttäjän vastausta kunkin ehdokkaan vastaukseen 
-ja laskee ja tallentaa vastaavuusprosentin `AnswerList`-olioon. Kun kaikki oliot on käyty läpi, metodi 
-palauttaa `AnswerList`-olioiden järjestetyn listan. jonka mukaan käyttäjää lähimmäs vastanneet ehdokkaat 
+ja laskee ja tallentaa kysymyskohtaisen vastaavuusprosentin `AnswerList`-olioon. Samalla se päivittää kokonaistilannetta kuvaavan osumaprosentin. Kun kaikki oliot 
+on käyty läpi, metodi palauttaa `AnswerList`-olioiden osumaprosentin perusteella järjestetyn listan, jonka mukaan lähimmäksi käyttäjän vastauksia vastanneet ehdokkaat 
 listataan kärkeen.
 
 Tulosnäkymässä järjestetyn `AnswerList`-olioiden listalta poimitaan oikeat tiedot kultakin ehdokkaalta.
