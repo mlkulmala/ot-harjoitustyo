@@ -37,6 +37,6 @@
 |  6.5. |  7     | uuden luokan koodausta |
 |  7.5. |  8     | käyttöliittymän luokkien refaktorointia, testausta |
 |  8.5. |  8     | dokumentaatiota, käyttöliittymän luokkien korjausta |
-|  9.5. |        | dokumentaatiota  |
-|**YHT.**| 149   |       |
+|  9.5. |  1     | dokumentaatiota  |
+|**YHT.**| 150   |       |
 
