@@ -14,14 +14,13 @@ Sovelluksella on yksi käyttäjärooli eli normaali käyttäjä.
 
 ## Käyttöliittymäluonnos
 
-Sovellus aukeaa näkymään, jossa esitellään vaalikoneen periaate. Seuraavissa
-näkymissä on väitteet valintapainikkeineen, viimeisessä yhteenveto vaalikoneen
-tuloksista.  
+Sovellus aukeaa näkymään, jossa esitellään vaalikoneen periaate ja valitaan vaalipiiri. Seuraavissa
+näkymissä esitetään väitteet vastausvaihtoehtoineen. Viimeisen väitteen näkymästä päästään tulosnäkymään, josta ehdokkaat on listattuna. Kunkin ehdokkaan
+kohdalta on mahdollista siirtyä erilliseen näkymään tarkastelemaan kyseisen ehdokkaan tietoja.  
 
 ## Sovelluksen tarjoama toiminnallisuus
 
-Sovelluksen käyttö ei edellytä kirjautumista eikä käyttäjän antamia 
-vastauksia tallenneta mihinkään.
+Sovelluksen käyttö ei edellytä kirjautumista eikä käyttäjästä kysytä mitään tietoja.
 
 Väitteet tulevat näkyviin yksi kerrallaan, omina näkyminään. Väitteiden 
 välillä voi navigoida painikkeilla *edellinen* ja *seuraava*. 
