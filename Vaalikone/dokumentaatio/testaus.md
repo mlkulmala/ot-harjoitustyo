@@ -4,9 +4,10 @@ Ohjelmaa on testattu automatisoiduin yksikkö- ja integraatiotestein JUnitilla.
 
 ## Yksikkö- ja integraatiotestaus
 
-
-
-### Sovelluslogiikka
+Kaikki testit ovat keskittyneet pakkauksen `votingaid.domain` luokkien 
+testaamiseen. Testit `CandidateLogicTest` ja `QuestionListTest` testaavat 
+DAO-luokkien toimintaa. Sovellusta on testattu ainoastaan tilanteessa, jossa
+käyttöohjeen kuvauksen mukainen tietokanta on ollut sovelluksen suoritushakemistossa. 
 
 
 ### Testauskattavuus
@@ -16,7 +17,6 @@ haarautumakattavuus 76 %.
 
 <img src="https://raw.githubusercontent.com/mlkulmala/ot-harjoitustyo/master/Vaalikone/dokumentaatio/kuvat/testikattavuus.png" width="750">
 
-Testaamatta jäivät tilanteet, joissa...
 
 ## Järjestelmätestaus
 
