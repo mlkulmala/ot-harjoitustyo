@@ -47,6 +47,7 @@ public class ResultsView {
         this.currentOnList = currentOnList;
     }
     
+    
     /**
      * Scene implementing this view.
      * @return Scene

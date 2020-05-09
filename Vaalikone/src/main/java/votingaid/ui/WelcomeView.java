@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
@@ -33,7 +34,6 @@ public class WelcomeView {
         
         Label lbWelcome = createLabelForTitle("Tervetuloa vaalikoneeseen!");
         welcomeLayout.add(lbWelcome, 0, 0);
-        welcomeLayout.setColumnSpan(lbWelcome, 5);
         
         addIntroductionTextToGrid(welcomeLayout, 0, 1);
 
@@ -42,16 +42,13 @@ public class WelcomeView {
         cbDistricts.setPrefWidth(100);
         GridPane.setHalignment(cbDistricts, HPos.CENTER);
         welcomeLayout.add(cbDistricts, 0, 2);
-        welcomeLayout.setColumnSpan(cbDistricts, 5);
         
         Label lbMessage = createLabelForText("");
         welcomeLayout.add(lbMessage, 0, 3);
-        welcomeLayout.setColumnSpan(lbMessage, 5);
 
-        Button startButton = new Button("Aloita");
+        Button startButton = new Button("Aloita vaalikone");
         GridPane.setHalignment(startButton, HPos.CENTER);
         welcomeLayout.add(startButton, 0, 4);
-        welcomeLayout.setColumnSpan(startButton, 5);
            
         startButton.setOnAction(action -> {
             if (cbDistricts.getValue() != null) {
@@ -88,13 +85,11 @@ public class WelcomeView {
                 + "vaalikone kertoo, keiden näkemykset ovat lähellä omiasi.\n\n"
                 + "Aloita kertomalla kotikuntasi.");
         grid.add(lbIntro, x, y);
-        grid.setColumnSpan(lbIntro, 5);
     }
     
     public void addMessageLabelToGrid(GridPane grid, int x, int y) {
         Label lbMessage = createLabelForText("");
         grid.add(lbMessage, x, y);
-        grid.setColumnSpan(lbMessage, 5);
     }
     
     

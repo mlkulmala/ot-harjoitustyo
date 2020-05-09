@@ -70,6 +70,7 @@ public class CandidateLogic {
         return allAnswers;
     }
     
+    
     public AnswerList getAnswerList(int number) {
         return this.allAnswers.get(number);
     }
